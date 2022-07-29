@@ -1,5 +1,6 @@
 'use strict';
-const {Model, Validator} = require('sequelize');
+const {Model} = require('sequelize');
+const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
@@ -47,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       return await User.scope('currentUser').findByPk(user.id);
     }
-    
+
     static associate(models) {
       // define association here
     }
