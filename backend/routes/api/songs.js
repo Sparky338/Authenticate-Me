@@ -34,14 +34,10 @@ router.get('/:songId', async (req, res) => {
     const songId = req.params.songId;
     const song = await Song.findByPk(songId, {
         attributes: ['id', 'userId', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl'],
-        include: {
-            model: User, as: 'Artist',
-            attributes: ['id', 'username']
-        },
-        include: {
-            model: Album,
-            attributes: ['id', 'title', 'imageUrl']
-        }
+        include: [
+            {model: User, as: 'Artist', attributes: ['id', 'username']},
+            {model: Album, attributes: ['id', 'title', 'imageUrl']}
+        ]
     })
     if (!song) {
         return res.json({
