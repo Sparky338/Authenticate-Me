@@ -52,13 +52,27 @@ router.get('/:songId', async (req, res) => {
 router.post('/', requireAuth, async (req, res) => {
     const user = req.user.id;
     const {title, description, url, imageUrl, albumId} = req.body;
+
+    if(!req.body.title || !req.body.url){
+        return res.send("Validation Error")
+
+    }
+
     const newSong = await Song.create({
+        userId: user,
+        albumId,
         title,
         description,
         url,
-        imageUrl,
-        albumId
+        createdAt: res.body,
+        updatedAt: res.body,
+        imageUrl
     })
+
+
+
+    res.status(201)
+    return res.json(newSong)
 })
 
 module.exports = router;
