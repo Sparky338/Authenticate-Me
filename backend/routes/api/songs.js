@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
             ['id', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']
     });
 
-    return res.json({songs});
+    return res.json({ songs });
 });
 
 // Songs by current user
@@ -26,25 +26,30 @@ router.get('/current', requireAuth, async (req, res) => {
             ['id', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']
     });
 
-    return res.json({songs});
+    return res.json({ songs });
 })
 
 // Song by id
 router.get('/:songId', async (req, res) => {
     const songId = req.params.songId;
     const song = await Song.findByPk(songId, {
-        attributes:
-            ['id', 'userId', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl'],
+        attributes: ['id', 'userId', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl'],
         include: {
-            model: Artist,
-            attributes: ['id', 'username', 'imageUrl']
+            model: User, as: 'Artist',
+            attributes: ['id', 'username']
         },
         include: {
             model: Album,
             attributes: ['id', 'title', 'imageUrl']
         }
-
     })
+    if (!song) {
+        return res.json({
+            "message": "Song couldn't be found",
+            "statusCode": 404
+        })
+    }
+    res.json(song)
 })
 
 
