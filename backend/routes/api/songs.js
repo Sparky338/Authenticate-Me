@@ -10,26 +10,42 @@ const router = express.Router();
 
 // All songs
 router.get('/', async (req, res) => {
-    const allSongs = await Song.findAll({
+    const songs = await Song.findAll({
         attributes:
             ['id', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']
     });
 
-    return res.json(allSongs);
+    return res.json({songs});
 });
 
 // Songs by current user
 router.get('/current', requireAuth, async (req, res) => {
     const user = req.user.id
-    const userSongs = await Song.findByPk(user, {
+    const songs = await Song.findByPk(user, {
         attributes:
             ['id', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']
     });
 
-    return res.json(userSongs);
+    return res.json({songs});
 })
 
+// Song by id
+router.get('/:songId', async (req, res) => {
+    const songId = req.params.songId;
+    const song = await Song.findByPk(songId, {
+        attributes:
+            ['id', 'userId', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl'],
+        include: {
+            model: Artist,
+            attributes: ['id', 'username', 'imageUrl']
+        },
+        include: {
+            model: Album,
+            attributes: ['id', 'title', 'imageUrl']
+        }
 
+    })
+})
 
 
 module.exports = router;
