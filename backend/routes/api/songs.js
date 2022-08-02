@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 // Songs by current user
 router.get('/current', requireAuth, async (req, res) => {
-    const user = req.user.id
+    const user = req.user.id;
     const songs = await Song.findByPk(user, {
         attributes:
             ['id', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']
@@ -48,5 +48,17 @@ router.get('/:songId', async (req, res) => {
     res.json(song)
 })
 
+// Create a song
+router.post('/', requireAuth, async (req, res) => {
+    const user = req.user.id;
+    const {title, description, url, imageUrl, albumId} = req.body;
+    const newSong = await Song.create({
+        title,
+        description,
+        url,
+        imageUrl,
+        albumId
+    })
+})
 
 module.exports = router;
