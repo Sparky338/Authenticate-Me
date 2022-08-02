@@ -25,9 +25,6 @@ module.exports = {
       url: {
         type: Sequelize.STRING
       },
-      imageUrl: {
-        type: Sequelize.STRING
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -37,6 +34,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: new Date()
+      },
+      imageUrl: {
+        type: Sequelize.STRING
       }
     });
   },
