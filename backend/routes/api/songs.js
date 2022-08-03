@@ -26,7 +26,7 @@ router.get('/current', requireAuth, async (req, res) => {
     return res.json({ songs });
 })
 
-// Song by id
+// Details of a song by id
 router.get('/:songId', async (req, res) => {
     const songId = req.params.songId;
     const song = await Song.findByPk(songId, {
@@ -47,6 +47,7 @@ router.get('/:songId', async (req, res) => {
 // Create a song
 router.post('/', requireAuth, async (req, res) => {
     const user = req.user.id;
+
     const { title, description, url, imageUrl, albumId } = req.body;
 
     const album = await Album.findByPk(albumId);
@@ -57,7 +58,7 @@ router.post('/', requireAuth, async (req, res) => {
             statusCode: 404
         })
     }
-
+ 
     if (!title && !url) {
         return res.json({
             message: "Validation Error",
