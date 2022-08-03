@@ -103,7 +103,7 @@ router.post('/', requireAuth, async (req, res) => {
 // Edit a song
 router.put('/:songId', requireAuth, async (req, res) => {
     const user = req.user.id;
-    const songId = req.params.songId
+    const songId = req.params.songId;
     const {title, description, url, imageUrl, albumId} = req.body;
     const songAuth = await Song.findByPk(songId);
 
