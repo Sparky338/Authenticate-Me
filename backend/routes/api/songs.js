@@ -21,6 +21,7 @@ router.get('/', async (req, res) => {
 // Songs by current user
 router.get('/current', requireAuth, async (req, res) => {
     const user = req.user.id;
+
     const songs = await Song.findByPk(user, {
         attributes:
             ['id', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']
@@ -35,8 +36,8 @@ router.get('/:songId', async (req, res) => {
     const song = await Song.findByPk(songId, {
         attributes: ['id', 'userId', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl'],
         include: [
-            {model: User, as: 'Artist', attributes: ['id', 'username']},
-            {model: Album, attributes: ['id', 'title', 'imageUrl']}
+            { model: User, as: 'Artist', attributes: ['id', 'username'] },
+            { model: Album, attributes: ['id', 'title', 'imageUrl'] }
         ]
     })
     if (!song) {
@@ -48,59 +49,70 @@ router.get('/:songId', async (req, res) => {
     res.json(song)
 })
 
+// Edit a song
+router.put('/:songId', requireAuth, async (req, res) => {
+    const user = req.user.id;
+    const songId = req.params.songId
+    const {title, description, url, imageUrl, albumId} = req.body;
+    const songAuth = await Song.findByPk(songId);
 
-// // Create a song //based on albumId
-// router.post('/', requireAuth, async (req, res) => {
-//     const user = req.user.id;
-//     const {title, description, url, imageUrl, albumId} = req.body;
+    if (!songAuth){
+        return res.json({
+            message: "Song couldn't be found",
+            statusCode: 404
+        })
+    }
 
-//     const album = await Album.findByPk(albumId)
-//     if (!album && albumId !== null){
-//         return res.json({
-//             message: "Album couldn't be found",
-//             statusCode: 404
-//         })
-//     }
+    if (user !== songAuth.userId) {
+        return res.json({
+            message: "User must be the Song's owner",
+            statusCode: 401
+        })
+    }
 
-//     if (!req.body.title && !req.body.url){
-//         return res.json({
-//             message: "Validation Error",
-//             statusCode: 400,
-//             errors: {
-//                 title: "Song title is required",
-//                 url: "Audio is required"
-//             }
-//         })
-//     } else if(!req.body.title){
-//         return res.json({
-//             message: "Validation Error",
-//             statusCode: 400,
-//             errors: {
-//                 title: "Song title is required",
-//             }
-//         })
-//     } else if (!req.body.url){
-//         return res.json({
-//             message: "Validation Error",
-//             statusCode: 400,
-//             errors: {
-//                 url: "Audio is required"
-//             }
-//         })
-//     } else /*if (requireAuth.id === user)*/{
-//         const newSong = await Song.create({
-//             userId: user,
-//             albumId,
-//             title,
-//             description,
-//             url,
-//             createdAt: res.body,
-//             updatedAt: res.body,
-//             imageUrl
-//         })
-//         res.status(201)
-//         return res.json(newSong)
-//     }
-// })
+    if (!title && !url) {
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                title: "Song title is required",
+                url: "Audio is required"
+            }
+        })
+    } else if (!title) {
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                title: "Song title is required",
+            }
+        })
+    } else if (!url) {
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                url: "Audio is required"
+            }
+        })
+    } else {
+        const newSong = await Song.create({
+            userId: user,
+            albumId,
+            title,
+            description,
+            url,
+            createdAt: res.body,
+            updatedAt: res.body,
+            imageUrl
+        })
+        res.status(201)
+        return res.json(newSong)
+    }
+
+
+
+})
+
 
 module.exports = router;
