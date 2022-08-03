@@ -406,7 +406,7 @@ Creates and returns a new song with or without an album.
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /api/songs
+  * URL: /api/albums/:albumId/songs
   * Headers:
     * Content-Type: application/json
   * Body without an album:
