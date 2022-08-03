@@ -10,10 +10,7 @@ const router = express.Router();
 
 // All songs
 router.get('/', async (req, res) => {
-    const songs = await Song.findAll({
-        attributes:
-            ['id', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']
-    });
+    const songs = await Song.findAll();
 
     return res.json({ songs });
 });
@@ -22,9 +19,8 @@ router.get('/', async (req, res) => {
 router.get('/current', requireAuth, async (req, res) => {
     const user = req.user.id;
 
-    const songs = await Song.findByPk(user, {
-        attributes:
-            ['id', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']
+    const songs = await Song.findAll({
+        where: {userId: user}
     });
 
     return res.json({ songs });
