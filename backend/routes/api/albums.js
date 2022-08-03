@@ -6,12 +6,6 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-// router.get('/:albumId', async (req, res) => {
-//     const albums = await Album.findAll();
-
-//     return res.json(albums)
-// })
-
 // Get all albums
 router.get('/', async (req, res) => {
     const albums = await Album.findAll();
@@ -28,6 +22,26 @@ router.get('/current', requireAuth, async (req, res) => {
     });
 
     return res.json({albums});
+})
+
+//Get details of an Album from an id
+router.get('/:albumId', async (req, res) => {
+    const albumId = req.params.albumId;
+
+    const album = await Album.findByPk(albumId, {
+        include: [
+            {model: User, as: 'Artist', attributes: ['id', 'username']},
+            {model: Song}
+        ]
+    });
+
+    if (!album) {
+        return res.json({
+            message: "Album couldn't be found",
+            statusCode: 404
+        })
+    }
+    return res.json(album)
 })
 
 module.exports = router;
