@@ -76,4 +76,7 @@ router.post('/:albumId/songs', requireAuth, async (req, res) => {
 
 })
 
+// Get all Albums
+router.get 
+
 module.exports = router;
