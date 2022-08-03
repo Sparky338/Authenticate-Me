@@ -30,7 +30,6 @@ router.get('/current', requireAuth, async (req, res) => {
 router.get('/:songId', async (req, res) => {
     const songId = req.params.songId;
     const song = await Song.findByPk(songId, {
-        attributes: ['id', 'userId', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl'],
         include: [
             { model: User, as: 'Artist', attributes: ['id', 'username'] },
             { model: Album, attributes: ['id', 'title', 'imageUrl'] }
@@ -48,7 +47,7 @@ router.get('/:songId', async (req, res) => {
 // Create a song
 router.post('/', requireAuth, async (req, res) => {
     const user = req.user.id;
-    // const albumId = req.params.albumId;
+
     const { title, description, url, imageUrl, albumId } = req.body;
 
     const album = await Album.findByPk(albumId);
@@ -59,14 +58,7 @@ router.post('/', requireAuth, async (req, res) => {
             statusCode: 404
         })
     }
-
-    // if (user !== album.userId){
-    //     return res.json({
-    //         message: "User must be the Album's owner",
-    //         statusCode: 401
-    //     })
-    // }
-
+ 
     if (!title && !url) {
         return res.json({
             message: "Validation Error",
@@ -112,7 +104,7 @@ router.post('/', requireAuth, async (req, res) => {
 // Edit a song
 router.put('/:songId', requireAuth, async (req, res) => {
     const user = req.user.id;
-    const songId = req.params.songId
+    const songId = req.params.songId;
     const {title, description, url, imageUrl, albumId} = req.body;
     const songAuth = await Song.findByPk(songId);
 
@@ -173,7 +165,7 @@ router.put('/:songId', requireAuth, async (req, res) => {
 // Delete a song
 router.delete('/:songId', requireAuth, async (req, res) => {
     const user = req.user.id;
-    const songId = req.params.songId
+    const songId = req.params.songId;
     const song = await Song.findByPk(songId);
 
     if (!song){
