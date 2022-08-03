@@ -110,5 +110,32 @@ router.put('/:songId', requireAuth, async (req, res) => {
     }
 })
 
+// Delete a song
+router.delete('/:songId', requireAuth, async (req, res) => {
+    const user = req.user.id;
+    const songId = req.params.songId
+    const song = await Song.findByPk(songId);
+
+    if (!song){
+        return res.json({
+            message: "Song couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    if (user !== song.userId) {
+        return res.json({
+            message: "User must be the Song's owner",
+            statusCode: 401
+        })
+    }
+
+    await song.destroy()
+
+    res.json({
+        message: "Successfully deleted",
+        statusCode: 200
+    })
+})
 
 module.exports = router;
