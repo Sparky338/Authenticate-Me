@@ -26,7 +26,7 @@ router.get('/current', requireAuth, async (req, res) => {
     return res.json({ songs });
 })
 
-// Song by id
+// Details of a song by id
 router.get('/:songId', async (req, res) => {
     const songId = req.params.songId;
     const song = await Song.findByPk(songId, {
@@ -43,6 +43,70 @@ router.get('/:songId', async (req, res) => {
         })
     }
     res.json(song)
+})
+
+// Create a song
+router.post('/', requireAuth, async (req, res) => {
+    const user = req.user.id;
+    // const albumId = req.params.albumId;
+    const { title, description, url, imageUrl, albumId } = req.body;
+
+    const album = await Album.findByPk(albumId);
+
+    if (!album && albumId !== null) {
+        return res.json({
+            message: "Album couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    // if (user !== album.userId){
+    //     return res.json({
+    //         message: "User must be the Album's owner",
+    //         statusCode: 401
+    //     })
+    // }
+
+    if (!title && !url) {
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                title: "Song title is required",
+                url: "Audio is required"
+            }
+        })
+    } else if (!title) {
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                title: "Song title is required",
+            }
+        })
+    } else if (!url) {
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                url: "Audio is required"
+            }
+        })
+    } else {
+        const newSong = await Song.create({
+            userId: user,
+            albumId,
+            title,
+            description,
+            url,
+            createdAt: res.body,
+            updatedAt: res.body,
+            imageUrl
+        })
+        res.status(201)
+        return res.json(newSong)
+    }
+
 })
 
 // Edit a song

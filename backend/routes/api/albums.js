@@ -12,71 +12,71 @@ router.get('/:albumId', async (req, res) => {
     return res.json(albums)
 })
 
-// Create a song based on albumId
-router.post('/:albumId/songs', requireAuth, async (req, res) => {
-    const user = req.user.id;
-    const albumId = req.params.albumId;
-    const { title, description, url, imageUrl } = req.body;
+// // Create a song based on albumId
+// router.post('/:albumId/songs', requireAuth, async (req, res) => {
+//     const user = req.user.id;
+//     const albumId = req.params.albumId;
+//     const { title, description, url, imageUrl } = req.body;
 
-    const album = await Album.findByPk(albumId);
+//     const album = await Album.findByPk(albumId);
 
-    if (!album && albumId !== null) {
-        return res.json({
-            message: "Album couldn't be found",
-            statusCode: 404
-        })
-    }
+//     if (!album && albumId !== null) {
+//         return res.json({
+//             message: "Album couldn't be found",
+//             statusCode: 404
+//         })
+//     }
 
-    if (user !== album.userId){
-        return res.json({
-            message: "User must be the Album's owner",
-            statusCode: 401
-        })
-    }
+//     if (user !== album.userId){
+//         return res.json({
+//             message: "User must be the Album's owner",
+//             statusCode: 401
+//         })
+//     }
 
-    if (!title && !url) {
-        return res.json({
-            message: "Validation Error",
-            statusCode: 400,
-            errors: {
-                title: "Song title is required",
-                url: "Audio is required"
-            }
-        })
-    } else if (!title) {
-        return res.json({
-            message: "Validation Error",
-            statusCode: 400,
-            errors: {
-                title: "Song title is required",
-            }
-        })
-    } else if (!url) {
-        return res.json({
-            message: "Validation Error",
-            statusCode: 400,
-            errors: {
-                url: "Audio is required"
-            }
-        })
-    } else {
-        const newSong = await Song.create({
-            userId: user,
-            albumId,
-            title,
-            description,
-            url,
-            createdAt: res.body,
-            updatedAt: res.body,
-            imageUrl
-        })
-        res.status(201)
-        return res.json(newSong)
-    }
+//     if (!title && !url) {
+//         return res.json({
+//             message: "Validation Error",
+//             statusCode: 400,
+//             errors: {
+//                 title: "Song title is required",
+//                 url: "Audio is required"
+//             }
+//         })
+//     } else if (!title) {
+//         return res.json({
+//             message: "Validation Error",
+//             statusCode: 400,
+//             errors: {
+//                 title: "Song title is required",
+//             }
+//         })
+//     } else if (!url) {
+//         return res.json({
+//             message: "Validation Error",
+//             statusCode: 400,
+//             errors: {
+//                 url: "Audio is required"
+//             }
+//         })
+//     } else {
+//         const newSong = await Song.create({
+//             userId: user,
+//             albumId,
+//             title,
+//             description,
+//             url,
+//             createdAt: res.body,
+//             updatedAt: res.body,
+//             imageUrl
+//         })
+//         res.status(201)
+//         return res.json(newSong)
+//     }
 
-})
+// })
 
 // Get all Albums
-router.get 
+// router.get
 
 module.exports = router;
