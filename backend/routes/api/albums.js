@@ -112,7 +112,7 @@ router.put('/:albumId', requireAuth, async (req,res) => {
         res.status(200)
         return res.json(editAlbum)
     }
-
+})
 
 // Delete an album
 router.delete('/:albumId', requireAuth, async (req, res) => {
