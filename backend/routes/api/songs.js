@@ -164,7 +164,7 @@ router.put('/:songId', requireAuth, async (req, res) => {
 // Delete a song
 router.delete('/:songId', requireAuth, async (req, res) => {
     const user = req.user.id;
-    const songId = req.params.songId
+    const songId = req.params.songId;
     const song = await Song.findByPk(songId);
 
     if (!song){
