@@ -16,7 +16,18 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     const albums = await Album.findAll();
 
-    res.json({albums})
+    return res.json({albums})
+})
+
+// Get all albums by current user
+router.get('/current', requireAuth, async (req, res) => {
+    const user = req.user.id;
+
+    const albums = await Album.findAll({
+        where: {userId: user}
+    });
+
+    return res.json({albums});
 })
 
 module.exports = router;
