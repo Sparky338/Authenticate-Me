@@ -96,22 +96,18 @@ router.put('/:songId', requireAuth, async (req, res) => {
             }
         })
     } else {
-        const newSong = await Song.create({
-            userId: user,
-            albumId,
+        const editSong = await Song.findByPk(songId)
+            editSong.set({
             title,
             description,
             url,
-            createdAt: res.body,
-            updatedAt: res.body,
             imageUrl
         })
-        res.status(201)
-        return res.json(newSong)
+        await editSong.save()
+
+        res.status(200)
+        return res.json(editSong)
     }
-
-
-
 })
 
 
