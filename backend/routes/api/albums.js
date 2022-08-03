@@ -15,19 +15,26 @@ router.get('/:albumId', async (req, res) => {
 // Create a song based on albumId
 router.post('/:albumId/songs', requireAuth, async (req, res) => {
     const user = req.user.id;
-    const albumId = req.params.id;
-    const {title, description, url, imageUrl} = req.body;
+    const albumId = req.params.albumId;
+    const { title, description, url, imageUrl } = req.body;
 
     const album = await Album.findByPk(albumId);
 
-    if (!album && albumId !== null){
+    if (!album && albumId !== null) {
         return res.json({
             message: "Album couldn't be found",
             statusCode: 404
         })
     }
 
-    if (!title && !url){
+    if (user !== album.userId){
+        return res.json({
+            message: "User must be the Album's owner",
+            statusCode: 401
+        })
+    }
+
+    if (!title && !url) {
         return res.json({
             message: "Validation Error",
             statusCode: 400,
@@ -36,7 +43,7 @@ router.post('/:albumId/songs', requireAuth, async (req, res) => {
                 url: "Audio is required"
             }
         })
-    } else if(!title){
+    } else if (!title) {
         return res.json({
             message: "Validation Error",
             statusCode: 400,
@@ -44,7 +51,7 @@ router.post('/:albumId/songs', requireAuth, async (req, res) => {
                 title: "Song title is required",
             }
         })
-    } else if (!url){
+    } else if (!url) {
         return res.json({
             message: "Validation Error",
             statusCode: 400,
@@ -52,7 +59,7 @@ router.post('/:albumId/songs', requireAuth, async (req, res) => {
                 url: "Audio is required"
             }
         })
-     } else if (user === albumId.userId){
+    } else {
         const newSong = await Song.create({
             userId: user,
             albumId,
@@ -66,6 +73,7 @@ router.post('/:albumId/songs', requireAuth, async (req, res) => {
         res.status(201)
         return res.json(newSong)
     }
+
 })
 
 module.exports = router;
