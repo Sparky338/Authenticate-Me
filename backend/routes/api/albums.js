@@ -6,10 +6,17 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-router.get('/:albumId', async (req, res) => {
+// router.get('/:albumId', async (req, res) => {
+//     const albums = await Album.findAll();
+
+//     return res.json(albums)
+// })
+
+// Get all albums
+router.get('/', async (req, res) => {
     const albums = await Album.findAll();
 
-    return res.json(albums)
+    res.json({albums})
 })
 
 module.exports = router;
