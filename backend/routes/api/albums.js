@@ -6,10 +6,16 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
+router.get('/:albumId', async (req, res) => {
+    const albums = await Album.findAll();
+
+    return res.json(albums)
+})
+
 // Create a song based on albumId
 router.post('/:albumId/songs', requireAuth, async (req, res) => {
     const user = req.user.id;
-    const albumId = req.params.id
+    const albumId = req.params.id;
     const {title, description, url, imageUrl} = req.body;
 
     const album = await Album.findByPk(albumId);
@@ -46,7 +52,7 @@ router.post('/:albumId/songs', requireAuth, async (req, res) => {
                 url: "Audio is required"
             }
         })
-     } else if (user === albumId.user){
+     } else if (user === albumId.userId){
         const newSong = await Song.create({
             userId: user,
             albumId,

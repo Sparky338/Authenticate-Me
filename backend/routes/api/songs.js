@@ -48,4 +48,59 @@ router.get('/:songId', async (req, res) => {
     res.json(song)
 })
 
+
+// // Create a song //based on albumId
+// router.post('/', requireAuth, async (req, res) => {
+//     const user = req.user.id;
+//     const {title, description, url, imageUrl, albumId} = req.body;
+
+//     const album = await Album.findByPk(albumId)
+//     if (!album && albumId !== null){
+//         return res.json({
+//             message: "Album couldn't be found",
+//             statusCode: 404
+//         })
+//     }
+
+//     if (!req.body.title && !req.body.url){
+//         return res.json({
+//             message: "Validation Error",
+//             statusCode: 400,
+//             errors: {
+//                 title: "Song title is required",
+//                 url: "Audio is required"
+//             }
+//         })
+//     } else if(!req.body.title){
+//         return res.json({
+//             message: "Validation Error",
+//             statusCode: 400,
+//             errors: {
+//                 title: "Song title is required",
+//             }
+//         })
+//     } else if (!req.body.url){
+//         return res.json({
+//             message: "Validation Error",
+//             statusCode: 400,
+//             errors: {
+//                 url: "Audio is required"
+//             }
+//         })
+//     } else /*if (requireAuth.id === user)*/{
+//         const newSong = await Song.create({
+//             userId: user,
+//             albumId,
+//             title,
+//             description,
+//             url,
+//             createdAt: res.body,
+//             updatedAt: res.body,
+//             imageUrl
+//         })
+//         res.status(201)
+//         return res.json(newSong)
+//     }
+// })
+
 module.exports = router;
