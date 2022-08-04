@@ -193,8 +193,16 @@ router.delete('/:songId', requireAuth, async (req, res) => {
 // Get comments by a song's id
 router.get('/:songId/comments', async (req, res) => {
     const songId = req.params.songId;
+    const song  = await Song.findByPk(songId)
 
-    const comments = await Comment.findByPk(songId, {
+    if (!song){
+        return res.json({
+            message: "Song couldn't be found",
+            statusCode: 404
+        })
+    }
+    const comments = await Comment.findOne({
+        where: {songId: songId},
         include:
             { model: User, attributes: ['id', 'username'] },
     })
