@@ -36,6 +36,7 @@ router.get('/:albumId', async (req, res) => {
     });
 
     if (!album) {
+        res.status(404)
         return res.json({
             message: "Album couldn't be found",
             statusCode: 404
@@ -50,6 +51,7 @@ router.post('/', requireAuth, async (req, res) => {
     const { title, description, imageUrl } = req.body;
 
     if (!title) {
+        res.status(400)
         return res.json({
             message: "Validation Error",
             statusCode: 400,
@@ -79,6 +81,7 @@ router.put('/:albumId', requireAuth, async (req,res) => {
     const album = await Album.findByPk(albumId);
 
     if (!album) {
+        res.status(404)
         return res.json({
             message: "Album couldn't be found",
             statusCode: 404
@@ -86,6 +89,7 @@ router.put('/:albumId', requireAuth, async (req,res) => {
     }
 
     if (user !== album.userId){
+        res.status(401)
         return res.json({
             message: "User must be the Album's owner",
             statusCode: 401
@@ -93,6 +97,7 @@ router.put('/:albumId', requireAuth, async (req,res) => {
     }
 
     if (!title) {
+        res.status(400)
         return res.json({
             message: "Validation Error",
             statusCode: 400,
@@ -121,6 +126,7 @@ router.delete('/:albumId', requireAuth, async (req, res) => {
     const album = await Album.findByPk(albumId);
 
     if (!album) {
+        res.status(404)
         return res.json({
             message: "Album couldn't be found",
             statusCode: 404
@@ -128,6 +134,7 @@ router.delete('/:albumId', requireAuth, async (req, res) => {
     }
 
     if (user !== album.userId) {
+        res.status(401)
         return res.json({
             message: "User must be the Album's owner",
             statusCode: 401

@@ -14,6 +14,7 @@ router.put('/:commentId', requireAuth, async (req, res) => {
     const comment = await Comment.findByPk(commentId);
 
     if (!comment) {
+        res.status(404)
         return res.json({
             message: "Comment couldn't be found",
             statusCode: 404
@@ -21,6 +22,7 @@ router.put('/:commentId', requireAuth, async (req, res) => {
     }
 
     if (user !== comment.userId) {
+        res.status(401)
         return res.json({
             message: "User must be the comment's owner",
             statusCode: 401
@@ -28,6 +30,7 @@ router.put('/:commentId', requireAuth, async (req, res) => {
     }
 
     if (!body) {
+        res.status(400)
         return res.json({
             message: "Validation Error",
             statusCode: 400,
@@ -53,6 +56,7 @@ router.delete('/:commentId', requireAuth, async (req, res) => {
     const comment = await Comment.findByPk(commentId);
 
     if (!comment) {
+        res.status(404)
         return res.json({
             message: "Comment couldn't be found",
             statusCode: 404
@@ -60,6 +64,7 @@ router.delete('/:commentId', requireAuth, async (req, res) => {
     }
 
     if (user !== comment.userId) {
+        res.status(401)
         return res.json({
             message: "User must be the comment's owner",
             statusCode: 401
@@ -68,7 +73,7 @@ router.delete('/:commentId', requireAuth, async (req, res) => {
 
     await comment.destroy();
 
-    res.json({
+    return res.json({
         message: "Successfully deleted",
         statusCode: 200
     })
