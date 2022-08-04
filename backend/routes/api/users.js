@@ -119,6 +119,7 @@ router.get('/:userId/albums', async (req, res) => {
   return res.json({ albums })
 })
 
+//Get all Playlists of an Artist from an id
 router.get('/:artistId/playlists', async (req, res) => {
   const artistId = req.params.artistId;
   const artist = await User.findByPk(artistId);
