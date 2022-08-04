@@ -193,16 +193,17 @@ router.delete('/:songId', requireAuth, async (req, res) => {
 // Get comments by a song's id
 router.get('/:songId/comments', async (req, res) => {
     const songId = req.params.songId;
-    const song  = await Song.findByPk(songId)
+    const song = await Song.findByPk(songId)
 
-    if (!song){
+    if (!song) {
         return res.json({
             message: "Song couldn't be found",
             statusCode: 404
         })
     }
+
     const comments = await Comment.findOne({
-        where: {songId: songId},
+        where: { songId: songId },
         include:
             { model: User, attributes: ['id', 'username'] },
     })
@@ -214,7 +215,25 @@ router.get('/:songId/comments', async (req, res) => {
 router.post('/:songId/comments', requireAuth, async (req, res) => {
     const user = req.user.id;
     const songId = req.params.songId;
-    const {body} = req.body;
+    const { body } = req.body;
+    const song = await Song.findByPk(songId);
+
+    if (!song) {
+        return res.json({
+            message: "Song couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    if (!body) {
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                body: "Comment body text is required",
+            }
+        })
+    }
 
     const newComment = await Comment.create({
         userId: user,
@@ -225,7 +244,6 @@ router.post('/:songId/comments', requireAuth, async (req, res) => {
     })
     res.status(200)
     return res.json(newComment)
-
 })
 
 
