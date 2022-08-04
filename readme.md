@@ -306,7 +306,7 @@ Returns all the songs created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /api/artists/:artistId/songs
+  * URL: /api/users/:userId/songs
   * Body: none
 
 * Successful Response
@@ -603,7 +603,7 @@ Returns all the playlists created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /api/artists/:artistId/playlists
+  * URL: /api/users/:userId/playlists
   * Body: none
 
 * Successful Response
@@ -1227,7 +1227,7 @@ Returns all the albums created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /api/artists/:artistId/albums
+  * URL: /api/users/:userId/albums
   * Body: none
 
 * Successful Response
@@ -1492,7 +1492,7 @@ Returns the details of an artist specified by their id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /api/artists/:artistId
+  * URL: /api/users/:userId
   * Body: none
 
 * Successful Response

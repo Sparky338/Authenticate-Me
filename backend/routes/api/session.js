@@ -6,16 +6,16 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-  // Log out
+// Log out
 router.delete(
-    '/',
-    (_req, res) => {
-      res.clearCookie('token');
-      return res.json({ message: 'success' });
-    }
-  );
+  '/',
+  (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+  }
+);
 
-  // Restore session user
+// Restore session user
 router.get(
   '/',
   restoreUser,

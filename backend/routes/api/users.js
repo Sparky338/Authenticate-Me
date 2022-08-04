@@ -1,6 +1,6 @@
 const express = require('express');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Song } = require('../../db/models');
+const { User, Song, Album, } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -41,5 +41,83 @@ router.post(
     });
   }
 );
+
+// Get details of artist (user) from id
+router.get('/:userId', async (req, res) => {
+  const artistId = req.params.userId;
+
+  const artist = await User.findByPk(artistId);
+
+  if (!artist) {
+    res.status(404)
+    return res.json({
+      message: "Artist couldn't be found",
+      statusCode: 404
+    })
+  }
+
+  const { id, username } = artist;
+
+  //lazy load songs & albums, sum them. prievew image for each song
+  const totalSongs = await Song.count({
+    where: { userId: artistId }
+  })
+
+  const totalAlbums = await Album.count({
+    where: { userId: artistId }
+  })
+
+  const imageUrl = await Album.findAll({
+    where: { userId: artistId },
+    attributes: ['imageUrl']
+  })
+
+  return res.json({
+    id,
+    username,
+    totalSongs,
+    totalAlbums,
+    imageUrl
+  })
+});
+
+// Get all Songs of an Artist (user) from id
+router.get('/:userId/songs', async (req, res) => {
+  const artistId = req.params.userId;
+  const artist = await User.findByPk(artistId);
+
+  if (!artist) {
+    res.status(404)
+    return res.json({
+      message: "Artist couldn't be found",
+      statusCode: 404
+    })
+  }
+
+  const songs = await Song.findAll({
+    where: { userId: artistId }
+  })
+
+  return res.json({ songs })
+})
+
+router.get('/:userId/albums', async (req, res) => {
+  const artistId = req.params.userId;
+  const artist = await User.findByPk(artistId);
+
+  if (!artist) {
+    res.status(404)
+    return res.json({
+      message: "Artist couldn't be found",
+      statusCode: 404
+    })
+  }
+
+  const album = await Album.findAll({
+    where: { userId: artistId }
+  })
+
+  return res.json({ album })
+})
 
 module.exports = router;
