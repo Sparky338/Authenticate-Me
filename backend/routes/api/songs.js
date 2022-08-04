@@ -210,4 +210,23 @@ router.get('/:songId/comments', async (req, res) => {
     res.json({ comments })
 })
 
+// Comment for a song based on song's id
+router.post('/:songId/comments', requireAuth, async (req, res) => {
+    const user = req.user.id;
+    const songId = req.params.songId;
+    const {body} = req.body;
+
+    const newComment = await Comment.create({
+        userId: user,
+        songId: songId,
+        body,
+        createdAt: res.body,
+        updatedAt: res.body
+    })
+    res.status(200)
+    return res.json(newComment)
+
+})
+
+
 module.exports = router;
