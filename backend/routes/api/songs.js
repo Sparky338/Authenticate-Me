@@ -106,16 +106,16 @@ router.put('/:songId', requireAuth, async (req, res) => {
     const user = req.user.id;
     const songId = req.params.songId;
     const { title, description, url, imageUrl, albumId } = req.body;
-    const songAuth = await Song.findByPk(songId);
+    const song = await Song.findByPk(songId);
 
-    if (!songAuth) {
+    if (!song) {
         return res.json({
             message: "Song couldn't be found",
             statusCode: 404
         })
     }
 
-    if (user !== songAuth.userId) {
+    if (user !== song.userId) {
         return res.json({
             message: "User must be the Song's owner",
             statusCode: 401
@@ -153,7 +153,8 @@ router.put('/:songId', requireAuth, async (req, res) => {
             title,
             description,
             url,
-            imageUrl
+            imageUrl,
+            albumId
         })
         await editSong.save()
 
@@ -245,6 +246,5 @@ router.post('/:songId/comments', requireAuth, async (req, res) => {
     res.status(200)
     return res.json(newComment)
 })
-
 
 module.exports = router;
