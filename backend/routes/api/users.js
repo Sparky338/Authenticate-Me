@@ -47,7 +47,6 @@ router.get('/:userId', async (req, res) => {
   const artistId = req.params.userId;
 
   const artist = await User.findByPk(artistId);
-  const {id, username} = artist;
 
   if (!artist) {
     return res.json({
@@ -55,6 +54,8 @@ router.get('/:userId', async (req, res) => {
       statusCode: 404
     })
   }
+
+  const { id, username } = artist;
 
   //lazy load songs & albums, sum them. prievew image for each song
   const totalSongs = await Song.count({
@@ -65,8 +66,8 @@ router.get('/:userId', async (req, res) => {
     where: { userId: artistId }
   })
 
-  const imageUrl = await Song.findAll({
-    where: {userId: artistId},
+  const imageUrl = await Album.findAll({
+    where: { userId: artistId },
     attributes: ['imageUrl']
   })
 
@@ -77,6 +78,11 @@ router.get('/:userId', async (req, res) => {
     totalAlbums,
     imageUrl
   })
+});
+
+// Get all Songs of an Artist (user) from id
+router.get('/:userId/songs', async (req, res) => {
+
 })
 
 module.exports = router;
