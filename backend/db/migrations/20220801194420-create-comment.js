@@ -10,11 +10,13 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        references: {model: 'Users'}
+        references: {model: 'Users'},
+        allowNull: false
       },
       songId: {
         type: Sequelize.INTEGER,
-        references: {model: 'Songs'}
+        references: {model: 'Songs'},
+        allowNull: false
       },
       body: {
         type: Sequelize.STRING

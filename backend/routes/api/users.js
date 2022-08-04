@@ -101,6 +101,7 @@ router.get('/:userId/songs', async (req, res) => {
   return res.json({ songs })
 })
 
+//Get all Albums of an Artist from an id
 router.get('/:userId/albums', async (req, res) => {
   const artistId = req.params.userId;
   const artist = await User.findByPk(artistId);
@@ -113,11 +114,11 @@ router.get('/:userId/albums', async (req, res) => {
     })
   }
 
-  const album = await Album.findAll({
+  const albums = await Album.findAll({
     where: { userId: artistId }
   })
 
-  return res.json({ album })
+  return res.json({ albums })
 })
 
 module.exports = router;
