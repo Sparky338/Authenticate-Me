@@ -1227,7 +1227,7 @@ Returns all the albums created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /api/artists/:artistId/albums
+  * URL: /api/users/:userId/albums
   * Body: none
 
 * Successful Response

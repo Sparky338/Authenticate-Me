@@ -10,7 +10,7 @@ const router = express.Router();
 router.put('/:commentId', requireAuth, async (req, res) => {
     const user = req.user.id;
     const commentId = req.params.commentId;
-    const {body} = req.body;
+    const { body } = req.body;
     const comment = await Comment.findByPk(commentId);
 
     if (!comment) {
@@ -40,7 +40,7 @@ router.put('/:commentId', requireAuth, async (req, res) => {
         })
     } else {
         const editComment = await Comment.findByPk(commentId)
-        editComment.set({body})
+        editComment.set({ body })
 
         await editComment.save()
 

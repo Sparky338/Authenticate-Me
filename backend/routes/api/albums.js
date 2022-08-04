@@ -74,10 +74,10 @@ router.post('/', requireAuth, async (req, res) => {
 })
 
 // Edit an album
-router.put('/:albumId', requireAuth, async (req,res) => {
+router.put('/:albumId', requireAuth, async (req, res) => {
     const user = req.user.id;
     const albumId = req.params.albumId;
-    const {title, description, imageUrl} = req.body;
+    const { title, description, imageUrl } = req.body;
     const album = await Album.findByPk(albumId);
 
     if (!album) {
@@ -88,7 +88,7 @@ router.put('/:albumId', requireAuth, async (req,res) => {
         })
     }
 
-    if (user !== album.userId){
+    if (user !== album.userId) {
         res.status(401)
         return res.json({
             message: "User must be the Album's owner",
