@@ -10,6 +10,17 @@ router.post('/', requireAuth, async (req, res) => {
     const user = req.user.id;
     const { name, imageUrl } = req.body;
 
+    if (!name) {
+        res.status(400)
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                title: "Playlist name is required",
+            }
+        })
+    }
+
     const newPlaylist = await Playlist.create({
         userId: user,
         name,
