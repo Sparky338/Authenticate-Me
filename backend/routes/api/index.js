@@ -20,6 +20,8 @@ router.use('/albums', albumsRouter);
 
 router.use('/comments', commentsRouter);
 
+router.use('/artists', usersRouter);
+
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
 });
