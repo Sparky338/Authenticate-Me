@@ -1,6 +1,6 @@
 const express = require('express');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Song, Album,  } = require('../../db/models');
+const { User, Song, Album, } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -47,24 +47,36 @@ router.get('/:userId', async (req, res) => {
   const artistId = req.params.userId;
 
   const artist = await User.findByPk(artistId);
+  const {id, username} = artist;
 
   if (!artist) {
     return res.json({
-        message: "Artist couldn't be found",
-        statusCode: 404
+      message: "Artist couldn't be found",
+      statusCode: 404
     })
-}
+  }
 
   //lazy load songs & albums, sum them. prievew image for each song
   const totalSongs = await Song.count({
-    where: {userId: artistId}
+    where: { userId: artistId }
   })
 
   const totalAlbums = await Album.count({
-    where: {userId: artistId}
+    where: { userId: artistId }
   })
 
-  res.json(totalAlbums)
+  const imageUrl = await Song.findAll({
+    where: {userId: artistId},
+    attributes: ['imageUrl']
+  })
+
+  return res.json({
+    id,
+    username,
+    totalSongs,
+    totalAlbums,
+    imageUrl
+  })
 })
 
 module.exports = router;
