@@ -183,7 +183,7 @@ router.delete('/:songId', requireAuth, async (req, res) => {
         })
     }
 
-    await song.destroy()
+    await song.destroy();
 
     res.json({
         message: "Successfully deleted",

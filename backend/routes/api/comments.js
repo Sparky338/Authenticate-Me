@@ -38,7 +38,7 @@ router.put('/:commentId', requireAuth, async (req, res) => {
     } else {
         const editComment = await Comment.findByPk(commentId)
         editComment.set({body})
-        
+
         await editComment.save()
 
         res.status(200)
@@ -46,5 +46,32 @@ router.put('/:commentId', requireAuth, async (req, res) => {
     }
 })
 
+// Delete a comment
+router.delete('/:commentId', requireAuth, async (req, res) => {
+    const user = req.user.id;
+    const commentId = req.params.commentId;
+    const comment = await Comment.findByPk(commentId);
+
+    if (!comment) {
+        return res.json({
+            message: "Comment couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    if (user !== comment.userId) {
+        return res.json({
+            message: "User must be the comment's owner",
+            statusCode: 401
+        })
+    }
+
+    await comment.destroy();
+
+    res.json({
+        message: "Successfully deleted",
+        statusCode: 200
+    })
+})
 
 module.exports = router;
