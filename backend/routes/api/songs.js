@@ -1,6 +1,6 @@
 const express = require('express');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { User, Album, Song } = require('../../db/models');
+const { User, Album, Song, Comment } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -20,7 +20,7 @@ router.get('/current', requireAuth, async (req, res) => {
     const user = req.user.id;
 
     const songs = await Song.findAll({
-        where: {userId: user}
+        where: { userId: user }
     });
 
     return res.json({ songs });
@@ -37,8 +37,8 @@ router.get('/:songId', async (req, res) => {
     })
     if (!song) {
         return res.json({
-            "message": "Song couldn't be found",
-            "statusCode": 404
+            message: "Song couldn't be found",
+            statusCode: 404
         })
     }
     res.json(song)
@@ -58,7 +58,7 @@ router.post('/', requireAuth, async (req, res) => {
             statusCode: 404
         })
     }
- 
+
     if (!title && !url) {
         return res.json({
             message: "Validation Error",
@@ -105,17 +105,17 @@ router.post('/', requireAuth, async (req, res) => {
 router.put('/:songId', requireAuth, async (req, res) => {
     const user = req.user.id;
     const songId = req.params.songId;
-    const {title, description, url, imageUrl, albumId} = req.body;
-    const songAuth = await Song.findByPk(songId);
+    const { title, description, url, imageUrl, albumId } = req.body;
+    const song = await Song.findByPk(songId);
 
-    if (!songAuth){
+    if (!song) {
         return res.json({
             message: "Song couldn't be found",
             statusCode: 404
         })
     }
 
-    if (user !== songAuth.userId) {
+    if (user !== song.userId) {
         return res.json({
             message: "User must be the Song's owner",
             statusCode: 401
@@ -149,11 +149,12 @@ router.put('/:songId', requireAuth, async (req, res) => {
         })
     } else {
         const editSong = await Song.findByPk(songId)
-            editSong.set({
+        editSong.set({
             title,
             description,
             url,
-            imageUrl
+            imageUrl,
+            albumId
         })
         await editSong.save()
 
@@ -168,7 +169,7 @@ router.delete('/:songId', requireAuth, async (req, res) => {
     const songId = req.params.songId;
     const song = await Song.findByPk(songId);
 
-    if (!song){
+    if (!song) {
         return res.json({
             message: "Song couldn't be found",
             statusCode: 404
@@ -182,12 +183,68 @@ router.delete('/:songId', requireAuth, async (req, res) => {
         })
     }
 
-    await song.destroy()
+    await song.destroy();
 
     res.json({
         message: "Successfully deleted",
         statusCode: 200
     })
+})
+
+// Get comments by a song's id
+router.get('/:songId/comments', async (req, res) => {
+    const songId = req.params.songId;
+    const song = await Song.findByPk(songId)
+
+    if (!song) {
+        return res.json({
+            message: "Song couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    const comments = await Comment.findOne({
+        where: { songId: songId },
+        include:
+            { model: User, attributes: ['id', 'username'] },
+    })
+
+    res.json({ comments })
+})
+
+// Comment for a song based on song's id
+router.post('/:songId/comments', requireAuth, async (req, res) => {
+    const user = req.user.id;
+    const songId = req.params.songId;
+    const { body } = req.body;
+    const song = await Song.findByPk(songId);
+
+    if (!song) {
+        return res.json({
+            message: "Song couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    if (!body) {
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                body: "Comment body text is required",
+            }
+        })
+    }
+
+    const newComment = await Comment.create({
+        userId: user,
+        songId: songId,
+        body,
+        createdAt: res.body,
+        updatedAt: res.body
+    })
+    res.status(200)
+    return res.json(newComment)
 })
 
 module.exports = router;
