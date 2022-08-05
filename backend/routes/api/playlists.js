@@ -70,9 +70,12 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
         playlistId,
         songId
     })
-// console.log(addSong)
 
-    return res.json(addSong)
+    return res.json({
+        id: addSong.id,
+        playlistId,
+        songId
+    })
 })
 
 //Get details of a Playlist from an id
