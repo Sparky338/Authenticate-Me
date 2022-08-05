@@ -84,6 +84,17 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
     })
 })
 
+// Get all Playlists created by the Current User
+router.get('/current', requireAuth, async (req, res) => {
+    const user = req.user.id;
+
+    const playlists = await Playlist.findAll({
+        where: { userId: user }
+    });
+
+    return res.json({playlists});
+})
+
 //Get details of a Playlist from an id
 router.get('/:playlistId', async (req, res) => {
     const playlistId = req.params.playlistId;
@@ -179,15 +190,6 @@ router.delete('/:playlistId', requireAuth, async (req, res) => {
     })
 })
 
-// Get all Playlists created by the Current User
-router.get('/current', requireAuth, async (req, res) => {
-    const user = req.user.id;
 
-    const playlists = await Playlist.findAll({
-        where: { userId: user }
-    });
-
-    return res.json({playlists});
-})
 
 module.exports = router;
