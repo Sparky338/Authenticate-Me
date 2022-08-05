@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
         pagination.limit = size;
         pagination.offset = size * (page - 1);
     }
-console.log(typeof (where.createdAt))
+
     if (page < 0) {
         res.status(400)
         return res.json({
