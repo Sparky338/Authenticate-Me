@@ -68,10 +68,31 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
 
     const addSong = await PlaylistsSong.create({
         playlistId,
-        songId
+        songId,
     })
 
-    return res.json(addSong)
+
+    return res.json({addSong})
+})
+
+//Get details of a Playlist from an id
+router.get('/:playlistId', async (req, res) => {
+    const playlistId = req.params.playlistId;
+    const playlist = await Playlist.findByPk(playlistId);
+
+    if (!playlist) {
+        res.status(404)
+        return res.json({
+            message: "Playlist couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    const combinedPlaylist = await Playlist.findByPk(playlistId, {
+        include: {model: Song/*, through: PlaylistsSong*/}
+    })
+
+    return res.json(combinedPlaylist)
 })
 
 module.exports = router;
