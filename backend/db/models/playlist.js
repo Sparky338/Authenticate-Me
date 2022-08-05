@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Playlist.belongsTo(models.User, {foreignKey: 'userId'})
       Playlist.hasMany(models.PlaylistsSong, {foreignKey: 'playlistId'})
+      Playlist.belongsToMany(models.Song, {foreignKey: 'playlistId', through: models.PlaylistsSong})
     }
   }
   Playlist.init({

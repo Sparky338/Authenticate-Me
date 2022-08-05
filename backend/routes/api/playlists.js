@@ -92,10 +92,7 @@ router.get('/:playlistId', async (req, res) => {
     }
 
     const combinedPlaylist = await Playlist.findByPk(playlistId, {
-        include: [
-            {model: Song/*, through: PlaylistsSong*/},
-            {model:PlaylistsSong, attributes: {exclude:[]}}
-        ]
+        include: {model: Song, through: {attributes: []}}
     })
 
     return res.json(combinedPlaylist)

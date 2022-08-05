@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Song.belongsTo(models.Album, {foreignKey: 'albumId'})
       Song.hasMany(models.Comment, {foreignKey: 'songId'})
       Song.hasMany(models.PlaylistsSong, {foreignKey: 'songId'})
+      Song.belongsToMany(models.Playlist, {foreignKey: 'songId', through: models.PlaylistsSong})
     }
   }
   Song.init({
