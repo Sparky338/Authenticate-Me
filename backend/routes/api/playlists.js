@@ -71,8 +71,14 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
         songId
     })
 
+    const id = await PlaylistsSong.findAll({
+        limit: 1,
+        attributes: ['id'],
+        order: [['id', 'DESC']]
+    })
+
     return res.json({
-        id: addSong.id,
+        id: id[0].id,
         playlistId,
         songId
     })
