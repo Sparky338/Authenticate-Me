@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       Song.belongsTo(models.User, {foreignKey: 'userId'})
       Song.belongsTo(models.Album, {foreignKey: 'albumId'})
       Song.hasMany(models.Comment, {foreignKey: 'songId'})
-      Song.belongsToMany(models.Playlist, {through: models.PlaylistsSong})
+      Song.hasMany(models.PlaylistsSong, {foreignKey: 'songId'})
     }
   }
   Song.init({

@@ -68,11 +68,11 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
 
     const addSong = await PlaylistsSong.create({
         playlistId,
-        songId,
+        songId
     })
+// console.log(addSong)
 
-
-    return res.json({addSong})
+    return res.json(addSong)
 })
 
 //Get details of a Playlist from an id
@@ -89,7 +89,10 @@ router.get('/:playlistId', async (req, res) => {
     }
 
     const combinedPlaylist = await Playlist.findByPk(playlistId, {
-        include: {model: Song/*, through: PlaylistsSong*/}
+        include: [
+            {model: Song/*, through: PlaylistsSong*/},
+            {model:PlaylistsSong, attributes: {exclude:[]}}
+        ]
     })
 
     return res.json(combinedPlaylist)
