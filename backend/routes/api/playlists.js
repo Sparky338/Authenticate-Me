@@ -92,10 +92,57 @@ router.get('/:playlistId', async (req, res) => {
     }
 
     const combinedPlaylist = await Playlist.findByPk(playlistId, {
-        include: {model: Song, through: {attributes: []}}
+        include: { model: Song, through: { attributes: [] } }
     })
 
     return res.json(combinedPlaylist)
 })
+
+// edit a playlist
+router.put('/:playlistId', requireAuth, async (req, res) => {
+    const user = req.user.id;
+    const playlistId = req.params.playlistId;
+    const { name, imageUrl } = req.body;
+    const playlist = await Playlist.findByPk(playlistId);
+
+    if (!playlist) {
+        res.status(404)
+        return res.json({
+            message: "playlist couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    if (user !== playlist.userId) {
+        res.status(401)
+        return res.json({
+            message: "User must be the Song's owner",
+            statusCode: 401
+        })
+    }
+
+    if (!name) {
+        res.status(400)
+        return res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                name: "Playlist name is required",
+            }
+        })
+    } else {
+        const editPlaylist = await Playlist.findByPk(playlistId)
+        editPlaylist.set({
+            name,
+            imageUrl
+        })
+        await editPlaylist.save()
+
+        res.status(200)
+        return res.json(editPlaylist)
+    }
+})
+
+//
 
 module.exports = router;
