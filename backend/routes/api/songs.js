@@ -1,5 +1,4 @@
 const express = require('express');
-const sequelize = require('sequelize');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
 const { User, Album, Song, Comment } = require('../../db/models');
 const { check } = require('express-validator');
@@ -15,8 +14,6 @@ router.get('/', async (req, res) => {
 
     if (!page) page = 0;
     if (!size) size = 20;
-    // if (!title) title = "";
-    // if (!createdAt) createdAt = "";
 
     let where = {}
     if (title) {
@@ -53,7 +50,7 @@ console.log(typeof (where.createdAt))
                 size: "Size must be greater than or equal to 0",
             }
         })
-    } else if (typeof (where.createdAt) !== 'string') {
+    } /*else if (typeof(where.createdAt) !== 'string') {
         res.status(400)
         return res.json({
             message: "Validation Error",
@@ -62,7 +59,7 @@ console.log(typeof (where.createdAt))
                 createdAt: "CreatedAt is invalid",
             }
         })
-    }
+    }*/
 
 
     const songs = await Song.findAll({
