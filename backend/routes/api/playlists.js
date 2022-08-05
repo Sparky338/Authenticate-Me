@@ -108,7 +108,7 @@ router.put('/:playlistId', requireAuth, async (req, res) => {
     if (!playlist) {
         res.status(404)
         return res.json({
-            message: "playlist couldn't be found",
+            message: "Playlist couldn't be found",
             statusCode: 404
         })
     }
@@ -116,7 +116,7 @@ router.put('/:playlistId', requireAuth, async (req, res) => {
     if (user !== playlist.userId) {
         res.status(401)
         return res.json({
-            message: "User must be the Song's owner",
+            message: "User must be the Playlist's owner",
             statusCode: 401
         })
     }
@@ -143,6 +143,34 @@ router.put('/:playlistId', requireAuth, async (req, res) => {
     }
 })
 
-//
+// Delete a playlist
+router.delete('/:playlistId', requireAuth, async (req, res) => {
+    const user = req.user.id;
+    const playlistId = req.params.playlistId;
+    const playlist = await Playlist.findByPk(playlistId);
+
+    if (!playlist) {
+        res.status(404)
+        return res.json({
+            message: "Playlist couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    if (user !== playlist.userId) {
+        res.status(401)
+        return res.json({
+            message: "User must be the Playlist's owner",
+            statusCode: 401
+        })
+    }
+
+    await playlist.destroy();
+
+    res.json({
+        message: "Successfully deleted",
+        statusCode: 200
+    })
+})
 
 module.exports = router;
