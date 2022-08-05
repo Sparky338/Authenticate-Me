@@ -179,4 +179,15 @@ router.delete('/:playlistId', requireAuth, async (req, res) => {
     })
 })
 
+// Get all Playlists created by the Current User
+router.get('/current', requireAuth, async (req, res) => {
+    const user = req.user.id;
+
+    const playlists = await Playlist.findAll({
+        where: { userId: user }
+    });
+
+    return res.json({playlists});
+})
+
 module.exports = router;
