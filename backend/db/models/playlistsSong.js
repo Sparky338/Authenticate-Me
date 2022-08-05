@@ -9,16 +9,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      PlaylistsSong.belongsTo(models.Playlist, {foreignKey: "playlistId"})
+      PlaylistsSong.belongsTo(models.Song, {foreignKey: "songId"})
     }
   }
   PlaylistsSong.init({
     playlistId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      onDelete: 'CASCADE'
     },
     songId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      onDelete: 'CASCADE'
     },
   }, {
     sequelize,
