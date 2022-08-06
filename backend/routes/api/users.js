@@ -40,7 +40,7 @@ router.post(
   }
 );
 
-// Get details of artist (user) from id
+// Get details of an Artist from an id
 router.get('/:userId', async (req, res) => {
   const artistId = req.params.userId;
 
@@ -65,9 +65,8 @@ router.get('/:userId', async (req, res) => {
     where: { userId: artistId }
   })
 
-  const imageUrl = await Album.findAll({
-    where: { userId: artistId },
-    attributes: ['imageUrl']
+  const imageUrl = await Album.findOne({
+    where: { userId: artistId }
   })
 
   return res.json({
@@ -75,7 +74,7 @@ router.get('/:userId', async (req, res) => {
     username,
     totalSongs,
     totalAlbums,
-    imageUrl
+    imageUrl: imageUrl.imageUrl
   })
 });
 
