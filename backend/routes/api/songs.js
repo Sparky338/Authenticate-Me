@@ -110,15 +110,15 @@ router.post('/', requireAuth, async (req, res) => {
 
     const { title, description, url, imageUrl, albumId } = req.body;
 
-    const album = await Album.findByPk(albumId);
+    // const album = await Album.findByPk(albumId);
 
-    if (!album && albumId !== null) {
-        res.status(404)
-        return res.json({
-            message: "Album couldn't be found",
-            statusCode: 404
-        })
-    }
+    // if (!album && albumId !== null) {
+    //     res.status(404)
+    //     return res.json({
+    //         message: "Album couldn't be found",
+    //         statusCode: 404
+    //     })
+    // }
 
     if (!title && !url) {
         res.status(400)
