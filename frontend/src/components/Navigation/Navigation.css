@@ -1,4 +1,4 @@
 .profile-dropdown {
     display: flex;
-    justify-content: right;
+    flex-direction: column;
 }
