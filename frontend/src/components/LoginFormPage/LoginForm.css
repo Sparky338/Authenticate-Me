@@ -1,4 +1,4 @@
-#root {
+#root { /*currently changing all pages */
     display: flex;
     border: solid red 1px;
     justify-content: center;
