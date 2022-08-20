@@ -1,7 +1,7 @@
 Intro:
 Welcome to SoundClod, a clone of SoundCloud.
 
-List of technologies used on the project.
+This project was made with Javascript, React, and Redux.
 
 At least a single image or gif showcasing the project.
 
