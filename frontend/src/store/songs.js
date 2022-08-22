@@ -100,6 +100,15 @@ export const editSong = (songId, editSongData) => async dispatch => {
     }
 };
 
-
+const initialState = {}
 
 // Reducer
+export default function songsReducer(state = initialState, action) {
+    const newState = {...state}
+    switch (action.type) {
+        case DELETE_SONG:
+            delete newState[action.songId]
+            return newState;
+        
+    }
+}
