@@ -6,10 +6,11 @@ const EDIT_SONG = 'songs/EDIT_SONG';
 const DELETE_SONG = 'songs/DELETE_SONG';
 
 // Action Creators
-const getSongsAction = (songs) => {
+const getSongsAction = (songsArray) => {
+    console.log('getSongsAction array?', songsArray)
     return {
         type: GET_SONGS,
-        songs
+        songsArray
     }
 }
 
@@ -42,15 +43,17 @@ const deleteSongAction = (songId) => {
 }
 
 // Thunks
-
+console.log('right before getAllSong thunk')
 export const getAllSongs = () => async dispatch => {
     const res = await fetch('/api/songs');
-
+    console.log('res from thunk', res)
     if (res.ok) {
-        const songs = await res.json();
-        dispatch(getSongsAction(songs));
+        const songsArray = await res.json();
+        console.log('res.json of thunk', songsArray)
+        dispatch(getSongsAction(songsArray));
     }
 };
+
 
 export const getSongsCurrentUser = () => async dispatch => {
     const res = await fetch(`/api/songs/current`);
@@ -99,11 +102,15 @@ export const editSong = (songId, editSongData) => async dispatch => {
 };
 
 const initialState = {}
+console.log(initialState)
 
 // Reducer
 export default function songsReducer(state = initialState, action) {
     const newState = {...state}
     switch (action.type) {
+        // case GET_SONGS:
+
+        //     return newState
         case DELETE_SONG:
             delete newState[action.songId]
             return newState;
