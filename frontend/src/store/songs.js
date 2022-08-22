@@ -1,5 +1,3 @@
-
-
 // Types
 const GET_SONGS = 'songs/GET_SONGS';
 // const GET_ONE_SONG = 'songs/GET_ONE_SONG';
@@ -109,6 +107,7 @@ export default function songsReducer(state = initialState, action) {
         case DELETE_SONG:
             delete newState[action.songId]
             return newState;
-        
+        default:
+            return state;
     }
 }
