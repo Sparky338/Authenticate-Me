@@ -29,16 +29,17 @@ const createSongAction = (song) => {
     }
 }
 
-const editSongAction = (song) => {
+const editSongAction = (songId) => {
     return {
         type: EDIT_SONG,
-        song
+        songId
     }
 }
 
-const deleteSongAction = () => {
+const deleteSongAction = (songId) => {
     return {
-        type: DELETE_SONG
+        type: DELETE_SONG,
+        songId
     }
 }
 
@@ -71,31 +72,34 @@ export const getArtistSongs = (userId) => async dispatch => {
     }
 };
 
-export const getOneSong = (songId) => async dispatch => {
-    const res = await fetch(`/api/songs/${songId}`);
+export const createSong = (songData) => async dispatch => {
+    const res = await fetch(`/api/songs`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(songData)
+    });
 
     if (res.ok) {
         const song = await res.json();
-        dispatch(getSongsAction(song));
+        dispatch(createSongAction(song));
+        return song;
     }
 };
 
-
-export const getSongs = () => async dispatch => {
-    const res = await fetch('/api/songs');
+export const editSong = (songId, editSongData) => async dispatch => {
+    const res = await fetch(`/api/songs/${songId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(editSongData)
+    });
 
     if (res.ok) {
-        const songs = await res.json();
-        dispatch(getSongsAction(songs));
+        const song = await res.json();
+        dispatch(editSongAction(song));
+        return song;
     }
 };
-export const getSongs = () => async dispatch => {
-    const res = await fetch('/api/songs');
 
-    if (res.ok) {
-        const songs = await res.json();
-        dispatch(getSongsAction(songs));
-    }
-};
+
 
 // Reducer
