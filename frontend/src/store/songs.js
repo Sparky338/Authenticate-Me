@@ -68,7 +68,7 @@ export const getArtistSongs = (userId) => async dispatch => {
 
     if (res.ok) {
         const songs = await res.json();
-        dispatch(getSongsAction(songs));
+        dispatch(getSongsAction(songs.songs));
     }
 };
 
@@ -108,6 +108,7 @@ export default function songsReducer(state = initialState, action) {
     switch (action.type) {
         //normalize data: businessArr.forEach(business => newState[business.id] = business)
         case GET_SONGS:
+            console.log('action.songs', action.songs)
             action.songs.forEach(song => newState[song.id] = song)
             // newState = action.songs
             return newState

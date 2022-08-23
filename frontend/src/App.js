@@ -6,7 +6,7 @@ import * as sessionActions from "./store/session";
 
 import AllSongs from './components/Songs/AllSongs'
 import SongsCurrentUser from "./components/Songs/SongsCurrentUser.js";
-
+import ArtistSongs from "./components/Songs/ArtistSongs";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +20,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/users/:userId/songs'>
+            <ArtistSongs />
+          </Route>
           <Route path='/songs/current'>
             <SongsCurrentUser />
           </Route>
