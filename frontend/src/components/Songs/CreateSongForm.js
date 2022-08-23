@@ -1,8 +1,7 @@
 import SongForm from './SongForm'
 
 const CreateSongForm = () => {
-    // make a form with title, description, url, imageUrl, albumId in an object
-    const report = {
+    const song = {
         title: '',
         description: '',
         url: '',
@@ -11,7 +10,7 @@ const CreateSongForm = () => {
     };
 
     return (
-        <SongForm report={report} formType="Upload a song" />
+        <SongForm song={song} formType="Upload a song" />
     )
 }
 
