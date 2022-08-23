@@ -16,7 +16,6 @@ const AllSongs = () => {
     if (!songs) {
         return null
     }
-console.log('before the return', songs)
     return (
         <div>
             <ul>

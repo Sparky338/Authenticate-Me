@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 // Types
 const GET_SONGS = 'songs/GET_SONGS';
 // const GET_ONE_SONG = 'songs/GET_ONE_SONG';
@@ -6,11 +8,11 @@ const EDIT_SONG = 'songs/EDIT_SONG';
 const DELETE_SONG = 'songs/DELETE_SONG';
 
 // Action Creators
-const getSongsAction = (songsArray) => {
-    console.log('getSongsAction array?', songsArray)
+const getSongsAction = (songs) => {
+    console.log('getSongsAction array?', songs)
     return {
         type: GET_SONGS,
-        songsArray
+        songs
     }
 }
 
@@ -45,27 +47,27 @@ const deleteSongAction = (songId) => {
 // Thunks
 console.log('right before getAllSong thunk')
 export const getAllSongs = () => async dispatch => {
-    const res = await fetch('/api/songs');
+    const res = await csrfFetch('/api/songs'); //CSRF FETCH?
     console.log('res from thunk', res)
     if (res.ok) {
-        const songsArray = await res.json();
-        console.log('res.json of thunk', songsArray)
-        dispatch(getSongsAction(songsArray));
+        const songs = await res.json();
+        console.log('res.json of thunk', songs)
+        dispatch(getSongsAction(songs.songs));
     }
 };
 
 
 export const getSongsCurrentUser = () => async dispatch => {
-    const res = await fetch(`/api/songs/current`);
+    const res = await csrfFetch(`/api/songs/current`);
 
     if (res.ok) {
         const songs = await res.json();
-        dispatch(getSongsAction(songs));
+        dispatch(getSongsAction(songs.songs));
     }
 };
 
 export const getArtistSongs = (userId) => async dispatch => {
-    const res = await fetch(`/api/users/${userId}/songs`);
+    const res = await csrfFetch(`/api/users/${userId}/songs`);
 
     if (res.ok) {
         const songs = await res.json();
@@ -74,7 +76,7 @@ export const getArtistSongs = (userId) => async dispatch => {
 };
 
 export const createSong = (songData) => async dispatch => {
-    const res = await fetch(`/api/songs`, {
+    const res = await csrfFetch(`/api/songs`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(songData)
@@ -88,7 +90,7 @@ export const createSong = (songData) => async dispatch => {
 };
 
 export const editSong = (songId, editSongData) => async dispatch => {
-    const res = await fetch(`/api/songs/${songId}`, {
+    const res = await csrfFetch(`/api/songs/${songId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editSongData)
@@ -102,21 +104,20 @@ export const editSong = (songId, editSongData) => async dispatch => {
 };
 
 const initialState = {}
+//fetch to get data for state?
+// await fetch('/api/songs')
 
 // Reducer
 export default function songsReducer(state = initialState, action) {
-    // const newState = {...state}
-    switch (action.type) {
+    let newState = { ...state }
+    switch (action.type) { //newstate =action.payload
         case GET_SONGS:
-            console.log('songsarray.songs', action.songsArray.songs)
-            const normalizedSongs = [];
-           action.songsArray.songs.forEach((song) => {
-            normalizedSongs[action.song] = song
-           });
-           console.log(normalizedSongs)
-            return normalizedSongs.song;
+            console.log('the action.songs is', action.songs)
+            newState = action.songs
+            console.log('the new state is: ', newState)
+            return newState
         case DELETE_SONG:
-            delete {...state[action.songId]}
+            delete { ...state[action.songId] }
             return state;
         default:
             return state;
