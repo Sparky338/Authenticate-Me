@@ -16,11 +16,18 @@ const AllSongs = () => {
     if (!songs) {
         return null
     }
+
     return (
         <div>
             <ul>
                 {songs.map(song => {
-                    return song
+                    return (
+
+                        <>
+                            <li> [{song.id}] {song.name} </li> // link?
+
+                        </>
+                    )
                 })}
             </ul>
         </div>

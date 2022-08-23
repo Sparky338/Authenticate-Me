@@ -104,13 +104,12 @@ export const editSong = (songId, editSongData) => async dispatch => {
 };
 
 const initialState = {}
-//fetch to get data for state?
-// await fetch('/api/songs')
 
 // Reducer
 export default function songsReducer(state = initialState, action) {
     let newState = { ...state }
-    switch (action.type) { //newstate =action.payload
+    switch (action.type) {
+        //normalize data: businessArr.forEach(business => newState[business.id] = business)
         case GET_SONGS:
             console.log('the action.songs is', action.songs)
             newState = action.songs
