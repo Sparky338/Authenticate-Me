@@ -108,10 +108,12 @@ export default function songsReducer(state = initialState, action) {
     switch (action.type) {
         //normalize data: businessArr.forEach(business => newState[business.id] = business)
         case GET_SONGS:
-            console.log('action.songs', action.songs)
+            // console.log('action.songs', action.songs)
             action.songs.forEach(song => newState[song.id] = song)
             // newState = action.songs
             return newState
+        case CREATE_SONG:
+            break
         case DELETE_SONG:
             delete { ...state[action.songId] }
             return state;
