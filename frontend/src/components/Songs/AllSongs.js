@@ -16,14 +16,12 @@ const AllSongs = () => {
     if (!songs) {
         return null
     }
-
+console.log('before the return', songs)
     return (
         <div>
             <ul>
                 {songs.map(song => {
-                    return (
-                        song
-                    )
+                    return song
                 })}
             </ul>
         </div>

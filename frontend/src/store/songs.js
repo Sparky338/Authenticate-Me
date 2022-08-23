@@ -102,18 +102,22 @@ export const editSong = (songId, editSongData) => async dispatch => {
 };
 
 const initialState = {}
-console.log(initialState)
 
 // Reducer
 export default function songsReducer(state = initialState, action) {
-    const newState = {...state}
+    // const newState = {...state}
     switch (action.type) {
-        // case GET_SONGS:
-
-        //     return newState
+        case GET_SONGS:
+            console.log('songsarray.songs', action.songsArray.songs)
+            const normalizedSongs = [];
+           action.songsArray.songs.forEach((song) => {
+            normalizedSongs[action.song] = song
+           });
+           console.log(normalizedSongs)
+            return normalizedSongs.song;
         case DELETE_SONG:
-            delete newState[action.songId]
-            return newState;
+            delete {...state[action.songId]}
+            return state;
         default:
             return state;
     }
