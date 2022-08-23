@@ -71,6 +71,15 @@ export const getArtistSongs = (userId) => async dispatch => {
         dispatch(getSongsAction(songs.songs));
     }
 };
+//DO ME
+export const getSongsById = (songId) => async dispatch => {
+    const res = await csrfFetch(`/api/songs/${songId}`);
+
+    if (res.ok) {
+        const songs = await res.json();
+        dispatch(getSongsAction(songs.songs));
+    }
+};
 
 export const createSong = (songData) => async dispatch => {
     const res = await csrfFetch(`/api/songs`, {
