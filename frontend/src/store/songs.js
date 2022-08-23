@@ -44,7 +44,6 @@ const deleteSongAction = (songId) => {
 }
 
 // Thunks
-console.log('right before getAllSong thunk')
 export const getAllSongs = () => async dispatch => {
     const res = await csrfFetch('/api/songs');
 

@@ -16,15 +16,13 @@ const AllSongs = () => {
 
     return (
         <div>
-            {/* <ul> */}
-                {songs.map((song) => {
-                    return (
-                        <li key={song.id}>
-                            Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
-                        </li>
-                    )
-                })}
-            {/* </ul> */}
+            {songs.map((song) => {
+                return (
+                    <li key={song.id}>
+                        Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
+                    </li>
+                )
+            })}
         </div>
     );
 
