@@ -22,10 +22,8 @@ const AllSongs = () => {
             <ul>
                 {songs.map(song => {
                     return (
-
                         <>
-                            <li> [{song.id}] {song.name} </li> // link?
-
+                            <li>Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}</li>
                         </>
                     )
                 })}
