@@ -9,7 +9,6 @@ const DELETE_SONG = 'songs/DELETE_SONG';
 
 // Action Creators
 const getSongsAction = (songs) => {
-    console.log('getSongsAction array?', songs)
     return {
         type: GET_SONGS,
         songs
@@ -47,11 +46,10 @@ const deleteSongAction = (songId) => {
 // Thunks
 console.log('right before getAllSong thunk')
 export const getAllSongs = () => async dispatch => {
-    const res = await csrfFetch('/api/songs'); //CSRF FETCH?
-    console.log('res from thunk', res)
+    const res = await csrfFetch('/api/songs');
+
     if (res.ok) {
         const songs = await res.json();
-        console.log('res.json of thunk', songs)
         dispatch(getSongsAction(songs.songs));
     }
 };
@@ -107,13 +105,12 @@ const initialState = {}
 
 // Reducer
 export default function songsReducer(state = initialState, action) {
-    let newState = { ...state }
+    let newState = {}
     switch (action.type) {
         //normalize data: businessArr.forEach(business => newState[business.id] = business)
         case GET_SONGS:
-            console.log('the action.songs is', action.songs)
-            newState = action.songs
-            console.log('the new state is: ', newState)
+            action.songs.forEach(song => newState[song.id] = song)
+            // newState = action.songs
             return newState
         case DELETE_SONG:
             delete { ...state[action.songId] }
