@@ -6,10 +6,10 @@ import { getArtistSongs } from "../../store/songs";
 const ArtistSongs = () => {
     const dispatch = useDispatch();
     const songs = useSelector((state) => Object.values(state.songs));
-    const userId = useParams();
+    const {userId} = useParams();
 
     useEffect(() => {
-        dispatch(getArtistSongs(userId.userId));
+        dispatch(getArtistSongs(userId));
     }, [dispatch])
 
     if (!songs) {
