@@ -77,7 +77,7 @@ export const getSongById = (songId) => async dispatch => {
 
     if (res.ok) {
         const song = await res.json();
-        const songArr = [song].flat()
+        const songArr = [song]
         dispatch(getSongsAction(songArr));
     }
 };
@@ -91,6 +91,7 @@ export const createSong = (songData) => async dispatch => {
 
     if (res.ok) {
         const song = await res.json();
+        
         dispatch(createSongAction(song));
         return song;
     }

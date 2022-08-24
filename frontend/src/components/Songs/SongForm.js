@@ -16,15 +16,16 @@ const SongForm = ({song, formType}) => {
     const [userId, setUserId] = useState(currentUser);
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const newSong = {...song, title, description, url, imageUrl, albumId};
         if (formType === 'Upload a song'){
-            dispatch(createSong(newSong))
+            const awaitedSong = await dispatch(createSong(newSong))
+            history.push(`/songs/${awaitedSong.id}`)
         } else if (formType === "Update song"){
             dispatch(editSong(song.id, newSong))
+            history.push(`/songs/${song.id}`)
         }
-        history.push(`/songs/${song.id}`)
     };
 
     return (
