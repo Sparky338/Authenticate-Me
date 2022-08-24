@@ -4,7 +4,8 @@ import { getSongsCurrentUser } from "../../store/songs";
 
 const SongsCurrentUser = () => {
     const dispatch = useDispatch();
-    const songs = useSelector((state) => Object.values(state.songs));
+    const songsObj = useSelector((state) => (state.songs));
+    const songs = Object.values(songsObj);
 
     useEffect(() => {
         dispatch(getSongsCurrentUser());

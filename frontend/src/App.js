@@ -5,7 +5,7 @@ import Navigation from "./components/Navigation";
 import * as sessionActions from "./store/session";
 
 import AllSongs from './components/Songs/AllSongs'
-import SongsCurrentUser from "./components/Songs/SongsCurrentUser.js";
+import SongsCurrentUser from "./components/Songs/SongsCurrentUser";
 import ArtistSongs from "./components/Songs/ArtistSongs";
 import CreateSongForm from "./components/Songs/CreateSongForm";
 import EditSongForm from "./components/Songs/EditSongForm";
@@ -26,20 +26,20 @@ function App() {
           <Route path='/users/:userId/songs'>
             <ArtistSongs />
           </Route>
+          <Route exact path='/songs'>
+            <AllSongs />
+          </Route>
+          <Route exact path='/songs/current'>
+            <SongsCurrentUser />
+          </Route>
+          <Route path='/songs/new'>
+            <CreateSongForm />
+          </Route>
           <Route path='/songs/:songId/edit'>
             <EditSongForm />
           </Route>
           <Route path='/songs/:songId'>
             <SongById />
-          </Route>
-          <Route path='/songs/new'>
-            <CreateSongForm />
-          </Route>
-          <Route path='/songs/current'>
-            <SongsCurrentUser />
-          </Route>
-          <Route path='/songs'>
-            <AllSongs />
           </Route>
           {/* <Route>Page Not Found</Route> */}
         </Switch>

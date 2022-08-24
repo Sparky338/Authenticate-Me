@@ -56,9 +56,10 @@ export const getAllSongs = () => async dispatch => {
 
 export const getSongsCurrentUser = () => async dispatch => {
     const res = await csrfFetch(`/api/songs/current`);
-
+console.log('res', res)
     if (res.ok) {
         const songs = await res.json();
+        console.log('songs', songs)
         dispatch(getSongsAction(songs.songs));
     }
 };
@@ -77,8 +78,8 @@ export const getSongById = (songId) => async dispatch => {
 
     if (res.ok) {
         const songs = await res.json();
-        console.log('res.json', songs)
-        dispatch(getSongsAction([songs].flat()));
+        // console.log('res.json', songs)
+        // dispatch(getSongsAction(songs));
     }
 };
 
@@ -118,7 +119,7 @@ export default function songsReducer(state = initialState, action) {
     switch (action.type) {
         //normalize data: businessArr.forEach(business => newState[business.id] = business)
         case GET_SONGS:
-            console.log('action.songs', action.songs)
+            // console.log('action.songs', action.songs)
             action.songs.forEach(song => newState[song.id] = song)
             // newState = action.songs
             return newState
