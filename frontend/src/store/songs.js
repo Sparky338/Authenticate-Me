@@ -56,10 +56,9 @@ export const getAllSongs = () => async dispatch => {
 
 export const getSongsCurrentUser = () => async dispatch => {
     const res = await csrfFetch(`/api/songs/current`);
-console.log('res', res)
+
     if (res.ok) {
         const songs = await res.json();
-        console.log('songs', songs)
         dispatch(getSongsAction(songs.songs));
     }
 };
@@ -78,8 +77,8 @@ export const getSongById = (songId) => async dispatch => {
 
     if (res.ok) {
         const songs = await res.json();
-        // console.log('res.json', songs)
-        // dispatch(getSongsAction(songs));
+        console.log('res.json', songs)
+        dispatch(getSongsAction(songs));
     }
 };
 

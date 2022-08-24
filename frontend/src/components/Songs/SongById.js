@@ -6,7 +6,8 @@ import { getSongById } from "../../store/songs";
 const SongById = () => {
     const dispatch = useDispatch();
     const {songId} = useParams();
-    const songs = useSelector(state => state.songs[songId]);
+    const songsObj = useSelector(state => state.songs[songId]);
+    const songs = Object.values(songsObj) //maybe?
 
     useEffect(() => {
         dispatch(getSongById(songId));
