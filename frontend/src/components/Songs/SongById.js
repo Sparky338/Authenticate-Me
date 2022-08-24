@@ -6,20 +6,21 @@ import { getSongById } from "../../store/songs";
 const SongById = () => {
     const dispatch = useDispatch();
     const {songId} = useParams();
-    const songsObj = useSelector(state => state.songs[songId]);
-    const songs = Object.values(songsObj) //maybe?
+    const songById = [useSelector(state => state.songs[songId])].flat();
 
     useEffect(() => {
         dispatch(getSongById(songId));
     }, [dispatch])
 
-    if (!songs) {
+
+    if (!songById) {
         return null
     }
-    console.log('print', songs)
+
+    console.log('print', songById)
     return (
         <div>
-            {songs.map((song) => {
+            {songById.map((song) => {
                 return (
                     <li key={song.id}>
                         Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
