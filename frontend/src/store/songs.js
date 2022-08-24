@@ -36,7 +36,7 @@ const editSongAction = (songId) => {
     }
 }
 
-const deleteSongAction = (songId) => {
+export const deleteSongAction = (songId) => {
     return {
         type: DELETE_SONG,
         songId
@@ -91,7 +91,7 @@ export const createSong = (songData) => async dispatch => {
 
     if (res.ok) {
         const song = await res.json();
-        
+
         dispatch(createSongAction(song));
         return song;
     }
@@ -126,8 +126,8 @@ export default function songsReducer(state = initialState, action) {
         case CREATE_SONG:
             newState = action.song
         case DELETE_SONG:
-            delete { ...state[action.songId] }
-            return state;
+            delete { ...newState[action.songId] }
+            return newState;
         default:
             return state;
     }

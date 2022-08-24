@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getSongById } from "../../store/songs";
+import DeleteSong from "./DeleteSong";
 
 const SongById = () => {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const SongById = () => {
     if (!songById[0]) {
         return null
     }
-console.log('print', songById)
+
     return (
         <div>
             {songById.map((song) => {
@@ -24,6 +25,7 @@ console.log('print', songById)
                     <li key={song.id}>
                         Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
                         <Link to={`/songs/${song.id}/edit`}>Edit</Link>
+                        <DeleteSong />
                     </li>
                 )
             })}
