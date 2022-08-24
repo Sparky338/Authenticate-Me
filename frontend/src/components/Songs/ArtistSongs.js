@@ -15,7 +15,7 @@ const ArtistSongs = () => {
     if (!songs) {
         return null
     }
-
+    console.log('print', songs)
     return (
         <div>
             {songs.map((song) => {
