@@ -72,12 +72,12 @@ export const getArtistSongs = (userId) => async dispatch => {
     }
 };
 //DO ME
-export const getSongsById = (songId) => async dispatch => {
+export const getSongById = (songId) => async dispatch => {
     const res = await csrfFetch(`/api/songs/${songId}`);
 
     if (res.ok) {
         const songs = await res.json();
-        dispatch(getSongsAction(songs.songs));
+        dispatch(getSongsAction(songs));
     }
 };
 
@@ -117,7 +117,7 @@ export default function songsReducer(state = initialState, action) {
     switch (action.type) {
         //normalize data: businessArr.forEach(business => newState[business.id] = business)
         case GET_SONGS:
-            // console.log('action.songs', action.songs)
+            console.log('action.songs', action.songs)
             action.songs.forEach(song => newState[song.id] = song)
             // newState = action.songs
             return newState
