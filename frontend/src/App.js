@@ -11,6 +11,7 @@ import CreateSongForm from "./components/Songs/CreateSongForm";
 import EditSongForm from "./components/Songs/EditSongForm";
 import SongById from "./components/Songs/SongById";
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path='/songs'>
             <AllSongs />
+          </Route>
+          <Route exact path='/songs/upload'>
+            <CreateSongForm />
           </Route>
           <Route exact path='/songs/current'>
             <SongsCurrentUser />
