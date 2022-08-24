@@ -6,6 +6,8 @@ const EditSongForm = () => {
     const {songId} = useParams();
     const song = useSelector(state => state.songs[songId])
 
+    if (!song) return null;
+    
     return (
         <SongForm song={song} formType="Update song" />
     );

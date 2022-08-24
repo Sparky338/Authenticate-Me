@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getSongsCurrentUser } from "../../store/songs";
 
 const SongsCurrentUser = () => {
@@ -21,6 +22,7 @@ const SongsCurrentUser = () => {
                     return (
                         <li key={song.id}>
                             Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
+                            <Link to={`/songs/${song.id}/edit`}>Edit</Link>
                         </li>
                     )
                 })}

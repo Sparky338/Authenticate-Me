@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { createSong } from "../../store/songs";
+import { createSong, editSong } from "../../store/songs";
 
 const SongForm = ({song, formType}) => {
     const history = useHistory();
@@ -13,10 +13,15 @@ const SongForm = ({song, formType}) => {
     const [imageUrl, setImageUrl] = useState(song.imageUrl || '');
     const [albumId, setAlbumId] = useState(song.albumId || null);
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const newSong = {...song, title, description, url, imageUrl, albumId};
-        dispatch(createSong(newSong))
+        if (formType === 'Upload a song'){
+            dispatch(createSong(newSong))
+        } else if (formType === "Update song"){
+            dispatch(editSong(song.id, newSong))
+        }
         history.push(`/songs/${song.id}`)
     };
 
