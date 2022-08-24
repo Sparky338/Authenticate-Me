@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createSong, editSong } from "../../store/songs";
 
 const SongForm = ({song, formType}) => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.session.user.username);
 
     const [title, setTitle] = useState(song.title || '');
     const [description, setDescription] = useState(song.description || '');
     const [url, setUrl] = useState(song.url || '');
     const [imageUrl, setImageUrl] = useState(song.imageUrl || '');
     const [albumId, setAlbumId] = useState(song.albumId || null);
+    const [userId, setUserId] = useState(currentUser);
 
 
     const handleSubmit = (e) => {
@@ -28,6 +30,14 @@ const SongForm = ({song, formType}) => {
     return (
         <form onSubmit={handleSubmit} >
             <h2>{formType}</h2>
+            <label>
+                User Id:
+                <input
+                    type='text'
+                    value={userId}
+                    readOnly
+                />
+            </label>
             <label>
                 Title:
                 <input

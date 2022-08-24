@@ -16,8 +16,7 @@ const SongById = () => {
     if (!songById) {
         return null
     }
-
-    console.log('print', songById)
+console.log('print', songById)
     return (
         <div>
             {songById.map((song) => {
