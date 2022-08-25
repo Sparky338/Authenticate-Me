@@ -104,7 +104,10 @@ export const editSong = (songId, editSongData) => async dispatch => {
 };
 
 export const deleteSong = (songId) => async dispatch => {
-    const res = await csrfFetch(`/api/songs/${songId}`)
+    const res = await csrfFetch(`/api/songs/${songId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
 
     if (res.ok) {
         const song = await res.json()
@@ -127,7 +130,7 @@ export default function songsReducer(state = initialState, action) {
         case CREATE_SONG:
             newState = action.song
         case DELETE_SONG:
-            delete newState[action.songId]
+            newState = action.songId
             return newState;
         default:
             return state;

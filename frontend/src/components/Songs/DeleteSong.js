@@ -8,9 +8,9 @@ const DeleteSongButton = () => {
     const songObj = useSelector(state => state.songs)
     const songs = Object.values(songObj);
 
-    const handleClick = () => {
+    const handleClick = async () => {
         dispatch(deleteSong(songs[0].id))
-        history.push('/songs');
+        await history.push('/songs');
     }
 
     return (
