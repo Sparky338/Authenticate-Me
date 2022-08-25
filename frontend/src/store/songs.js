@@ -15,13 +15,6 @@ const getSongsAction = (songs) => {
     }
 }
 
-// const getOneSongAction = (song) => {
-//     return {
-//         type: GET_ONE_SONG,
-//         song
-//     }
-// }
-
 const createSongAction = (song) => {
     return {
         type: CREATE_SONG,
@@ -110,6 +103,15 @@ export const editSong = (songId, editSongData) => async dispatch => {
         return song;
     }
 };
+
+export const deleteSong = (songId) => async dispatch => {
+    const res = await csrfFetch(`/api/songs/${songId}`)
+
+    if (res.ok) {
+        const song = await res.json()
+        dispatch(deleteSongAction(song.id))
+    }
+}
 
 const initialState = {}
 
