@@ -9,6 +9,7 @@ const EditSongForm = () => {
     const artist = useSelector(state => state.songs[songId].userId)
 
     if (!song) return null;
+
     if (currentUser === artist) {
         return (
             <SongForm song={song} formType="Update song" />
