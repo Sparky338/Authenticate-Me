@@ -19,7 +19,6 @@ const SongById = () => {
         return null
     }
     const artistId = songById[0].userId
-    console.log('artistId', artistId)
 
     if (currentUserId === artistId){
         return (
@@ -42,8 +41,6 @@ const SongById = () => {
                     return (
                         <li key={song.id}>
                             Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
-                            {/* <Link to={`/songs/${song.id}/edit`}>Edit</Link> */}
-                            {/* <DeleteSong /> */}
                         </li>
                     )
                 })}

@@ -9,7 +9,10 @@ const DeleteSongButton = () => {
     const songObj = useSelector(state => state.songs)
     const songs = Object.values(songObj);
     const currentUser = useSelector(state => state.session.user.id)
-    const artist = useSelector(state => state.songs[songId].userId)
+
+    if (!songObj[0]) return null
+
+    const artist = songObj[songId].userId
 
     if (currentUser === artist) {
         const handleClick = async () => {

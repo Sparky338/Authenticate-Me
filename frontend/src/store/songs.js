@@ -2,7 +2,6 @@ import { csrfFetch } from "./csrf";
 
 // Types
 const GET_SONGS = 'songs/GET_SONGS';
-// const GET_ONE_SONG = 'songs/GET_ONE_SONG';
 const CREATE_SONG = 'songs/CREATE_SONG';
 const EDIT_SONG = 'songs/EDIT_SONG';
 const DELETE_SONG = 'songs/DELETE_SONG';
