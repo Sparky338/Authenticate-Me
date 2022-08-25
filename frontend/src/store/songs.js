@@ -119,18 +119,16 @@ const initialState = {}
 
 // Reducer
 export default function songsReducer(state = initialState, action) {
-    let newState = {...state}
+    let newState = {}
     switch (action.type) {
         //normalize data: businessArr.forEach(business => newState[business.id] = business)
         case GET_SONGS:
-            // console.log('action.songs', action.songs)
             action.songs.forEach(song => newState[song.id] = song)
-            // newState = action.songs
             return newState
         case CREATE_SONG:
             newState = action.song
         case DELETE_SONG:
-            newState = action.songId
+            delete newState[action.songId]
             return newState;
         default:
             return state;

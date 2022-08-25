@@ -8,6 +8,7 @@ const AllSongs = () => {
     const songs = Object.values(songsObj)
 
     useEffect(() => {
+console.log(songs)
         dispatch(getAllSongs());
     }, [dispatch])
 
