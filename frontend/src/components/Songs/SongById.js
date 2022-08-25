@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getSongById } from "../../store/songs";
 import DeleteSong from "./DeleteSong";
+import SongsCurrentUser from "./SongsCurrentUser";
 
 const SongById = () => {
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const SongById = () => {
                 return (
                     <li key={song.id}>
                         Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
-                        <Link to={`/songs/${song.id}/edit`}>Edit</Link>
+                        {/* <Link to={`/songs/${song.id}/edit`}>Edit</Link> */}
                         <DeleteSong />
                     </li>
                 )
