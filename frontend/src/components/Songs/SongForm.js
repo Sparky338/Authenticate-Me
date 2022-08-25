@@ -1,30 +1,36 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createSong, editSong } from "../../store/songs";
 
-const SongForm = ({song, formType}) => {
+const SongForm = ({ song, formType }) => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.session.user.username);
+    const { songId } = useParams();
+    const currentUsername = useSelector(state => state.session.user.username);
+    const currentUser = useSelector(state => state.session.user.id);
+    const artist = useSelector(state => state.songs[songId].userId)
+
 
     const [title, setTitle] = useState(song.title || '');
     const [description, setDescription] = useState(song.description || '');
     const [url, setUrl] = useState(song.url || '');
     const [imageUrl, setImageUrl] = useState(song.imageUrl || '');
     const [albumId, setAlbumId] = useState(song.albumId || null);
-    const [userId, setUserId] = useState(currentUser);
+    const [user, setUser] = useState(currentUsername);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newSong = {...song, title, description, url, imageUrl, albumId};
-        if (formType === 'Upload a song'){
+        const newSong = { ...song, title, description, url, imageUrl, albumId };
+        if (formType === 'Upload a song') {
             const awaitedSong = await dispatch(createSong(newSong))
             history.push(`/songs/${awaitedSong.id}`)
-        } else if (formType === "Update song"){
-            dispatch(editSong(song.id, newSong))
-            history.push(`/songs/${song.id}`)
+        } else if (currentUser === artist) {
+            if (formType === "Update song") {
+                dispatch(editSong(song.id, newSong))
+                history.push(`/songs/${song.id}`)
+            }
         }
     };
 
@@ -35,7 +41,7 @@ const SongForm = ({song, formType}) => {
                 User Id:
                 <input
                     type='text'
-                    value={userId}
+                    value={user}
                     readOnly
                 />
             </label>
