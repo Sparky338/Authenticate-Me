@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { deleteSong } from "../../store/songs";
 
 const DeleteSongButton = () => {
@@ -9,13 +8,13 @@ const DeleteSongButton = () => {
     const songObj = useSelector(state => state.songs)
     const songs = Object.values(songObj);
 
-    useEffect(() => {
+    const handleClick = () => {
         dispatch(deleteSong(songs[0].id))
-        // history.push('/songs');
-    })
+        history.push('/songs');
+    }
 
     return (
-        <button onClick={() => dispatch(deleteSong(songs.id))}>Delete</button>
+        <button onClick={handleClick}>Delete</button>
     )
 }
 

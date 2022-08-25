@@ -84,7 +84,6 @@ export const createSong = (songData) => async dispatch => {
 
     if (res.ok) {
         const song = await res.json();
-
         dispatch(createSongAction(song));
         return song;
     }
@@ -117,7 +116,7 @@ const initialState = {}
 
 // Reducer
 export default function songsReducer(state = initialState, action) {
-    let newState = {}
+    let newState = {...state}
     switch (action.type) {
         //normalize data: businessArr.forEach(business => newState[business.id] = business)
         case GET_SONGS:
@@ -128,7 +127,7 @@ export default function songsReducer(state = initialState, action) {
         case CREATE_SONG:
             newState = action.song
         case DELETE_SONG:
-            delete { ...newState[action.songId] }
+            delete newState[action.songId]
             return newState;
         default:
             return state;
