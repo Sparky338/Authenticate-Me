@@ -12,7 +12,7 @@ const AllSongs = () => {
         dispatch(getAllSongs());
     }, [dispatch])
 
-    if (!songs) {
+    if (!songsObj) {
         return null
     }
 

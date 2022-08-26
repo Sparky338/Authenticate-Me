@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 
 const ArtistSongs = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const songsObj = useSelector((state) => (state.songs));
     const songs = Object.values(songsObj)
     const {userId} = useParams();

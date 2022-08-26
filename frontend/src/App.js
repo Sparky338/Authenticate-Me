@@ -6,11 +6,11 @@ import * as sessionActions from "./store/session";
 
 import AllSongs from './components/Songs/GetSongs/AllSongs'
 import SongsCurrentUser from "./components/Songs/GetSongs/SongsCurrentUser";
-import ArtistSongs from "./components/Songs/GetSongs/ArtistSongs";
 import SongById from "./components/Songs/GetSongs/SongById";
 import CreateSongForm from "./components/Songs/CreateSong/CreateSongForm";
 import EditSongForm from "./components/Songs/EditSong/EditSongForm";
 
+// import ArtistSongs from "./components/Artists/ArtistSongs";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,9 +24,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path='/users/:userId/songs'>
+          {/* <Route path='/users/:userId/songs'>
             <ArtistSongs />
-          </Route>
+          </Route> */}
           <Route exact path='/songs'>
             <AllSongs />
           </Route>
