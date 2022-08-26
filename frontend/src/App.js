@@ -7,9 +7,9 @@ import * as sessionActions from "./store/session";
 import AllSongs from './components/Songs/GetSongs/AllSongs'
 import SongsCurrentUser from "./components/Songs/GetSongs/SongsCurrentUser";
 import ArtistSongs from "./components/Songs/GetSongs/ArtistSongs";
-import CreateSongForm from "./components/Songs/CreateSongForm";
-import EditSongForm from "./components/Songs/EditSongForm";
 import SongById from "./components/Songs/GetSongs/SongById";
+import CreateSongForm from "./components/Songs/CreateSong/CreateSongForm";
+import EditSongForm from "./components/Songs/EditSong/EditSongForm";
 
 
 function App() {

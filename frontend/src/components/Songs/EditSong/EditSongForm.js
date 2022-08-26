@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import SongForm from './SongForm'
+import SongForm from '../SongForm'
 
 const EditSongForm = () => {
     const { songId } = useParams();

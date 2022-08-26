@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
-import DeleteSong from "./DeleteSong";
+import DeleteSong from "../DeleteSongs/DeleteSong";
 
 const SongById = () => {
     const dispatch = useDispatch();

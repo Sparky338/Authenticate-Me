@@ -1,4 +1,4 @@
-import SongForm from './SongForm'
+import SongForm from '../SongForm'
 
 const CreateSongForm = () => {
     const song = {

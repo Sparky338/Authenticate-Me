@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { deleteSong } from "../../store/songs";
+import { deleteSong } from "../../../store/songs";
 
 const DeleteSongButton = () => {
     const dispatch = useDispatch();
