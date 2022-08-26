@@ -26,6 +26,7 @@ const AllSongs = () => {
                     </li>
                 )
             })}
+            <div><Link to={`/songs/current`}>Current User's songs</Link></div>
         </div>
     );
 
