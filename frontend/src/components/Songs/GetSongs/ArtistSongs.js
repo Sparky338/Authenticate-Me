@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getArtistSongs } from "../../../store/songs";
+
 
 const ArtistSongs = () => {
     const dispatch = useDispatch();
@@ -9,9 +9,10 @@ const ArtistSongs = () => {
     const songs = Object.values(songsObj)
     const {userId} = useParams();
 
-    useEffect(() => {
-        dispatch(getArtistSongs(userId));
-    }, [dispatch])
+    const artistSongs = songs.userId;
+    // useEffect(() => {
+    //     dispatch(getArtistSongs(userId));
+    // }, [dispatch])
 
     if (!songs) {
         return null
@@ -19,7 +20,7 @@ const ArtistSongs = () => {
 
     return (
         <div>
-            {songs.map((song) => {
+            {artistSongs.map((song) => {
                 return (
                     <li key={song.id}>
                         Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}

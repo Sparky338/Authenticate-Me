@@ -11,12 +11,13 @@ const SongById = () => {
     const songs = Object.values(songObj)
     const songById = songs.songId //maybe songs[songId]
     const session = useSelector(state => state.session)
-    const currentUserId = session.user.id
 
-    if (!songById[0]) {
-        return null
-    }
+    const currentUserId = session.user.id
     const artistId = songById[0].userId
+
+    // if (!songById[0]) {
+    //     return null
+    // }
 
     if (currentUserId === artistId){
         return (
