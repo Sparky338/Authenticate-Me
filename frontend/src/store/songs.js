@@ -45,16 +45,6 @@ export const getAllSongs = () => async dispatch => {
     }
 };
 
-
-// export const getSongsCurrentUser = () => async dispatch => {
-//     const res = await csrfFetch(`/api/songs/current`);
-
-//     if (res.ok) {
-//         const songs = await res.json();
-//         dispatch(getSongsAction(songs.songs));
-//     }
-// };
-
 export const createSong = (songData) => async dispatch => {
     const res = await csrfFetch(`/api/songs`, {
         method: 'POST',
@@ -104,9 +94,13 @@ export default function songsReducer(state = initialState, action) {
     switch (action.type) {
         case GET_SONGS:
             action.songs.forEach(song => newState[song.id] = song)
-            return newState
+            return newState;
         case CREATE_SONG:
             newState = action.song
+            return newState;
+        case EDIT_SONG:
+            newState = {...state, songId: [action.songId]}
+            return newState;
         case DELETE_SONG:
             delete newState[action.songId]
             return newState;

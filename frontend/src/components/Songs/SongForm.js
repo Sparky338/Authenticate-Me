@@ -9,19 +9,24 @@ const SongForm = ({ song, formType }) => {
     const { songId } = useParams();
     const sessionState = useSelector(state => state.session);
     const songsState = useSelector(state => state.songs)
-    const currentUsername = sessionState.user.username;
     const currentUser = sessionState.user.id;
-    const artist = songsState[songId].userId;
+
+    // const currentUsername = sessionState.user.username;
     // const currentUsername = useSelector(state => state.session.user.username);
     // const currentUser = useSelector(state => state.session.user.id);
     // const artist = useSelector(state => state.songs[songId].userId)
+
 
     const [title, setTitle] = useState(song.title || '');
     const [description, setDescription] = useState(song.description || '');
     const [url, setUrl] = useState(song.url || '');
     const [imageUrl, setImageUrl] = useState(song.imageUrl || '');
     const [albumId, setAlbumId] = useState(song.albumId || null);
-    const [user, setUser] = useState(currentUsername);
+    // const [user, setUser] = useState(currentUsername);
+
+
+    if (!songId) return null
+    const artist = songsState[songId].userId;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,8 +36,8 @@ const SongForm = ({ song, formType }) => {
             history.push(`/songs/${awaitedSong.id}`)
         } else if (currentUser === artist) {
             if (formType === "Update song") {
-                dispatch(editSong(song.id, newSong))
-                history.push(`/songs/${song.id}`)
+                const awaitedSong = await dispatch(editSong(song.id, newSong))
+                history.push(`/songs/${awaitedSong.id}`)
             }
         }
     };
