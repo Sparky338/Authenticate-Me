@@ -1,16 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllSongs } from "../../../store/songs";
 import { Link } from "react-router-dom";
 
 const AllSongs = () => {
     const dispatch = useDispatch();
     const songsObj = useSelector((state) => (state.songs));
     const songs = Object.values(songsObj)
-
-    useEffect(() => {
-        dispatch(getAllSongs());
-    }, [dispatch])
 
     if (!songsObj) {
         return null

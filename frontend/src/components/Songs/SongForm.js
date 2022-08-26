@@ -7,9 +7,14 @@ const SongForm = ({ song, formType }) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { songId } = useParams();
-    const currentUsername = useSelector(state => state.session.user.username);
-    const currentUser = useSelector(state => state.session.user.id);
-    const artist = useSelector(state => state.songs[songId].userId)
+    const sessionState = useSelector(state => state.session);
+    const songsState = useSelector(state => state.songs)
+    const currentUsername = sessionState.user.username;
+    const currentUser = sessionState.user.id;
+    const artist = songsState[songId].userId;
+    // const currentUsername = useSelector(state => state.session.user.username);
+    // const currentUser = useSelector(state => state.session.user.id);
+    // const artist = useSelector(state => state.songs[songId].userId)
 
     const [title, setTitle] = useState(song.title || '');
     const [description, setDescription] = useState(song.description || '');
@@ -35,14 +40,6 @@ const SongForm = ({ song, formType }) => {
     return (
         <form onSubmit={handleSubmit} >
             <h2>{formType}</h2>
-            <label>
-                User Id:
-                <input
-                    type='text'
-                    value={user}
-                    readOnly
-                />
-            </label>
             <label>
                 Title:
                 <input
