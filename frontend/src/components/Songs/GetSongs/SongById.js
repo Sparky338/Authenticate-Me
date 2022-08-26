@@ -1,19 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getSongById } from "../../store/songs";
+
 import DeleteSong from "./DeleteSong";
 
 const SongById = () => {
     const dispatch = useDispatch();
     const {songId} = useParams();
-    const songById = [useSelector(state => state.songs[songId])];
-    const currentUserId = useSelector(state => state.session.user.id)
-
-    useEffect(() => {
-        dispatch(getSongById(songId));
-    }, [dispatch])
-
+    const songObj = useSelector(state => state.songs);
+    const songs = Object.values(songObj)
+    const songById = songs.songId //maybe songs[songId]
+    const session = useSelector(state => state.session)
+    const currentUserId = session.user.id
 
     if (!songById[0]) {
         return null

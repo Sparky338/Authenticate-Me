@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import UploadSong from '../Songs/CreateSongNav';
+import UploadSong from '../Songs/CreateSong/CreateSongNav';
 
 import './Navigation.css';
 

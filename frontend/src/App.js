@@ -4,12 +4,12 @@ import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import * as sessionActions from "./store/session";
 
-import AllSongs from './components/Songs/AllSongs'
-import SongsCurrentUser from "./components/Songs/SongsCurrentUser";
-import ArtistSongs from "./components/Songs/ArtistSongs";
+import AllSongs from './components/Songs/GetSongs/AllSongs'
+import SongsCurrentUser from "./components/Songs/GetSongs/SongsCurrentUser";
+import ArtistSongs from "./components/Songs/GetSongs/ArtistSongs";
 import CreateSongForm from "./components/Songs/CreateSongForm";
 import EditSongForm from "./components/Songs/EditSongForm";
-import SongById from "./components/Songs/SongById";
+import SongById from "./components/Songs/GetSongs/SongById";
 
 
 function App() {

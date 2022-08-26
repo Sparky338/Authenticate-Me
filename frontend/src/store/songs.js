@@ -46,33 +46,14 @@ export const getAllSongs = () => async dispatch => {
 };
 
 
-export const getSongsCurrentUser = () => async dispatch => {
-    const res = await csrfFetch(`/api/songs/current`);
+// export const getSongsCurrentUser = () => async dispatch => {
+//     const res = await csrfFetch(`/api/songs/current`);
 
-    if (res.ok) {
-        const songs = await res.json();
-        dispatch(getSongsAction(songs.songs));
-    }
-};
-
-export const getArtistSongs = (userId) => async dispatch => {
-    const res = await csrfFetch(`/api/users/${userId}/songs`);
-
-    if (res.ok) {
-        const songs = await res.json();
-        dispatch(getSongsAction(songs.songs));
-    }
-};
-
-export const getSongById = (songId) => async dispatch => {
-    const res = await csrfFetch(`/api/songs/${songId}`);
-
-    if (res.ok) {
-        const song = await res.json();
-        const songArr = [song]
-        dispatch(getSongsAction(songArr));
-    }
-};
+//     if (res.ok) {
+//         const songs = await res.json();
+//         dispatch(getSongsAction(songs.songs));
+//     }
+// };
 
 export const createSong = (songData) => async dispatch => {
     const res = await csrfFetch(`/api/songs`, {

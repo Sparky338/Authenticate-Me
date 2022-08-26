@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getSongsCurrentUser } from "../../store/songs";
-import DeleteSong from "./DeleteSong";
+import { getSongsCurrentUser } from "../../../store/songs";
+// import DeleteSong from "./DeleteSong";
 
 const SongsCurrentUser = () => {
     const dispatch = useDispatch();

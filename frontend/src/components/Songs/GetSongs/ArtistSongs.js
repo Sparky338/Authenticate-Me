@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllSongs } from "../../store/songs";
+import { useParams } from "react-router-dom";
+import { getArtistSongs } from "../../../store/songs";
 
-const AllSongs = () => {
+const ArtistSongs = () => {
     const dispatch = useDispatch();
     const songsObj = useSelector((state) => (state.songs));
     const songs = Object.values(songsObj)
+    const {userId} = useParams();
 
     useEffect(() => {
-console.log(songs)
-        dispatch(getAllSongs());
+        dispatch(getArtistSongs(userId));
     }, [dispatch])
 
     if (!songs) {
@@ -30,4 +31,4 @@ console.log(songs)
 
 }
 
-export default AllSongs;
+export default ArtistSongs;

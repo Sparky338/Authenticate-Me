@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getArtistSongs } from "../../store/songs";
+import { getAllSongs } from "../../../store/songs";
+import { Link } from "react-router-dom";
 
-const ArtistSongs = () => {
+const AllSongs = () => {
     const dispatch = useDispatch();
     const songsObj = useSelector((state) => (state.songs));
     const songs = Object.values(songsObj)
-    const {userId} = useParams();
 
     useEffect(() => {
-        dispatch(getArtistSongs(userId));
+        dispatch(getAllSongs());
     }, [dispatch])
 
     if (!songs) {
@@ -22,7 +21,8 @@ const ArtistSongs = () => {
             {songs.map((song) => {
                 return (
                     <li key={song.id}>
-                        Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
+                        {/* Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId} */}
+                        <Link to={`/songs/${song.id}`}>Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}</Link>
                     </li>
                 )
             })}
@@ -31,4 +31,4 @@ const ArtistSongs = () => {
 
 }
 
-export default ArtistSongs;
+export default AllSongs;

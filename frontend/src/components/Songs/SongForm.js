@@ -11,14 +11,12 @@ const SongForm = ({ song, formType }) => {
     const currentUser = useSelector(state => state.session.user.id);
     const artist = useSelector(state => state.songs[songId].userId)
 
-
     const [title, setTitle] = useState(song.title || '');
     const [description, setDescription] = useState(song.description || '');
     const [url, setUrl] = useState(song.url || '');
     const [imageUrl, setImageUrl] = useState(song.imageUrl || '');
     const [albumId, setAlbumId] = useState(song.albumId || null);
     const [user, setUser] = useState(currentUsername);
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
