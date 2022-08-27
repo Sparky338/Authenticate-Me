@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 
 const AllSongs = () => {
     const dispatch = useDispatch();
-    const songsObj = useSelector((state) => (state.songs));
-    const songs = Object.values(songsObj)
+    const songsSession = useSelector((state) => (state.songs));
 
-    if (!songsObj) {
-        return null
-    }
+    if (!songsSession) return null
+
+    const songs = Object.values(songsSession)
 
     return (
         <div>

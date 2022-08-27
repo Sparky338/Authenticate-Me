@@ -1,24 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { deleteSong } from "../../../store/songs";
+import { deleteSong } from '../../../store/songs';
 
 const DeleteSongButton = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { songId } = useParams();
-    const songObj = useSelector(state => state.songs)
-    const songs = Object.values(songObj);
-    const currentUser = useSelector(state => state.session.user.id)
+    const songsState = useSelector(state => state.songs)
+    const sessionState = useSelector(state => state.session)
+    const currentUser = sessionState.user.id
+    // const songs = Object.values(songsState);
+    const artist = songsState[songId].userId;
+    const song = songsState[songId].id;
 
-    const artist = useSelector(state => state.songs[songId].userId)
+    // const artist = useSelector(state => state.songs[songId].userId)
 
     // if (!songObj[0]) return null
 
     // const artist = songObj[songId].userId
 
+    // console.log('songs', song)
+
     if (currentUser === artist) {
-        const handleClick = async () => {
-            dispatch(deleteSong(songs[0].id))
+        const handleClick = () => {
+            dispatch(deleteSong(song))
             history.push('/songs');
         }
         return (
