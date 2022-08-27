@@ -1,11 +1,10 @@
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import SongForm from '../SongForm'
+import SongForm from '../SongForm';
 
 const CreateSongForm = () => {
-    const currentUser = useSelector(state => state.session.user)
     const history = useHistory();
-
+    const currentUser = useSelector(state => state.session.user)
 
     const song = {
         title: '',

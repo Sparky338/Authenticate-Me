@@ -27,7 +27,6 @@ const SongForm = ({ song, formType }) => {
 
     if (!songId) return null
     // const artist = songsState[songId].userId;
-    console.log('songs', song)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,11 +34,12 @@ const SongForm = ({ song, formType }) => {
         if (formType === "Upload a song") {
             const awaitedSong = await dispatch(createSong(newSong))
             history.push(`/songs/${awaitedSong.id}`)
-        } else /*if  (currentUser === artist) { BEING HANDLED IN EDITSONGFORM*/
+        } else
             if (formType === "Update song") {
                 const awaitedSong = await dispatch(editSong(song.id, newSong))
                 history.push(`/songs/${awaitedSong.id}`)
             }
+            // if  (currentUser === artist) { //BEING HANDLED IN EDITSONGFORM
         // }
     };
 

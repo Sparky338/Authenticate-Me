@@ -104,7 +104,7 @@ export default function songsReducer(state = initialState, action) {
             // newState = [action.song] // no redirect, hid update form, updated state to single song
             // newState = [...state, action.song] // no change on edit page or state, updates DB
             // newState = {...state, songs:[action.song]} // redirects, no update to song before render
-            
+
             // newState = {...state, [action.song.id]: [action.song]} // ONE LINER OPTION
             newState = {...state}
             newState[action.song.id] = action.song
