@@ -99,7 +99,11 @@ export default function songsReducer(state = initialState, action) {
             newState = action.song
             return newState;
         case EDIT_SONG:
-            newState = {...state, songId: [action.songId]}
+            // action.songId.forEach(song => newState[song.id] = song) NO REDIRECT
+            // newState = action.songId //no redirect, but updated state
+            // newState = [action.songId] // no redirect, hid update form, updated state to single song
+            // newState = [...state, action.songId] // no change on edit page or state, updates DB
+            newState = [action.songId]
             return newState;
         case DELETE_SONG:
             delete newState[action.songId]

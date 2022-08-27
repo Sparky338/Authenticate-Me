@@ -34,12 +34,12 @@ const SongForm = ({ song, formType }) => {
         if (formType === 'Upload a song') {
             const awaitedSong = await dispatch(createSong(newSong))
             history.push(`/songs/${awaitedSong.id}`)
-        } else if (currentUser === artist) {
+        } else /*if  (currentUser === artist) { BEING HANDLED IN EDITSONGFORM*/
             if (formType === "Update song") {
                 const awaitedSong = await dispatch(editSong(song.id, newSong))
                 history.push(`/songs/${awaitedSong.id}`)
             }
-        }
+        // }
     };
 
     return (
