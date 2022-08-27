@@ -6,7 +6,7 @@ import { createSong, editSong } from "../../store/songs";
 const SongForm = ({ song, formType }) => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const { songId } = useParams();
+    // const { songId } = useParams();
     // const sessionState = useSelector(state => state.session);
     // const songsState = useSelector(state => state.songs)
     // const currentUser = sessionState.user.id;
@@ -25,7 +25,7 @@ const SongForm = ({ song, formType }) => {
     // const [user, setUser] = useState(currentUsername);
 
 
-    if (!songId) return null
+    // if (!songId) return null
     // const artist = songsState[songId].userId;
 
     const handleSubmit = async (e) => {

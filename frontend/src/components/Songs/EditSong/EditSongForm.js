@@ -19,7 +19,6 @@ const EditSongForm = () => {
     if (currentUser === artist) {
         return (
             <SongForm song={song} formType="Update song" />
-            // <SongForm song={song} formType="Upload a song" />
         );
     } else return (
         <div>
