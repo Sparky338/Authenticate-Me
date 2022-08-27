@@ -10,15 +10,13 @@ const SongById = () => {
     const songs = Object.values(songObj)
 
     const currentUserId = session.user.id;
-    const artistId = songObj[songId].userId;
-    const filteredSong = songs.filter(song => song.id === +songId);
 
     // const songByIdObj = songObj[songId].id //maybe songs[songId]
     // const songById = Object.values(songByIdObj);
 
-    // if (!songById[0]) {
-    //     return null
-    // }
+    if (!songId) return null
+    const artistId = songObj[songId].userId;
+    const filteredSong = songs.filter(song => song.id === +songId);
 
     if (currentUserId === artistId){
         return (

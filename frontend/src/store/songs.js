@@ -96,7 +96,8 @@ export default function songsReducer(state = initialState, action) {
             action.songs.forEach(song => newState[song.id] = song)
             return newState;
         case CREATE_SONG:
-            newState = action.song
+            newState = {...state}
+            newState[action.song.id] = action.song
             return newState;
         case EDIT_SONG:
             // action.song.forEach(song => newState[song.id] = song) //NO REDIRECT
