@@ -25,11 +25,12 @@ const SongById = () => {
             <div>
                 {filteredSong.map((song) => {
                     return (
-                        <li key={song.id}>
-                            Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
+                        <ul key={song.id}>
+                            Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId},
+                            <div>Description: {song.description}</div>
                             <Link to={`/songs/${song.id}/edit`}>Edit</Link>
                             <DeleteSong />
-                        </li>
+                        </ul>
                     )
                 })}
             </div>

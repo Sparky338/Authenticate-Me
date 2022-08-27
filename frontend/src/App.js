@@ -10,6 +10,7 @@ import SongsCurrentUser from "./components/Songs/GetSongs/SongsCurrentUser";
 import SongById from "./components/Songs/GetSongs/SongById";
 import CreateSongForm from "./components/Songs/CreateSong/CreateSongForm";
 import EditSongForm from "./components/Songs/EditSong/EditSongForm";
+import Home from "./components/HomePage/Home";
 
 // import ArtistSongs from "./components/Artists/ArtistSongs";
 
@@ -29,6 +30,9 @@ function App() {
           {/* <Route path='/users/:userId/songs'>
             <ArtistSongs />
           </Route> */}
+          <Route exact path='/'>
+            <Home />
+          </Route>
           <Route exact path='/songs'>
             <AllSongs />
           </Route>
