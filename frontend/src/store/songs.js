@@ -21,10 +21,10 @@ const createSongAction = (song) => {
     }
 }
 
-const editSongAction = (songId) => {
+const editSongAction = (song) => {
     return {
         type: EDIT_SONG,
-        songId
+        song
     }
 }
 
@@ -99,11 +99,15 @@ export default function songsReducer(state = initialState, action) {
             newState = action.song
             return newState;
         case EDIT_SONG:
-            // action.songId.forEach(song => newState[song.id] = song) NO REDIRECT
-            // newState = action.songId //no redirect, but updated state
-            // newState = [action.songId] // no redirect, hid update form, updated state to single song
-            // newState = [...state, action.songId] // no change on edit page or state, updates DB
-            newState = [action.songId]
+            // action.song.forEach(song => newState[song.id] = song) //NO REDIRECT
+            // newState = action.song //no redirect, but updated state
+            // newState = [action.song] // no redirect, hid update form, updated state to single song
+            // newState = [...state, action.song] // no change on edit page or state, updates DB
+            // newState = {...state, songs:[action.song]} // redirects, no update to song before render
+            
+            // newState = {...state, [action.song.id]: [action.song]} // ONE LINER OPTION
+            newState = {...state}
+            newState[action.song.id] = action.song
             return newState;
         case DELETE_SONG:
             delete newState[action.songId]
