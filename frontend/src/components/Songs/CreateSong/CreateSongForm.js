@@ -14,7 +14,6 @@ const CreateSongForm = () => {
         albumId: null
     };
 
-    // if (!song) return null;
     if (currentUser){
         return (
             <SongForm song={song} formType="Upload a song" />
