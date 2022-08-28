@@ -1,9 +1,7 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const AllSongs = () => {
-    const dispatch = useDispatch();
     const songsSession = useSelector((state) => (state.songs));
 
     if (!songsSession) return null
