@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
   const history = useHistory()
   const dispatch = useDispatch();
+  const userSession = useSelector(state => state.session.user.id)
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -25,10 +26,14 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = (e) => {
+  const logout = async (e) => {
     e.preventDefault();
+    // const loggedOut = await
     dispatch(sessionActions.logout());
-    history.push('/'); // need to wait for user to be logged out, await doesn't work for this.
+    // console.log("logged", loggedOut)
+    // if (loggedOut && !userSession){
+    history.push('/');
+    //  } // need to wait for user to be logged out, await doesn't work for this.
   };
 
   return (
