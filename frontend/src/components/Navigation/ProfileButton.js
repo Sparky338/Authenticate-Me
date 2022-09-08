@@ -28,12 +28,11 @@ function ProfileButton({ user }) {
 
   const logout = async (e) => {
     e.preventDefault();
-    // const loggedOut = await
-    dispatch(sessionActions.logout());
-    // console.log("logged", loggedOut)
-    // if (loggedOut && !userSession){
-    history.push('/');
-    //  } // need to wait for user to be logged out, await doesn't work for this.
+
+    const loggedOut = await dispatch(sessionActions.logout());
+    if (loggedOut){
+    history.push('/logout');
+    }
   };
 
   return (
