@@ -52,7 +52,7 @@ function App() {
           <Route path='/logout'>
             <Logout />
           </Route>
-          {/* <Route>Page Not Found</Route> */}
+          <Route>Page Not Found</Route>
         </Switch>
       )}
     </>
