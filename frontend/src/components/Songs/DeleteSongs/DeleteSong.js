@@ -19,12 +19,12 @@ const DeleteSongButton = () => {
 
     // const artist = songObj[songId].userId
 
-    // console.log('songs', song)
+    // console.log('song', song)
 
     if (currentUser === artist) {
-        const handleClick = () => {
-            dispatch(deleteSong(song))
-            history.push('/songs');
+        const handleClick = async () => {
+            const deleted = await dispatch(deleteSong(song))
+            if (deleted && !song) history.push('/songs');
         }
         return (
             <button onClick={handleClick}>Delete</button>
