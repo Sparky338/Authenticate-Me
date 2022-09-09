@@ -19,11 +19,17 @@ function LoginForm() {
       });
   }
 
+  const handleDemoUser = () => {
+    setCredential('Demo-lition')
+    setPassword('password')
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <button className='demo-user button' onClick={handleDemoUser}>Demo User</button>
       <label>
         Username or Email
         <input
@@ -42,7 +48,7 @@ function LoginForm() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button className='submit button' type="submit">Log In</button>
     </form>
   );
 }
