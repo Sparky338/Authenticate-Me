@@ -36,8 +36,8 @@ export const deleteCommentAction = (commentId) => {
 }
 
 // Thunks
-export const getAllComments = () => async dispatch => {
-    const res = await csrfFetch('/api/comments');
+export const getSongComments = (songId) => async dispatch => {
+    const res = await csrfFetch(`/api/songs/${songId}/comments`);
 
     if (res.ok) {
         const comments = await res.json();
@@ -45,8 +45,8 @@ export const getAllComments = () => async dispatch => {
     }
 };
 
-export const createComment = (commentData) => async dispatch => {
-    const res = await csrfFetch(`/api/comments`, {
+export const createComment = (songId, commentData) => async dispatch => {
+    const res = await csrfFetch(`/api/songs/${songId}/comments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(commentData)
