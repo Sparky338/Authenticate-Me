@@ -28,17 +28,17 @@ function ProfileButton({ user }) {
 
   const logout = async (e) => {
     e.preventDefault();
-
+    //logout and redirect to the logout page
     const loggedOut = await dispatch(sessionActions.logout());
-    if (loggedOut){
-    history.push('/logout');
+    if (loggedOut) {
+      history.push('/logout');
     }
   };
 
   return (
     <>
       <button onClick={openMenu}>
-      <i className="fa-solid fa-user-astronaut"></i>
+        <i className="fa-solid fa-user-astronaut"></i>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
