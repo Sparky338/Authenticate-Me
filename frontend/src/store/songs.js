@@ -78,11 +78,9 @@ export const deleteSong = (songId) => async dispatch => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     });
-console.log(res)
+
     if (res.ok) {
-        // const song = await res.json()
         const song = `${songId}`
-        console.log("song", song)
         dispatch(deleteSongAction(song))
     }
 }
@@ -98,22 +96,12 @@ export default function songsReducer(state = initialState, action) {
             action.songs.forEach(song => newState[song.id] = song)
             return newState;
         case CREATE_SONG:
-            // newState = {...state}
             newState[action.song.id] = action.song
             return newState;
         case EDIT_SONG:
-            // action.song.forEach(song => newState[song.id] = song) //NO REDIRECT
-            // newState = action.song //no redirect, but updated state
-            // newState = [action.song] // no redirect, hid update form, updated state to single song
-            // newState = [...state, action.song] // no change on edit page or state, updates DB
-            // newState = {...state, songs:[action.song]} // redirects, no update to song before render
-
-            // newState = {...state, [action.song.id]: [action.song]} // ONE LINER OPTION
-            // newState = {...state}
             newState[action.song.id] = action.song
             return newState;
         case DELETE_SONG:
-            // newState = {...state}
             delete newState[action.songId]
             return newState;
         default:
