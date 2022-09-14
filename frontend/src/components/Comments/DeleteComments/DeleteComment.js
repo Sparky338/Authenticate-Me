@@ -15,7 +15,7 @@ const DeleteCommentButton = () => {
      if (currentUser === commenter) {
         const handleClick = async () => {
             const deleted = await dispatch(deleteComment(commentId))
-            if (deleted) history.push('/songs/songId');
+            if (deleted) history.push(`/songs/${songId}`);
         }
         return (
             <button onClick={handleClick}>Delete</button>
