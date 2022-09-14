@@ -13,7 +13,7 @@ const CommentForm = ({ comment, formType }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newComment = { ...comment, body };
-        if (formType === "Upload a comment") {
+        if (formType === "Write a comment") {
             const awaitedComment = await dispatch(createComment(songId, newComment))
             history.push(`/songs/${awaitedComment.songId}`)
         } else
@@ -39,3 +39,5 @@ const CommentForm = ({ comment, formType }) => {
         </div>
     )
 }
+
+export default CommentForm
