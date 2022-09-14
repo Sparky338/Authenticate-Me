@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import CreateCommentForm from "../../Comments/CreateComments/CreateCommentForm";
+import DeleteCommentButton from "../../Comments/DeleteComments/DeleteComment";
 import CommentsBySongId from "../../Comments/GetComments/GetComments";
 
 import DeleteSong from "../DeleteSongs/DeleteSong";
@@ -32,6 +33,7 @@ const SongById = () => {
                             <DeleteSong />
                             <CreateCommentForm />
                             <div>Comments: <CommentsBySongId /></div>
+                            {/* <div className="button deleteCommentsButton"> <DeleteCommentButton /></div> */}
                         </div>
                     )
                 })}
