@@ -12,7 +12,7 @@ const CreateCommentForm = () => {
 
     if (currentUser){
         return (
-            <CommentForm comment={comment} formType="Write a comment" />
+            <CommentForm comment={comment} formType="Comment" />
         );
     } else return (
         <div>

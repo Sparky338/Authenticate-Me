@@ -8,17 +8,21 @@ const CommentForm = ({ comment, formType }) => {
     const dispatch = useDispatch();
     const { songId } = useParams();
 
-    const [comment, setComment] = useState(comment.body || '');
+    const [body, setBody] = useState(comment.body || '');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newComment = { ...comment, body };
-        if (formType === "Write a comment") {
+        if (formType === "Comment") {
             const awaitedComment = await dispatch(createComment(songId, newComment))
-            history.push(`/songs/${awaitedComment.songId}`)
+            setBody('');
+            
+            // not needed since it's directly on the song page
+            // history.push(`/songs/${awaitedComment.songId}`);
         } else
             if (formType === "Edit comment") {
                 const awaitedComment = await dispatch(editComment(comment.id, newComment))
+                setBody('');
                 history.push(`/songs/${awaitedComment.songId}`)
             }
     };
@@ -26,15 +30,16 @@ const CommentForm = ({ comment, formType }) => {
     return (
         <div className="commentsForm form">
             <form onSubmit={handleSubmit}>
-                <h2>{formType}</h2>
+                <h4>{formType}</h4>
                 <label>
                     Comment:
                     <textarea
                         // type="text"
-                        value={comment}
-                        onChange={e => setComment(e.target.value)}
+                        value={body}
+                        onChange={e => setBody(e.target.value)}
                     />
                 </label>
+                <input className="button submitButton" type="submit" value="Submit" />
             </form>
         </div>
     )
