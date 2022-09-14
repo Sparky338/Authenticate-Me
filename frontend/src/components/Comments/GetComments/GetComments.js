@@ -12,6 +12,7 @@ const CommentsBySongId = () => {
 
     useEffect(() => {
         dispatch(getSongComments(songId));
+        console.log('New comment render!')
     }, [dispatch])
 
     if (!commentsSession) return null

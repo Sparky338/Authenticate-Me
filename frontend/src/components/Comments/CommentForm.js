@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch/*, useSelector*/ } from "react-redux";
-import { createComment, editComment } from "../../store/comments";
+import { createComment, editComment, getSongComments } from "../../store/comments";
 
 const CommentForm = ({ comment, formType }) => {
     const history = useHistory();
@@ -15,8 +15,9 @@ const CommentForm = ({ comment, formType }) => {
         const newComment = { ...comment, body };
         if (formType === "Comment") {
             const awaitedComment = await dispatch(createComment(songId, newComment))
+            dispatch(getSongComments(awaitedComment.songId))
             setBody('');
-            
+
             // not needed since it's directly on the song page
             // history.push(`/songs/${awaitedComment.songId}`);
         } else
