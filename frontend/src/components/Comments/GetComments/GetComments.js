@@ -8,6 +8,7 @@ const CommentsBySongId = () => {
     const dispatch = useDispatch();
     const { songId } = useParams();
     const commentsSession = useSelector((state) => (state.comments));
+    const comments = Object.values(commentsSession)
 
     useEffect(() => {
         dispatch(getSongComments(songId));
@@ -15,11 +16,11 @@ const CommentsBySongId = () => {
 
     if (!commentsSession) return null
 
-    const comments = Object.values(commentsSession);
+    const filteredComments = comments.filter(comment => comment.songId === +songId);
 
     return (
         <div>
-            {comments.map((comment) => {
+            {filteredComments.map((comment) => {
                 return (
                     <div className='comments' key={comment.id}>
                         <div className="comments username">{comment.User.username}</div>
