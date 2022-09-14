@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import CommentsBySongId from "../../Comments/GetComments";
+import CommentsBySongId from "../../Comments/GetComments/GetComments";
 
 import DeleteSong from "../DeleteSongs/DeleteSong";
 
