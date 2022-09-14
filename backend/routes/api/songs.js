@@ -275,7 +275,7 @@ router.get('/:songId/comments', async (req, res) => {
         })
     }
 
-    const comments = await Comment.findOne({
+    const comments = await Comment.findAll({
         where: { songId: songId },
         include:
             { model: User, attributes: ['id', 'username'] },
@@ -284,7 +284,7 @@ router.get('/:songId/comments', async (req, res) => {
     res.json({ comments })
 })
 
-// Comment for a song based on song's id
+// Create a Comment for a song based on song's id
 router.post('/:songId/comments', requireAuth, async (req, res) => {
     const user = req.user.id;
     const songId = req.params.songId;

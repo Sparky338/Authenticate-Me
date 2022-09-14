@@ -90,7 +90,7 @@ const initialState = {}
 // Reducer
 export default function songsReducer(state = initialState, action) {
 //normalize data example: businessArr.forEach(business => newState[business.id] = business)
-    let newState = {...state}
+    const newState = {...state}
     switch (action.type) {
         case GET_SONGS:
             action.songs.forEach(song => newState[song.id] = song)

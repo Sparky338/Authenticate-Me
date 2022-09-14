@@ -41,7 +41,7 @@ export const getSongComments = (songId) => async dispatch => {
 
     if (res.ok) {
         const comments = await res.json();
-        dispatch(getCommentsAction(comments.comments));
+        dispatch(getCommentsAction(comments));
     }
 };
 
@@ -90,10 +90,10 @@ const initialState = {}
 // Reducer
 export default function commentsReducer(state = initialState, action) {
 //normalize data example: businessArr.forEach(business => newState[business.id] = business)
-    let newState = {...state}
+    const newState = {...state}
     switch (action.type) {
         case GET_COMMENTS:
-            action.comments.forEach(comment => newState[comment.id] = comment)
+            action.comments.comments.forEach(comment => newState[comment.id] = comment)
             return newState;
         case CREATE_COMMENT:
             newState[action.comment.id] = action.comment

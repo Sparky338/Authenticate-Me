@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
+import CommentsBySongId from "../../Comments/GetComments";
 
 import DeleteSong from "../DeleteSongs/DeleteSong";
 
@@ -28,6 +29,7 @@ const SongById = () => {
                             <div>Description: {song.description}</div>
                             <Link to={`/songs/${song.id}/edit`}>Edit</Link>
                             <DeleteSong />
+                            <div>Comments: <CommentsBySongId /></div>
                         </ul>
                     )
                 })}
@@ -40,6 +42,8 @@ const SongById = () => {
                     return (
                         <li key={song.id}>
                             Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
+                            <div>Description: {song.description}</div>
+                            <div>Comments: <CommentsBySongId /></div>
                         </li>
                     )
                 })}
