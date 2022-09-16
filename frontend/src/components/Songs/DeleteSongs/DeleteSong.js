@@ -13,9 +13,10 @@ const DeleteSongButton = () => {
     const song = songsState[songId].id;
 
     if (currentUser === artist) {
-        const handleClick = async () => {
+        const handleClick = async (e) => {
+            e.preventDefault();
             const deleted = await dispatch(deleteSong(song))
-            if (deleted /*&& !song*/) history.push('/songs');
+            /*if (deleted /*&& !song)*/ history.push('/songs');
         }
         return (
             <button onClick={handleClick}>Delete</button>

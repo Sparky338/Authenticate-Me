@@ -13,7 +13,7 @@ const SongById = () => {
 
     if (!songId) return null;
 
-    const artistId = songObj[songId].userId;
+    const artistId = songObj[songId]?.userId;
     const filteredSong = songs.filter(song => song.id === +songId);
 
 
