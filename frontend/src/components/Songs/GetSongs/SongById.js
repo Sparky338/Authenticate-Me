@@ -54,6 +54,7 @@ const SongById = () => {
                             ] : ""}
                         <CreateCommentForm />
                         <div>Comments: <CommentsBySongId /></div>
+                        {/* Ternary for deletecomments, take deletecomments out of commentsbysongid */}
                     </div>
                 )
             })}

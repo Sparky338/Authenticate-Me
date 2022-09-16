@@ -21,7 +21,7 @@ const DeleteCommentButton = () => {
         return (
             <button onClick={handleClick}>Delete</button>
         )
-    } else return null;
+    }
 }
 
 export default DeleteCommentButton
