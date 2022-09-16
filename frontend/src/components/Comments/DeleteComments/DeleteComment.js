@@ -6,13 +6,14 @@ const DeleteCommentButton = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { songId } = useParams();
+
     const commentsState = useSelector(state => state.comments);
     const sessionState = useSelector(state => state.session);
     const currentUser = sessionState.user.id;
     const commenter = commentsState[songId].userId;
     const commentId = commentsState[songId].id;
 
-     if (currentUser === commenter) {
+    if (currentUser === commenter) {
         const handleClick = async () => {
             const deleted = await dispatch(deleteComment(commentId))
             if (deleted) history.push(`/songs/${songId}`);
