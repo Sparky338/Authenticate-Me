@@ -21,26 +21,6 @@ const SongById = () => {
     const artistId = songObj[songId]?.userId;
     const filteredSong = songs.filter(song => song.id === +songId);
 
-
-    // if (currentUserId === artistId){
-    //     return (
-    //         <div>
-    //             {filteredSong.map((song) => {
-    //                 return (
-    //                     <div key={song.id}>
-    //                         Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId},
-    //                         <div>Description: {song.description}</div>
-    //                         <Link to={`/songs/${song.id}/edit`}>Edit</Link>
-    //                         <DeleteSong />
-    //                         {/* <CreateCommentForm />
-    //                         <div>Comments: <CommentsBySongId />setIsCommentsRendered(true)</div> need to render this sooner */}
-    //                         {/* <div className="button deleteCommentsButton"> <DeleteCommentButton /></div> */}
-    //                     </div>
-    //                 )
-    //             })}
-    //         </div>
-    //     );
-    // } else {
     return (
         <div>
             {filteredSong.map((song) => {
@@ -54,15 +34,11 @@ const SongById = () => {
                         ] : ""}
                         <CreateCommentForm />
                         <div>Comments: <CommentsBySongId /></div>
-                        {/* Ternary for deletecomments, take deletecomments out of commentsbysongid */}
-                        {/* {currentUserId === commenter ? <DeleteCommentButton /> : <h1>boo</h1>} */}
                     </div>
                 )
             })}
         </div>
     );
-    // }
-
 }
 
 export default SongById;

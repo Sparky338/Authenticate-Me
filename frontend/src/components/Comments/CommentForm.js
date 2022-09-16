@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { useDispatch/*, useSelector*/ } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createComment, editComment, getSongComments } from "../../store/comments";
 
 const CommentForm = ({ comment, formType }) => {
@@ -17,9 +17,6 @@ const CommentForm = ({ comment, formType }) => {
             const awaitedComment = await dispatch(createComment(songId, newComment))
             dispatch(getSongComments(awaitedComment.songId))
             setBody('');
-
-            // not needed since it's directly on the song page
-            // history.push(`/songs/${awaitedComment.songId}`);
         } else
             if (formType === "Edit comment") {
                 const awaitedComment = await dispatch(editComment(comment.id, newComment))
@@ -35,7 +32,6 @@ const CommentForm = ({ comment, formType }) => {
                 <label>
                     Comment:
                     <textarea
-                        // type="text"
                         value={body}
                         onChange={e => setBody(e.target.value)}
                     />
