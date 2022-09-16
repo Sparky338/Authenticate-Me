@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import CreateCommentForm from "../../Comments/CreateComments/CreateCommentForm";
+import DeleteCommentButton from "../../Comments/DeleteComments/DeleteComment";
 import CommentsBySongId from "../../Comments/GetComments/GetComments";
 import DeleteSong from "../DeleteSongs/DeleteSong";
 
@@ -11,8 +12,12 @@ const SongById = () => {
     const songs = Object.values(songObj)
     const currentUserId = session.user.id;
 
-    if (!songId) return null;
+    const commentsState = useSelector(state => state.comments);
 
+    if (!songId) return null;
+    if (!commentsState) return null;
+
+    const commenter = commentsState[songId]?.userId;
     const artistId = songObj[songId]?.userId;
     const filteredSong = songs.filter(song => song.id === +songId);
 
@@ -50,6 +55,7 @@ const SongById = () => {
                         <CreateCommentForm />
                         <div>Comments: <CommentsBySongId /></div>
                         {/* Ternary for deletecomments, take deletecomments out of commentsbysongid */}
+                        {/* {currentUserId === commenter ? <DeleteCommentButton /> : <h1>boo</h1>} */}
                     </div>
                 )
             })}
