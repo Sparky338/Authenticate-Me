@@ -7,27 +7,22 @@ const DeleteSongButton = () => {
     const history = useHistory();
     const { songId } = useParams();
     const songsState = useSelector(state => state.songs)
-    // const sessionState = useSelector(state => state.session)
-    // const currentUser = sessionState.user.id
-    // const songs = Object.values(songsState);
+    const sessionState = useSelector(state => state.session)
+    const currentUser = sessionState.user.id
     const artist = songsState[songId].userId;
     const song = songsState[songId].id;
 
-    // const artist = useSelector(state => state.songs[songId].userId)
-
-    // if (!songObj[0]) return null
-
-    // const artist = songObj[songId].userId
-
-    // console.log('song', song)
-
-    const handleClick = async () => {
-        const deleted = await dispatch(deleteSong(song))
-        if (deleted && !song) history.push('/songs');
+    if (currentUser === artist) {
+        const handleClick = async () => {
+            const deleted = await dispatch(deleteSong(song))
+            if (deleted /*&& !song*/) history.push('/songs');
+        }
+        return (
+            <button onClick={handleClick}>Delete</button>
+        )
+    } else {
+        return null;
     }
-    return (
-        <button onClick={handleClick}>Delete</button>
-    )
 
 }
 

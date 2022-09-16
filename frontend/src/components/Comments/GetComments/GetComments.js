@@ -26,7 +26,7 @@ const CommentsBySongId = () => {
                     <div className='comments' key={comment.id}>
                         <div className="comments username">{comment.User.username}</div>
                         <p className="comments commentBody">{comment.body}</p>
-                        <DeleteCommentButton />
+                        {/* <DeleteCommentButton /> */}
                     </div>
                 )
             })}
