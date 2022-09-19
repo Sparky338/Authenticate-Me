@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import CommentForm from '../CommentForm';
 
 const CreateCommentForm = () => {
-    const history = useHistory();
+    // const history = useHistory();
     const currentUser = useSelector(state => state.session.user)
 
     const comment = {
