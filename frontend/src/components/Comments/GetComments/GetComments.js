@@ -17,7 +17,7 @@ const CommentsBySongId = () => {
     if (!commentsState) return null
 
     const filteredComments = comments.filter(comment => comment.songId === +songId);
-    console.log('comments', filteredComments)
+
     return (
         <div>
             {filteredComments.map((comment) => {
