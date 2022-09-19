@@ -13,12 +13,16 @@ const CommentForm = ({ comment, formType }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newComment = { ...comment, body };
+
+        if (!body) {
+            window.alert("Comment body text is required")
+        }
+
         if (formType === "Comment") {
             const awaitedComment = await dispatch(createComment(songId, newComment))
             dispatch(getSongComments(awaitedComment.songId))
             setBody('');
-        } else
-            if (formType === "Edit comment") {
+        } else if (formType === "Edit comment") {
                 const awaitedComment = await dispatch(editComment(comment.id, newComment))
                 setBody('');
                 await history.push(`/songs/${awaitedComment.songId}`)

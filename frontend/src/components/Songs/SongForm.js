@@ -1,21 +1,11 @@
 import { useState } from "react";
-import { useHistory/*, useParams*/ } from "react-router-dom";
-import { useDispatch/*, useSelector*/ } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { createSong, editSong } from "../../store/songs";
 
 const SongForm = ({ song, formType }) => {
     const history = useHistory();
     const dispatch = useDispatch();
-    // const { songId } = useParams();
-    // const sessionState = useSelector(state => state.session);
-    // const songsState = useSelector(state => state.songs)
-    // const currentUser = sessionState.user.id;
-
-    // const currentUsername = sessionState.user.username;
-    // const currentUsername = useSelector(state => state.session.user.username);
-    // const currentUser = useSelector(state => state.session.user.id);
-    // const artist = useSelector(state => state.songs[songId].userId)
-
 
     const [title, setTitle] = useState(song.title || '');
     const [description, setDescription] = useState(song.description || '');
@@ -27,6 +17,14 @@ const SongForm = ({ song, formType }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newSong = { ...song, title, description, url, imageUrl, albumId };
+
+        if (!title) {
+            window.alert("Song title is required")
+        }
+        if (!url) {
+            window.alert("Audio is required")
+        }
+
         if (formType === "Upload a song") {
             const awaitedSong = await dispatch(createSong(newSong))
             history.push(`/songs/${awaitedSong.id}`)
@@ -58,7 +56,7 @@ const SongForm = ({ song, formType }) => {
                     />
                 </label>
                 <label>
-                    URL:
+                    Song URL:
                     <input
                         type="text"
                         value={url}
