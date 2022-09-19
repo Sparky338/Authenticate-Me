@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createSong, editSong } from "../../store/songs";
@@ -12,18 +12,23 @@ const SongForm = ({ song, formType }) => {
     const [url, setUrl] = useState(song.url || '');
     const [imageUrl, setImageUrl] = useState(song.imageUrl || '');
     const [albumId, setAlbumId] = useState(song.albumId || null);
+    const [validationErrors, setValidationErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false)
 
+    useEffect(() => {
+        const errors = [];
+
+        if (!title) errors.push("Song title is required");
+        if (!url) errors.push("Audio is required");
+
+        setValidationErrors(errors);
+    }, [title, url])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setHasSubmitted(true)
+        if (validationErrors.length) return alert(`Can't submit, please fill in the missing information.`)
         const newSong = { ...song, title, description, url, imageUrl, albumId };
-
-        if (!title) {
-            window.alert("Song title is required")
-        }
-        if (!url) {
-            window.alert("Audio is required")
-        }
 
         if (formType === "Upload a song") {
             const awaitedSong = await dispatch(createSong(newSong))
@@ -36,9 +41,18 @@ const SongForm = ({ song, formType }) => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit} >
+        <div className="song-form">
+            <form className="song-form form" onSubmit={handleSubmit} >
                 <h2>{formType}</h2>
+                {hasSubmitted && validationErrors.length > 0 && (
+                    <div className="error-handling">There were errors in your submission:
+                        <ul>
+                            {validationErrors.map(error => (
+                                <li className="errors" key={error}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
                 <label>
                     Title:
                     <input
