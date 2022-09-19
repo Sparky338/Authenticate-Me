@@ -21,7 +21,7 @@ const CreateSongForm = () => {
     } else return (
         <div>
             {history.push(`/`)}
-            {window.alert("You must be signed in to upload a song!")}
+            {/* {window.alert("You must be signed in to upload a song!")} */}
         </div>
     )
 }
