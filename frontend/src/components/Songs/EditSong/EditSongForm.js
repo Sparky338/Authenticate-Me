@@ -8,13 +8,6 @@ const EditSongForm = () => {
     const songsState = useSelector(state => state.songs);
     const sessionState = useSelector(state => state.session);
     const currentUser = sessionState.user.id;
-    // const song = useSelector(state => state.songs[songId])
-    // const currentUser = useSelector(state => state.session.user.id);
-    // const artist = useSelector(state => state.songs[songId].userId)
-
-    // if (!songId) return null;
-    // if (!songsState) return null;
-    // if (!sessionState) return null;
 
     const artist = songsState[songId].userId;
     const song = songsState[songId];

@@ -11,6 +11,7 @@ import SongsCurrentUser from "./components/Songs/GetSongs/SongsCurrentUser";
 import SongById from "./components/Songs/GetSongs/SongById";
 import CreateSongForm from "./components/Songs/CreateSong/CreateSongForm";
 import EditSongForm from "./components/Songs/EditSong/EditSongForm";
+import Logout from "./components/Signout/Signout";
 
 // import ArtistSongs from "./components/Artists/ArtistSongs";
 
@@ -39,9 +40,6 @@ function App() {
           <Route exact path='/songs/upload'>
             <CreateSongForm />
           </Route>
-          {/* <Route path='/songs/new'>
-            <CreateSongForm />
-          </Route> */}
           <Route exact path='/songs/current'>
             <SongsCurrentUser />
           </Route>
@@ -51,7 +49,10 @@ function App() {
           <Route path='/songs/:songId'>
             <SongById />
           </Route>
-          {/* <Route>Page Not Found</Route> */}
+          <Route path='/logout'>
+            <Logout />
+          </Route>
+          <Route>Page Not Found</Route>
         </Switch>
       )}
     </>

@@ -12,10 +12,9 @@ const AllSongs = () => {
         <div>
             {songs.map((song) => {
                 return (
-                    <li key={song.id}>
-                        {/* Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId} */}
-                        <Link to={`/songs/${song.id}`}>Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}</Link>
-                    </li>
+                    <div className="allSongs" key={song.id}>
+                        <Link to={`/songs/${song.id}`}>Artist Id:{song.userId}, Song Title:{song.title}</Link>
+                    </div>
                 )
             })}
             <div><Link to={`/songs/current`}>Current User's songs</Link></div>

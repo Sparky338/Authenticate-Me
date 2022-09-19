@@ -6,7 +6,7 @@ import * as sessionActions from '../../store/session';
 function ProfileButton({ user }) {
   const history = useHistory()
   const dispatch = useDispatch();
-  const userSession = useSelector(state => state.session.user.id)
+  // const userSession = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -28,18 +28,17 @@ function ProfileButton({ user }) {
 
   const logout = async (e) => {
     e.preventDefault();
-    // const loggedOut = await
-    dispatch(sessionActions.logout());
-    // console.log("logged", loggedOut)
-    // if (loggedOut && !userSession){
-    history.push('/');
-    //  } // need to wait for user to be logged out, await doesn't work for this.
+    //logout and redirect to the logout page
+    const loggedOut = await dispatch(sessionActions.logout());
+    if (loggedOut) {
+      history.push('/logout');
+    }
   };
 
   return (
     <>
       <button onClick={openMenu}>
-      <i className="fa-solid fa-user-astronaut"></i>
+        <i className="fa-solid fa-user-astronaut"></i>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
