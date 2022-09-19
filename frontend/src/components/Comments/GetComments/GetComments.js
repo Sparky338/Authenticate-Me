@@ -17,13 +17,14 @@ const CommentsBySongId = () => {
     if (!commentsState) return null
 
     const filteredComments = comments.filter(comment => comment.songId === +songId);
+
     return (
         <div>
             {filteredComments.map((comment) => {
 
                 return (
                     <div className='comments' key={comment.id}>
-                        <div className="comments username">{comment.User.username}</div>
+                        <div className="comments username">{comment.User?.username}</div>
                         <p className="comments commentBody">{comment.body}</p>
                         <DeleteCommentButton comment={comment} />
                     </div>

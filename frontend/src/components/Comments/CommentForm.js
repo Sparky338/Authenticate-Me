@@ -21,7 +21,7 @@ const CommentForm = ({ comment, formType }) => {
             if (formType === "Edit comment") {
                 const awaitedComment = await dispatch(editComment(comment.id, newComment))
                 setBody('');
-                history.push(`/songs/${awaitedComment.songId}`)
+                await history.push(`/songs/${awaitedComment.songId}`)
             }
     };
 
