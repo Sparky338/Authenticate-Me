@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom";
 
 const Logout = () => {
     const history = useHistory();
+    const userSession = useSelector(state => state.session.user)
 
-    if (useSelector(state => state.session.user)) {
+    if (userSession) {
         history.push('/songs')
     }
 

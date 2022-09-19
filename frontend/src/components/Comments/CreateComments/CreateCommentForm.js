@@ -14,12 +14,12 @@ const CreateCommentForm = () => {
         return (
             <CommentForm comment={comment} formType="Comment" />
         );
-    } else return (
-        <div>
-            {history.push(`/songs`)}
-            {window.alert("You must be signed in to write a comment!")}
-        </div>
-    )
+    } //else return (
+    //     <div>
+    //         {history.push(`/songs`)}
+    //         {/* {window.alert("You must be signed in to write a comment!")} */}
+    //     </div>
+    // )
 }
 
 export default CreateCommentForm;

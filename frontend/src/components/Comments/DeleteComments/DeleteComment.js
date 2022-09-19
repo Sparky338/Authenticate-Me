@@ -8,7 +8,7 @@ const DeleteCommentButton = ({comment}) => {
     const { songId } = useParams();
 
     const sessionState = useSelector(state => state.session);
-    const currentUser = sessionState.user.id;
+    const currentUser = sessionState.user?.id;
 
     if (currentUser === comment.userId) {
         const handleClick = async () => {
@@ -18,8 +18,6 @@ const DeleteCommentButton = ({comment}) => {
         return (
             <button onClick={handleClick}>Delete</button>
         )
-    } else {
-        return null;
     }
 }
 
