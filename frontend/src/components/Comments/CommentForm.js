@@ -15,8 +15,9 @@ const CommentForm = ({ comment, formType }) => {
         const newComment = { ...comment, body };
         if (formType === "Comment") {
             const awaitedComment = await dispatch(createComment(songId, newComment))
-            dispatch(getSongComments(awaitedComment.songId))
+            await dispatch(getSongComments(awaitedComment.songId))
             setBody('');
+            // history.push(`/songs/${awaitedComment.songId}`)
         } else
             if (formType === "Edit comment") {
                 const awaitedComment = await dispatch(editComment(comment.id, newComment))
