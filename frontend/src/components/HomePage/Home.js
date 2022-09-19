@@ -14,7 +14,7 @@ const Home = () => {
             <div>search bar: {/*(search for artist, bands, tracks, podcasts)*/} or upload song button<UploadSong /> {/*(make button, make available when not logged in-redirect to signup?)*/} </div>
             <div>
                 <h2> Hear what's trending for free in the SoundCloud community</h2>
-                <div>Free music: {/* 12 cards(double row)*/}</div>
+                <Link to={`/songs`}>Free music: {/* 12 cards(double row)*/}</Link>
             </div>
 
         </div>

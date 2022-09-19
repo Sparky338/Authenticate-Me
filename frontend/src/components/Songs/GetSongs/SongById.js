@@ -10,10 +10,6 @@ const SongById = () => {
     const session = useSelector(state => state.session);
     const songObj = useSelector(state => state.songs);
     const songs = Object.values(songObj)
-    if (!session.user) {
-            history.push('/logout')
-            // alert('You must be signed in to view a song.')
-        }
     const currentUserId = session.user?.id;
     const commentsState = useSelector(state => state.comments);
 
