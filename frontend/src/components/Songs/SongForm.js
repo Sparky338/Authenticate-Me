@@ -11,7 +11,7 @@ const SongForm = ({ song, formType }) => {
     const [description, setDescription] = useState(song.description || '');
     const [url, setUrl] = useState(song.url || '');
     const [imageUrl, setImageUrl] = useState(song.imageUrl || '');
-    const [albumId, setAlbumId] = useState(song.albumId || null);
+    const [albumId/*, setAlbumId*/] = useState(song.albumId || null);
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -33,8 +33,7 @@ const SongForm = ({ song, formType }) => {
         if (formType === "Upload a song") {
             const awaitedSong = await dispatch(createSong(newSong))
             history.push(`/songs/${awaitedSong.id}`)
-        } else
-            if (formType === "Update song") {
+        } else if (formType === "Update song") {
                 const awaitedSong = await dispatch(editSong(song.id, newSong))
                 history.push(`/songs/${awaitedSong.id}`)
             }
@@ -42,7 +41,7 @@ const SongForm = ({ song, formType }) => {
 
     return (
         <div className="song-form">
-            <form className="song-form form" onSubmit={handleSubmit} >
+            <form className="form song-form" onSubmit={handleSubmit} >
                 <h2>{formType}</h2>
                 {hasSubmitted && validationErrors.length > 0 && (
                     <div className="error-handling">There were errors in your submission:
@@ -56,6 +55,7 @@ const SongForm = ({ song, formType }) => {
                 <label>
                     Title:
                     <input
+                        className='input'
                         type="text"
                         value={title}
                         onChange={e => setTitle(e.target.value)}
@@ -64,6 +64,7 @@ const SongForm = ({ song, formType }) => {
                 <label>
                     Description:
                     <input
+                        className='input'
                         type="text"
                         value={description}
                         onChange={e => setDescription(e.target.value)}
@@ -72,6 +73,7 @@ const SongForm = ({ song, formType }) => {
                 <label>
                     Song URL:
                     <input
+                        className='input'
                         type="text"
                         value={url}
                         onChange={e => setUrl(e.target.value)}
@@ -80,6 +82,7 @@ const SongForm = ({ song, formType }) => {
                 <label>
                     Image URL:
                     <input
+                        className='input'
                         type="text"
                         value={imageUrl}
                         onChange={e => setImageUrl(e.target.value)}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -33,6 +33,7 @@ function SignupForm() {
       <label>
         Email
         <input
+          className='input'
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -42,6 +43,7 @@ function SignupForm() {
       <label>
         Username
         <input
+          className='input'
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -51,6 +53,7 @@ function SignupForm() {
       <label>
         Password
         <input
+          className='input'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -60,13 +63,14 @@ function SignupForm() {
       <label>
         Confirm Password
         <input
+          className='input'
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Create account</button>
+      <button className="button submit-button" type="submit">Create account</button>
     </form>
   );
 }

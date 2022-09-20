@@ -9,7 +9,7 @@ const AllSongs = () => {
     const songs = Object.values(songsSession)
 
     return (
-        <div>
+        <div className="songs">
             {songs.map((song) => {
                 return (
                     <div className="allSongs" key={song.id}>

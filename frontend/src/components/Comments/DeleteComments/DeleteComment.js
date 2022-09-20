@@ -16,7 +16,7 @@ const DeleteCommentButton = ({comment}) => {
             if (deleted) history.push(`/songs/${songId}`);
         }
         return (
-            <button onClick={handleClick}>Delete</button>
+            <button className="delete-button button" onClick={handleClick}>Delete</button>
         )
     }
 }
