@@ -30,10 +30,10 @@ function Navigation({ isLoaded }){
 
     return (
       <ul>
-        <li>
+        <div className='header top-banner-links'>
           <NavLink exact to="/">Home</NavLink>
           {isLoaded && sessionLinks}
-        </li>
+        </div>
       </ul>
     );
   }

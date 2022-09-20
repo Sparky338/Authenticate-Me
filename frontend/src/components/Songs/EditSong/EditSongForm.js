@@ -9,19 +9,24 @@ const EditSongForm = () => {
     const sessionState = useSelector(state => state.session);
     const currentUser = sessionState.user.id;
 
-    const artist = songsState[songId].userId;
+    if (!songId) return null;
+
+    const artist = songsState[songId]?.userId;
     const song = songsState[songId];
+
 
     if (currentUser === artist) {
         return (
             <SongForm song={song} formType="Update song" />
         );
-    } else return (
-        <div>
-            {history.push(`/songs/${songId}`)}
-            {window.alert("You must be the artist to edit this song!")}
-        </div>
-    )
+    } else {
+        return (
+            <div>
+                {history.push(`/songs/${songId}`)}
+            </div>
+        )
+    }
+
 }
 
 

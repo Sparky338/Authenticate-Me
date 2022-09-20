@@ -7,7 +7,7 @@ const UploadSong = () => {
     if (!user){
         return null
     } else return (
-        <Link to={`/songs/upload`}>Upload</Link>
+        <Link className="link upload-link" to={`/songs/upload`}>Upload</Link>
     )
 
 }

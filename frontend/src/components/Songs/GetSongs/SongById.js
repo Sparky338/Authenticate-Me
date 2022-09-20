@@ -1,11 +1,10 @@
 import { useSelector } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import CreateCommentForm from "../../Comments/CreateComments/CreateCommentForm";
 import CommentsBySongId from "../../Comments/GetComments/GetComments";
 import DeleteSong from "../DeleteSongs/DeleteSong";
 
 const SongById = () => {
-    const history = useHistory();
     const { songId } = useParams();
     const session = useSelector(state => state.session);
     const songObj = useSelector(state => state.songs);
@@ -21,18 +20,18 @@ const SongById = () => {
     const filteredSong = songs.filter(song => song.id === +songId);
 
     return (
-        <div>
+        <div className="songs">
             {filteredSong.map((song) => {
                 return (
                     <div className="songById" key={song.id}>
                         Artist Id:{song.userId}, Song Title:{song.title}
-                        <div>Description: {song.description}</div>
+                        <div className="description">Description: {song.description}</div>
                         {currentUserId === artistId ? [
                             <Link to={`/songs/${song.id}/edit`}>Edit</Link>,
                             <DeleteSong />
                         ] : ""}
                         <CreateCommentForm />
-                        <div>Comments: <CommentsBySongId /></div>
+                        <div className="comments song-comments">Comments: <CommentsBySongId /></div>
                     </div>
                 )
             })}

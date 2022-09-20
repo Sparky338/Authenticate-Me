@@ -18,7 +18,7 @@ const DeleteSongButton = () => {
             history.push('/songs');
         }
         return (
-            <button onClick={handleClick}>Delete</button>
+            <button className="button delete-button" onClick={handleClick}>Delete</button>
         )
     } else {
         return null;

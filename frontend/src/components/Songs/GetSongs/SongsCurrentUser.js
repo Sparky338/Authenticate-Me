@@ -11,15 +11,16 @@ const SongsCurrentUser = () => {
     const currentUser = session.user.id
     const currentUserSongs = songs.filter(song => song.userId === currentUser)
 
-    if (currentUser){
+    if (currentUser) {
         return (
-            <div>
+            <div className="songs current-user-songs">
                 {currentUserSongs.map((song) => {
                     return (
-                        <li key={song.id}>
-                            <Link to={`/songs/${song.id}`}>Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}</Link>
-
-                        </li>
+                        <div className="song" key={song.id}>
+                            <Link to={`/songs/${song.id}`}>
+                                Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
+                            </Link>
+                        </div>
                     )
                 })}
             </div>
