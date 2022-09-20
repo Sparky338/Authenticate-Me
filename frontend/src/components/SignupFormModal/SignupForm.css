@@ -1,5 +1,11 @@
 form { /*changes ALL forms*/
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+}
+
+button.signup-button {
+    background-color: #f50;
+    border-color: #f50;
+    color: white;
 }

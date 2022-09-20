@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const UploadSong = () => {
@@ -7,7 +7,7 @@ const UploadSong = () => {
     if (!user){
         return null
     } else return (
-        <Link className="link upload-link" to={`/songs/upload`}>Upload</Link>
+        <NavLink className="link upload-link" to={`/songs/upload`}>Upload</NavLink>
     )
 
 }

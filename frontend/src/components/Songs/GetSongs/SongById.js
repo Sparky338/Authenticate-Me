@@ -7,10 +7,10 @@ import DeleteSong from "../DeleteSongs/DeleteSong";
 const SongById = () => {
     const { songId } = useParams();
     const session = useSelector(state => state.session);
+    const commentsState = useSelector(state => state.comments);
     const songObj = useSelector(state => state.songs);
     const songs = Object.values(songObj)
     const currentUserId = session.user?.id;
-    const commentsState = useSelector(state => state.comments);
 
     if (!songId) return null;
     if (!commentsState) return null;
