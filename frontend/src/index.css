@@ -1,8 +1,12 @@
 /* TODO Add site wide styles */
 button {
-    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    height: 26px;
+    margin: 0;
     padding: 2px 11px 2px 10px;
     border: 1px solid whitesmoke;
+    border-radius: 3px;
     cursor: pointer;
     font-size: 14px;
     line-height: 20px;
