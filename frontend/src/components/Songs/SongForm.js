@@ -20,9 +20,13 @@ const SongForm = ({ song, formType }) => {
 
         if (!title) errors.push("Song title is required");
         if (!url) errors.push("Audio is required");
+        if (!url.endsWith('.mp3')) errors.push("Audio file must be an mp3");
+        if (!imageUrl.endsWith('.jpg') && !imageUrl.endsWith('.jpeg') && !imageUrl.endsWith('.png')) {
+            errors.push("Image file must be a jpg, jpeg, or png");
+        }
 
         setValidationErrors(errors);
-    }, [title, url])
+    }, [title, url, imageUrl])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
