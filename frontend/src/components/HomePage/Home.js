@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import UploadSong from "../Songs/CreateSong/CreateSongNav";
+
 
 const Home = () => {
     const history = useHistory();
@@ -11,9 +11,9 @@ const Home = () => {
 
     return (
         <div>
-            <div className="body">
+            <div className="home home-body">
                 <h2 className="body-title"> Hear what's trending for free in the SoundCloud community</h2>
-                <Link className="free-music music-cards" to={`/songs`}>Free music: {/* 12 cards(double row)*/}</Link>
+                <button className="button free-music link-to-songs" onClick={() => history.push('/songs')}>Explore the entire library {/* 12 cards(double row)*/}</button>
             </div>
 
         </div>
