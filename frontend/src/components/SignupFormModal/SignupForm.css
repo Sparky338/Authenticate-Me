@@ -1,10 +1,15 @@
-form { /*changes ALL forms*/
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+button.signup-button {
+    background-color: #f50;
+    border-color: #f50;
+    color: white;
 }
 
-button.signup-button {
+button.submit-button {
+    font-size: 16 px;
+    height: 40px;
+    line-height: 18 px;
+    padding: 10px 15px;
+    width: 100%;
     background-color: #f50;
     border-color: #f50;
     color: white;
