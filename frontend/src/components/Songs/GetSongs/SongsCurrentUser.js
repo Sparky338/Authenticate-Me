@@ -8,7 +8,7 @@ const SongsCurrentUser = () => {
     const songs = Object.values(songsObj);
     const session = useSelector(state => state.session)
 
-    const currentUser = session.user.id
+    const currentUser = session.user?.id
     const currentUserSongs = songs.filter(song => song.userId === currentUser)
 
     if (currentUser) {
@@ -25,7 +25,7 @@ const SongsCurrentUser = () => {
                 })}
             </div>
         );
-    } else return null
+    } //else return null
 }
 
 export default SongsCurrentUser
