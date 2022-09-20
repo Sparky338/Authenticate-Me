@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+import './Home.css'
 
 const Home = () => {
     const history = useHistory();
@@ -11,11 +11,11 @@ const Home = () => {
 
     return (
         <div>
-            <div className="home home-body">
-                <h2 className="body-title"> Hear what's trending for free in the SoundCloud community</h2>
-                <button className="button free-music link-to-songs" onClick={() => history.push('/songs')}>Explore the entire library {/* 12 cards(double row)*/}</button>
-            </div>
+            <div className="home trending-text"> Hear what's trending for free in the SoundCloud community</div>
 
+            <div className="button-div">
+            <button className="button free-music" onClick={() => history.push('/songs')}>Explore the entire library {/* 12 cards(double row)*/}</button>
+            </div>
         </div>
 
     )
