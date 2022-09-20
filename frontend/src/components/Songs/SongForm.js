@@ -32,6 +32,7 @@ const SongForm = ({ song, formType }) => {
         e.preventDefault();
         setHasSubmitted(true)
         if (validationErrors.length) return alert(`Can't submit, please fill in the missing information.`)
+
         const newSong = { ...song, title, description, url, imageUrl, albumId };
 
         if (formType === "Upload a song") {
