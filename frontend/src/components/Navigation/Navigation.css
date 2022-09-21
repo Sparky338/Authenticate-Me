@@ -46,6 +46,13 @@ div.right-banner {
     /* border: solid green 3px; */
     /* background-color: aliceblue; */
 }
+
 i.fa-brands {
-    size: 20px;
+    background-color: #f50;
+}
+
+div.navlink {
+    border: solid red 1px;
+    text-decoration: none;
+    color: white;
 }
