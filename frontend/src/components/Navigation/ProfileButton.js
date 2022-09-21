@@ -34,22 +34,27 @@ function ProfileButton({ user }) {
     }
   };
 
+  const linkStyling = {
+    textDecoration: 'none',
+    color: '#333',
+  }
+
   return (
-    <>
+    <div className="profile">
       <button className="button profile-menu-button" onClick={openMenu}>
         <i className="fa-solid fa-user-astronaut"></i>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
+        <div className="profile-dropdown">
           <div className="username">{user.username}</div>
           <div className="email">{user.email}</div>
-          <div className="user-songs-link"><Link to={`/songs/current`}>{user.username}'s songs</Link></div>
+          <Link to={`/songs/current`} style={linkStyling}>{user.username}'s songs</Link>
           <div>
-            <button className="button logout-button" onClick={logout}>Log Out</button>
+            <Link className="button logout-button" style={linkStyling} onClick={logout}>Log Out</Link>
           </div>
-        </ul>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 

@@ -46,3 +46,20 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+.profile-dropdown {
+    background-color: white;
+    position:fixed;
+    top: 46px;
+    right: 0;
+    border: rgba(0, 0, 0, 0.266) 1px solid;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    font-weight: 700;
+    color: #333;
+
+}
+
+/* Link {
+    text-decoration: none;
+} */

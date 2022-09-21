@@ -41,8 +41,11 @@ div.middle-banner {
 
 div.right-banner {
     display: flex;
-    justify-content: right;
+    justify-content:right;
     width: 33%;
+
+    /* text-decoration: none;
+    color: #ccc; */
     /* border: solid green 3px; */
     /* background-color: aliceblue; */
 }
@@ -51,8 +54,13 @@ i.fa-brands {
     background-color: #f50;
 }
 
-div.navlink {
+div.navlink NavLink {
     border: solid red 1px;
     text-decoration: none;
     color: white;
 }
+
+
+/* .logout-button {
+
+} */

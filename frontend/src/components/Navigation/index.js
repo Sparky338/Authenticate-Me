@@ -15,7 +15,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <UploadSong /*className='upload-song-link'*//>
+        <UploadSong />
         <ProfileButton user={sessionUser}/>
       </>
     );
@@ -27,6 +27,7 @@ function Navigation({ isLoaded }) {
       </>
     );
   }
+
 
   return (
     <header className='banner'>
