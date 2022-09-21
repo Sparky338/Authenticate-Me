@@ -40,3 +40,9 @@ form.modal {
     font-size: 16px;
     border: solid #f50 1px; /*might change later*/
 }
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
