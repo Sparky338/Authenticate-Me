@@ -15,8 +15,8 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <UploadSong />
-        <ProfileButton user={sessionUser} />
+        <UploadSong /*className='upload-song-link'*//>
+        <ProfileButton user={sessionUser}/>
       </>
     );
   } else {
@@ -32,7 +32,7 @@ function Navigation({ isLoaded }) {
     <header className='banner'>
       <div className='top-banner-links'>
         <div className='left-banner'>
-
+          <i class="fa-brands fa-soundcloud"></i>
           <NavLink exact to="/" activeClassName='selected'>Home</NavLink>
         </div>
         <div className='right-banner'>{isLoaded && sessionLinks}</div>

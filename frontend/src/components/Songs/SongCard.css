@@ -1,0 +1,17 @@
+div.song-display {
+    display: flex;
+    flex-direction: row;
+}
+
+div.song-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15em;
+    width: 15em;
+    border: 1px solid #f50;
+    /* border-radius: 3px; */
+    background-color: white;
+    color:black;
+}

@@ -15,7 +15,7 @@ header.banner {
     font-weight: 100;
     font-size: 14px;
     line-height: 1.5;
-    /* position: fixed; */
+    position: fixed;
 }
 
 div.top-banner-links {
@@ -34,4 +34,8 @@ div.right-banner {
     border: solid green 3px;
     justify-content:flex-end;
     float: right;
+    background-color: aliceblue;
+}
+i.fa-brands {
+    size: 20px;
 }
