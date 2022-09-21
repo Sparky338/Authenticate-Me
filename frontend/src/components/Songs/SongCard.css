@@ -1,6 +1,7 @@
 div.song-display {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 div.song-card {
@@ -10,8 +11,7 @@ div.song-card {
     align-items: center;
     height: 15em;
     width: 15em;
-    border: 1px solid #f50;
-    /* border-radius: 3px; */
+    border: 1px solid #f50; /*REMOVE BEFORE TESTING*/
     background-color: white;
     color:black;
 }
