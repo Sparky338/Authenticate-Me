@@ -14,3 +14,7 @@ button.submit-button {
     border-color: #f50;
     color: white;
 }
+
+.login-errors {
+    list-style-type: none;
+}

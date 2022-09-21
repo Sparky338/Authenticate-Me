@@ -15,3 +15,7 @@ button.submit-button, button.demo-user {
     border-color: #f50;
     color: white;
 }
+
+.login-errors {
+    list-style-type: none;
+}
