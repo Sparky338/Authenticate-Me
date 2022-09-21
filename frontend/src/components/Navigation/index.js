@@ -8,34 +8,37 @@ import UploadSong from '../Songs/CreateSong/CreateSongNav';
 
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <>
-      <UploadSong />
-      <ProfileButton user={sessionUser} />
+        <UploadSong />
+        <ProfileButton user={sessionUser} />
       </>
     );
   } else {
     sessionLinks = (
-        <>
-          <LoginFormModal />
-          <SignupFormModal />
-        </>
-      );
-    }
-
-    return (
-      <ul>
-        <div className='header top-banner-links'>
-          <NavLink exact to="/">Home</NavLink>
-          {isLoaded && sessionLinks}
-        </div>
-      </ul>
+      <>
+        <LoginFormModal />
+        <SignupFormModal />
+      </>
     );
   }
 
-  export default Navigation;
+  return (
+    <header className='banner'>
+      <div className='top-banner-links'>
+        <div className='left-banner'>
+
+          <NavLink exact to="/" activeClassName='selected'>Home</NavLink>
+        </div>
+        <div className='right-banner'>{isLoaded && sessionLinks}</div>
+      </div>
+    </header>
+  );
+}
+
+export default Navigation;

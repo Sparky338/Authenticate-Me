@@ -2,3 +2,36 @@
     display: flex;
     flex-direction: column;
 }
+
+header.banner {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 46px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    background: #333;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 1.5;
+    /* position: fixed; */
+}
+
+div.top-banner-links {
+    display: flex;
+    align-items: center;
+}
+
+div.left-banner {
+    border: red 1px solid;
+    float: left;
+}
+
+div.right-banner {
+    display: flex;
+    flex-direction: row;
+    border: solid green 3px;
+    justify-content:flex-end;
+    float: right;
+}
