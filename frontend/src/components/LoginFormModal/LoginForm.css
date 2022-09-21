@@ -9,6 +9,7 @@ button.submit-button, button.demo-user {
     height: 40px;
     line-height: 18 px;
     padding: 10px 15px;
+    margin-top: 3px;
     width: 100%;
     background-color: #f50;
     border-color: #f50;

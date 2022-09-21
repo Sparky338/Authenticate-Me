@@ -29,7 +29,6 @@ function LoginForm() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <button className='demo-user button' onClick={handleDemoUser}>Demo User</button>
       <label>
         {/* Username or Email */}
         <input
@@ -53,6 +52,7 @@ function LoginForm() {
         />
       </label>
       <button className='button submit-button' type="submit">Log In</button>
+      <button className='demo-user button' onClick={handleDemoUser}>Demo User</button>
     </form>
   );
 }
