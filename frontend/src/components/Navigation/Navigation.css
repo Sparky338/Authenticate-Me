@@ -44,14 +44,18 @@ div.right-banner {
     justify-content:right;
     width: 33%;
 
-    /* text-decoration: none;
+    /* Handled inline
+    text-decoration: none;
     color: #ccc; */
     /* border: solid green 3px; */
     /* background-color: aliceblue; */
 }
 
 i.fa-brands {
+    display: flex;
     background-color: #f50;
+    align-items: center;
+    /* width: 50px; */
 }
 
 div.navlink NavLink {

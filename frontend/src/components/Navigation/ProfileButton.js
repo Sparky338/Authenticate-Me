@@ -50,7 +50,7 @@ function ProfileButton({ user }) {
           <div className="email">{user.email}</div>
           <Link to={`/songs/current`} style={linkStyling}>{user.username}'s songs</Link>
           <div>
-            <Link className="button logout-button" style={linkStyling} onClick={logout}>Log Out</Link>
+            <Link className="Link logout-button" style={linkStyling} onClick={logout}>Log Out</Link>
           </div>
         </div>
       )}

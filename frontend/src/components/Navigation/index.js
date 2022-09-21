@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -28,6 +28,17 @@ function Navigation({ isLoaded }) {
     );
   }
 
+  const linkStyling = {
+    display: 'block',
+    textDecoration: 'none',
+    color: '#ccc',
+    padding: '12px 0',
+    height: '46px',
+    boxSizing: 'border-box',
+    textAlign: 'center',
+    width: '104px',
+    borderRight: '1px solid #111'
+  }
 
   return (
     <header className='banner'>
@@ -35,7 +46,7 @@ function Navigation({ isLoaded }) {
         <div className='left-banner'>
           <i class="fa-brands fa-soundcloud"></i>
           <div className='navlink home'>
-          <NavLink exact to="/" activeClassName='selected'>Home</NavLink>
+          <Link exact to="/" className='link' style={linkStyling}>Home</Link>
           </div>
         </div>
         <div className='middle-banner'></div>
