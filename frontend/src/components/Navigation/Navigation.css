@@ -15,26 +15,36 @@ header.banner {
     font-weight: 100;
     font-size: 14px;
     line-height: 1.5;
-    position: fixed;
+    position: sticky;
+    top: 0;
 }
 
 div.top-banner-links {
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: center;
 }
 
 div.left-banner {
-    border: red 1px solid;
-    float: left;
+    display: flex;
+    justify-content: left;
+    width: 33%;
+    /* border: red 1px solid; */
+}
+
+div.middle-banner {
+    display: flex;
+    justify-content: center;
+    width: 33%;
 }
 
 div.right-banner {
     display: flex;
-    flex-direction: row;
-    border: solid green 3px;
-    justify-content:flex-end;
-    float: right;
-    background-color: aliceblue;
+    justify-content: right;
+    width: 33%;
+    /* border: solid green 3px; */
+    /* background-color: aliceblue; */
 }
 i.fa-brands {
     size: 20px;

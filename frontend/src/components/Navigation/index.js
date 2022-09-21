@@ -35,6 +35,7 @@ function Navigation({ isLoaded }) {
           <i class="fa-brands fa-soundcloud"></i>
           <NavLink exact to="/" activeClassName='selected'>Home</NavLink>
         </div>
+        <div className='middle-banner'></div>
         <div className='right-banner'>{isLoaded && sessionLinks}</div>
       </div>
     </header>
