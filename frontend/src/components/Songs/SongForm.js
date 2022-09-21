@@ -21,9 +21,12 @@ const SongForm = ({ song, formType }) => {
         if (!title) errors.push("Song title is required");
         if (!url) errors.push("Audio is required");
         if (!url.endsWith('.mp3')) errors.push("Audio file must be an mp3");
-        if (!imageUrl.endsWith('.jpg') && !imageUrl.endsWith('.jpeg') && !imageUrl.endsWith('.png')) {
-            errors.push("Image file must be a jpg, jpeg, or png");
+        if (!imageUrl) {
+            setImageUrl('https://cdn.pixabay.com/photo/2016/04/07/22/09/note-1314939__340.png')
         }
+        // if (!imageUrl.endsWith('.jpg') && !imageUrl.endsWith('.jpeg') && !imageUrl.endsWith('.png')) {
+        //     errors.push("Image file must be a jpg, jpeg, or png");
+        // }
 
         setValidationErrors(errors);
     }, [title, url, imageUrl])
@@ -39,9 +42,9 @@ const SongForm = ({ song, formType }) => {
             const awaitedSong = await dispatch(createSong(newSong))
             history.push(`/songs/${awaitedSong.id}`)
         } else if (formType === "Update song") {
-                const awaitedSong = await dispatch(editSong(song.id, newSong))
-                history.push(`/songs/${awaitedSong.id}`)
-            }
+            const awaitedSong = await dispatch(editSong(song.id, newSong))
+            history.push(`/songs/${awaitedSong.id}`)
+        }
     };
 
     return (

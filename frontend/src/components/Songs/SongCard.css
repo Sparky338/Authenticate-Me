@@ -15,3 +15,8 @@ div.song-card {
     background-color: white;
     color:black;
 }
+
+img.card-image {
+    max-width: 50%;
+    height: auto;
+}
