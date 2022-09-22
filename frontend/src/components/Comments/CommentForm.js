@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createComment, editComment, getSongComments } from "../../store/comments";
+import './CreateComments/CreateComments.css'
 
 const CommentForm = ({ comment, formType }) => {
     const history = useHistory();
@@ -40,7 +41,7 @@ const CommentForm = ({ comment, formType }) => {
     return (
         <div className="comments-form form">
             <form onSubmit={handleSubmit}>
-                <h4>{formType}</h4>
+                {/* <h4>{formType}</h4> */}
                 <label>
                     {hasSubmitted && validationErrors.length > 0 && (
                         <div className="error-handling">There were errors in your submission:
@@ -55,6 +56,7 @@ const CommentForm = ({ comment, formType }) => {
                         className="comment-body"
                         value={body}
                         onChange={e => setBody(e.target.value)}
+                        placeholder='Write a comment'
                     />
                 </label>
                 <input className="button submitButton" type="submit" value="Submit" />

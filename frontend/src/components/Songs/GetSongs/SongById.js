@@ -15,10 +15,11 @@ const SongById = () => {
     const currentUserId = session.user?.id;
     const linkStyling = {
         textDecoration: 'none',
-        color: '#ccc',
+        color: '#f50',
         paddingRight: '10px',
-        paddingLeft: '10px'
-      }
+        paddingLeft: '10px',
+        fontSize: '18px'
+    }
 
     const playIcon = <i class="fa-solid fa-circle-play fa-5x"></i>
     const handlePlay = () => {
@@ -39,18 +40,25 @@ const SongById = () => {
                     return (
                         <div className="songById" key={song.id}>
                             <div className="song-player">
-                                <button className="individual-play-button" onClick={() => handlePlay}>{playIcon}</button>
-                                <div className="song-title">{song.title}</div>
-                                <div className="artist-name">{song.User.username}</div> {/*convert to link after artist component*/}
-                                {/* <div className="album-name">{song.Album.title}</div>  Add when albums component exists*/}
+                                <div className="upper-left">
+                                    <button className="individual-play-button" onClick={() => handlePlay}>{playIcon}</button>
+                                    <div className="song-details">
+                                        <div className="song-title"><span>{song.title}</span></div>
+                                        <div className="artist-name"><span>{song.User.username}</span></div> {/*convert to link after artist component*/}
+                                        {/* <div className="album-name">{song.Album.title}</div>  Add when albums component exists*/}
+                                    </div>
+                                </div>
+                                <div className="lower-left">{/*waveform?*/}</div>
                                 <div className="song-image">
                                     <img src={song.imageUrl} alt='Song Artwork' />
                                 </div>
                             </div>
-                            {currentUserId === artistId ? [
-                                <Link to={`/songs/${song.id}/edit`} style={linkStyling}>Edit</Link>,
-                                <DeleteSong />
-                            ] : ""}
+                            <div className="owner-options">
+                                {currentUserId === artistId ? [
+                                    <Link to={`/songs/${song.id}/edit`} style={linkStyling}>Edit</Link>,
+                                    <DeleteSong />
+                                ] : ""}
+                            </div>
                             <div className="song-comment-form">
                                 <CreateCommentForm />
                             </div>

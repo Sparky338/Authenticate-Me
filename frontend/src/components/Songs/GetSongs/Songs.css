@@ -9,7 +9,7 @@ div.song-player {
     background-color: rosybrown;
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: solid red 1px;
@@ -27,35 +27,54 @@ div.song-player {
     align-items: center;
 }
 
+.upper-left {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    display: flex;
+    top: 5%;
+    left: -24.5%;
+}
+.lower-left {
+    height: 50%;
+    width: 50%;
+    position: relative;
+    bottom: 5%;
+    left: -24.5%;
+}
+
 .individual-play-button {
     background-color: transparent;
     border-color: transparent;
-    position: absolute;
-    top: 10%;
-    left: 5%;
+}
+
+.song-details {
+    position: relative;
+    top:2%
 }
 
 div.song-title {
-    background-color: black;
     color: white;
     font-size: 24px;
-    position: absolute;
-    top: 10%;
-    left: 18%;
+    position: relative;
 }
-
 div.artist-name {
-    background-color: black;
+    background-size:cover;
     color: white;
     font-size: 14px;
-    position: absolute;
-    top: 21%;
-    left: 18%;
+    position: relative;
+    top:2%;
+}
+
+div.song-title span {
+    background-color: black;
+}
+
+div.artist-name span {
+    background-color: black;
 }
 
 div.song-image {
     position: absolute;
     right: 0%;
 }
-
-
