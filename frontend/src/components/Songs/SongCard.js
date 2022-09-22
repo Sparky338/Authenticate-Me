@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import './SongCard.css';
 
-const SongCard = ({ id, userId, albumId, title, description, url, imageUrl }) => {
+const SongCard = ({ id, userId, albumId, title, description, url, imageUrl, User }) => {
+    console.log(User)
     const playIcon = <i class="fa-solid fa-circle-play fa-3x"></i>
     const handlePlay = () => {
 
@@ -15,6 +16,7 @@ const SongCard = ({ id, userId, albumId, title, description, url, imageUrl }) =>
                     <button className="play-button button-overlap" onClick={() => handlePlay}>{playIcon}</button>
                 </div>
                 <Link to={`/songs/${id}`} className="title link card-title">{title}</Link>
+                <div className="artist card-artist">{User.username}</div>
             </li>
         </div>
     );
