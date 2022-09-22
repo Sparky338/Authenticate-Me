@@ -84,7 +84,7 @@ footer.audio-player {
     word-wrap: normal;
 }
 
-ul.songs-ul {
+ul.songs-ul { /*AllSongs component for card wrapping*/
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

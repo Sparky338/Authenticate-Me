@@ -12,7 +12,6 @@ const AllSongs = () => {
     return (
         <div className="songs">
             <ul className="songs-ul">
-
                 {songs.map((song) => {
                     return (
                         // <div className="allSongs" key={song.id}>

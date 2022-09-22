@@ -11,8 +11,6 @@ li.song-card {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    /* width: 20em;
-    height: auto; */
     border: 1px solid #f50;
     background-color: white;
     color:black;
@@ -22,4 +20,26 @@ li.song-card {
 img.card-image {
     max-width: 50%;
     height: auto;
+}
+
+div.card-outer {
+    position: relative;
+    background: #f90;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-button {
+    position: absolute;
+    z-index: 2;
+    top: auto;
+    display: none;
+    left: auto;
+
+}
+
+div.card-outer:hover .play-button {
+    display:block
 }
