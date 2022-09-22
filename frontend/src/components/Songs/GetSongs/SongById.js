@@ -13,6 +13,12 @@ const SongById = () => {
     const songObj = useSelector(state => state.songs);
     const songs = Object.values(songObj)
     const currentUserId = session.user?.id;
+    const linkStyling = {
+        textDecoration: 'none',
+        color: '#ccc',
+        paddingRight: '10px',
+        paddingLeft: '10px'
+      }
 
     const playIcon = <i class="fa-solid fa-circle-play fa-5x"></i>
     const handlePlay = () => {
@@ -42,7 +48,7 @@ const SongById = () => {
                                 </div>
                             </div>
                             {currentUserId === artistId ? [
-                                <Link className="link edit-link" to={`/songs/${song.id}/edit`}>Edit</Link>,
+                                <Link to={`/songs/${song.id}/edit`} style={linkStyling}>Edit</Link>,
                                 <DeleteSong />
                             ] : ""}
                             <div className="song-comment-form">

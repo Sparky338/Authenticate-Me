@@ -25,6 +25,12 @@ button {
     box-sizing: border-box;
 }
 
+.delete-button {
+    background-color: white;
+    color: black;
+    border:1px solid rgba(51, 51, 51, 0.179)
+}
+
 form {
     display: flex;
     flex-direction: column;
