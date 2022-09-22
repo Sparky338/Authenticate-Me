@@ -2,19 +2,21 @@ div.song-cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 16%;
+    height: auto;
 }
 
-div.song-card {
+li.song-card {
     display: flex;
-    flex: 0 1 16%;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    /* height: 15em; */
-    /* width: 15em; */
+    /* width: 20em;
+    height: auto; */
     border: 1px solid #f50;
-    /* background-color: white; */
-    /* color:black; */
+    background-color: white;
+    color:black;
+    margin: 10px;
 }
 
 img.card-image {
