@@ -1,0 +1,14 @@
+/* textarea {
+    resize:none;
+} */
+
+input.comment-body {
+    width: 100%;
+}
+
+/* div.comments-form {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%
+} */

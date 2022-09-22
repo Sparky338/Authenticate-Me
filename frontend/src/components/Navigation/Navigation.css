@@ -46,19 +46,12 @@ div.right-banner {
     display: flex;
     justify-content:right;
     width: 33%;
-
-    /* Handled inline
-    text-decoration: none;
-    color: #ccc; */
-    /* border: solid green 3px; */
-    /* background-color: aliceblue; */
 }
 
 i.fa-brands {
     display: flex;
     color: white;
     align-items: center;
-    /* background-color: #f50; */
 }
 
 div.navlink NavLink {
@@ -66,8 +59,3 @@ div.navlink NavLink {
     text-decoration: none;
     color: white;
 }
-
-
-/* .logout-button {
-
-} */

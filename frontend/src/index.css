@@ -84,6 +84,11 @@ footer.audio-player {
     margin: 0;
 }
 
+.error-handling {
+    list-style-type: none;
+    color: #d61348;
+}
+
 .login-errors {
     display: flex;
     justify-content: center;

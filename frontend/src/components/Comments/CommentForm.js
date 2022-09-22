@@ -20,6 +20,12 @@ const CommentForm = ({ comment, formType }) => {
         setValidationErrors(errors);
     }, [body])
 
+    // const checkSubmit = (e) => {
+    //     if (e && e.keyCode === 13) {
+    //         document.forms[0].submit();
+    //     }
+    // }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true)
@@ -44,22 +50,24 @@ const CommentForm = ({ comment, formType }) => {
                 {/* <h4>{formType}</h4> */}
                 <label>
                     {hasSubmitted && validationErrors.length > 0 && (
-                        <div className="error-handling">There were errors in your submission:
-                            <ul>
+                        <div className="error-handling">
+                            <ul className="error-handling">
                                 {validationErrors.map(error => (
                                     <li className="errors" key={error}>{error}</li>
                                 ))}
                             </ul>
                         </div>
                     )}
-                    <textarea
-                        className="comment-body"
-                        value={body}
-                        onChange={e => setBody(e.target.value)}
-                        placeholder='Write a comment'
-                    />
+                    <div className="outer-comment-form">
+                        <input
+                            className="comment-body"
+                            value={body}
+                            onChange={e => setBody(e.target.value)}
+                            placeholder='Write a comment'
+                        />
+                    </div>
+                    <input className="button submitButton" type="submit" value="Submit" />
                 </label>
-                <input className="button submitButton" type="submit" value="Submit" />
             </form>
         </div>
     )
