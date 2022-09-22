@@ -14,7 +14,7 @@ const SongById = () => {
     const songs = Object.values(songObj)
     const currentUserId = session.user?.id;
 
-    const playIcon = <i class="fa-solid fa-circle-play fa-4x"></i>
+    const playIcon = <i class="fa-solid fa-circle-play fa-5x"></i>
     const handlePlay = () => {
 
     }
@@ -34,14 +34,15 @@ const SongById = () => {
                         <div className="songById" key={song.id}>
                             <div className="song-player">
                                 <button className="individual-play-button" onClick={() => handlePlay}>{playIcon}</button>
-                                <div className="song-title">Song Title:{song.title}</div>
-                                <div className="artist-name"> Artist:{song.User.username}</div>
+                                <div className="song-title">{song.title}</div>
+                                <div className="artist-name">{song.User.username}</div> {/*convert to link after artist component*/}
+                                {/* <div className="album-name">{song.Album.title}</div>  Add when albums component exists*/}
                                 <div className="song-image">
                                     <img src={song.imageUrl} alt='Song Artwork' />
                                 </div>
                             </div>
                             {currentUserId === artistId ? [
-                                <Link to={`/songs/${song.id}/edit`}>Edit</Link>,
+                                <Link className="link edit-link" to={`/songs/${song.id}/edit`}>Edit</Link>,
                                 <DeleteSong />
                             ] : ""}
                             <div className="song-comment-form">

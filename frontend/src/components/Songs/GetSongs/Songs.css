@@ -6,12 +6,17 @@ div.songById {
 }
 
 div.song-player {
+    background-color: rosybrown;
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    border: solid red 1px;
     width: 100%;
-
+    height: 380px;
+    margin-left: -30px;
+    margin-right: -30px;
 }
 
 .fa-circle-play {
@@ -25,12 +30,32 @@ div.song-player {
 .individual-play-button {
     background-color: transparent;
     border-color: transparent;
-    /* position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: flex-start;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%; */
+    position: absolute;
+    top: 10%;
+    left: 5%;
 }
+
+div.song-title {
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 10%;
+    left: 18%;
+}
+
+div.artist-name {
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: 21%;
+    left: 18%;
+}
+
+div.song-image {
+    position: absolute;
+    right: 0%;
+}
+
+
