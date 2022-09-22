@@ -78,3 +78,13 @@ div.song-image {
     position: absolute;
     right: 0%;
 }
+
+.song-comment-form {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
