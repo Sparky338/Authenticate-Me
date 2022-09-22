@@ -3,6 +3,7 @@ body {
     font-family: Interstate, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Garuda, Verdana, Tahoma, sans-serif;
     font-weight: 100;
     margin: 0;
+    margin-bottom: 5%;
 }
 
 button {
@@ -47,10 +48,15 @@ form.modal {
     padding-right: 10px;
 }
 
-footer {
+footer.audio-player {
     position: fixed;
     width: 100%;
     bottom: 0;
+    visibility: visible;
+    /* display: flex;
+    position: relative;
+    height: 100%;
+    align-items: center; */
 }
 
 .profile-dropdown {

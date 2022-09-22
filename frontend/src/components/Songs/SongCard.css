@@ -1,19 +1,20 @@
-div.song-display {
+div.song-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 div.song-card {
     display: flex;
+    flex: 0 1 16%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 15em;
-    width: 15em;
-    border: 1px solid #f50; /*REMOVE BEFORE TESTING*/
-    background-color: white;
-    color:black;
+    /* height: 15em; */
+    /* width: 15em; */
+    border: 1px solid #f50;
+    /* background-color: white; */
+    /* color:black; */
 }
 
 img.card-image {

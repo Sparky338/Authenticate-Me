@@ -4,7 +4,7 @@ import './SongCard.css';
 const SongCard = ({ id, userId, albumId, title, description, url, imageUrl }) => {
 
     return (
-        <div className="song-display">
+        <div className="song-cards">
             <div className="song-card">
                 <img className="image card-image" src={`${imageUrl}`} alt={`Song artwork`}  />
                 <Link to={`/songs/${id}`} className="title link card-title">{title}</Link> {/*font-size 14px, line-height: 1.4, text-decoration: none; font-weight 100,
