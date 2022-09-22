@@ -60,7 +60,7 @@ function App() {
       <footer className="audio-player">
         <AudioPlayer
           autoPlay='false'
-          src=/*"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"*/''
+          src=''//"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
           // onPlay={e => console.log('onPlay')}
         />
       </footer>

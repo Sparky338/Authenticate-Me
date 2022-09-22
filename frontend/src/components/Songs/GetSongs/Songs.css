@@ -1,0 +1,29 @@
+div.songById {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}
+
+.fa-circle-play {
+    color: #f50;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.individual-play-button {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+}

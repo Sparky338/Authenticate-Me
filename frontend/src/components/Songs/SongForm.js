@@ -48,57 +48,58 @@ const SongForm = ({ song, formType }) => {
     };
 
     return (
-        <div className="song-form">
-            <form className="form song-form" onSubmit={handleSubmit} >
-                <h2>{formType}</h2>
-                {hasSubmitted && validationErrors.length > 0 && (
-                    <div className="error-handling">There were errors in your submission:
-                        <ul>
-                            {validationErrors.map(error => (
-                                <li className="errors" key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-                <label>
-                    Title:
-                    <input
-                        className='input'
-                        type="text"
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Description:
-                    <input
-                        className='input'
-                        type="text"
-                        value={description}
-                        onChange={e => setDescription(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Song URL:
-                    <input
-                        className='input'
-                        type="text"
-                        value={url}
-                        onChange={e => setUrl(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Image URL:
-                    <input
-                        className='input'
-                        type="text"
-                        value={imageUrl}
-                        onChange={e => setImageUrl(e.target.value)}
-                    />
-                </label>
-                {/* dropdown menu with albums that user owns */}
-                {/* https://www.robinwieruch.de/react-dropdown/ good tutorial*/}
-                {/* <label>
+        <div className="outer-div">
+            <div className="song-form">
+                <form className="form song-form" onSubmit={handleSubmit} >
+                    <h2>{formType}</h2>
+                    {hasSubmitted && validationErrors.length > 0 && (
+                        <div className="error-handling">There were errors in your submission:
+                            <ul>
+                                {validationErrors.map(error => (
+                                    <li className="errors" key={error}>{error}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                    <label>
+                        Title:
+                        <input
+                            className='input'
+                            type="text"
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Description:
+                        <input
+                            className='input'
+                            type="text"
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Song URL:
+                        <input
+                            className='input'
+                            type="text"
+                            value={url}
+                            onChange={e => setUrl(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Image URL:
+                        <input
+                            className='input'
+                            type="text"
+                            value={imageUrl}
+                            onChange={e => setImageUrl(e.target.value)}
+                        />
+                    </label>
+                    {/* dropdown menu with albums that user owns */}
+                    {/* https://www.robinwieruch.de/react-dropdown/ good tutorial*/}
+                    {/* <label>
                 Album Id:
                 <input
                     type="integer"
@@ -106,8 +107,9 @@ const SongForm = ({ song, formType }) => {
                     onChange={e => setAlbumId(e.target.value)}
                 />
             </label> */}
-                <input type="submit" value={formType} />
-            </form>
+                    <input type="submit" value={formType} />
+                </form>
+            </div>
         </div>
     )
 }

@@ -17,6 +17,7 @@ header.banner {
     line-height: 1.5;
     position: sticky;
     top: 0;
+    z-index: 3;
 }
 
 div.top-banner-links {

@@ -13,16 +13,18 @@ const SongsCurrentUser = () => {
 
     if (currentUser) {
         return (
-            <div className="songs current-user-songs">
-                {currentUserSongs.map((song) => {
-                    return (
-                        <div className="song" key={song.id}>
-                            <Link to={`/songs/${song.id}`}>
-                                Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
-                            </Link>
-                        </div>
-                    )
-                })}
+            <div className="outer-div">
+                <div className="songs current-user-songs">
+                    {currentUserSongs.map((song) => {
+                        return (
+                            <div className="song" key={song.id}>
+                                <Link to={`/songs/${song.id}`}>
+                                    Artist Id:{song.userId}, Song Title:{song.title}, Album Id: {song.albumId}
+                                </Link>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         );
     } //else return null

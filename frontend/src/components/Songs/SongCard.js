@@ -12,11 +12,11 @@ const SongCard = ({ id, userId, albumId, title, description, url, imageUrl, User
             <li className="song-card">
                 <div className="card-outer">
                     <img className="image card-image" src={`${imageUrl}`} alt={`Song artwork`} />
-                    <div className="play-background"></div>
+                    {/* <div className="play-background"></div> */}
                     <button className="play-button button-overlap" onClick={() => handlePlay}>{playIcon}</button>
                 </div>
                 <Link to={`/songs/${id}`} className="title link card-title">{title}</Link>
-                <div className="artist card-artist">{User.username}</div>
+                <div className="artist card-artist">{User.username}</div> {/*Can change to Link in future when Artist page is setup*/}
             </li>
         </div>
     );

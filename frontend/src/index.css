@@ -89,3 +89,9 @@ ul.songs-ul { /*AllSongs component for card wrapping*/
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.outer-div {
+    width: 75%;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}
