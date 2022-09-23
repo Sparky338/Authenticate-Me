@@ -6,11 +6,6 @@ div.songById {
     width: 100%;
 }
 
-/* form {
-    width: 100%;
-
-} */
-
 div.song-player {
     background-color: rosybrown;
     position: relative;
@@ -97,7 +92,6 @@ div.song-image {
     display: flex;
     flex-direction: row;
     width: 100%;
-    /* width: 1180px; */
     padding: 0;
     margin: 0;
     border: solid red 1px;
@@ -111,11 +105,13 @@ div.song-image {
 .artist-info {
     width: 20%;
     min-height: 100px;
+    padding-top: 25px;
 }
 
 .song-description-comments {
     width: 60%;
     min-height: 100px;
+    padding-top: 25px;
 }
 
 .song-description {
@@ -130,6 +126,12 @@ div.song-image {
 }
 
 div.cloud {
-    color: #333;
+    color: rgb(100, 100, 100);
     position: relative;
+}
+
+.current-user-songs {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
 }

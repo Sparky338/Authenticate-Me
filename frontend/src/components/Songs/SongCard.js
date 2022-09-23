@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import './SongCard.css';
+import { useDispatch } from "react-redux";
+import { playSongAction } from "../../store/songs";
 
 const SongCard = ({ id, userId, albumId, title, description, url, imageUrl, User }) => {
-    console.log(User)
+    const dispatch = useDispatch();
     const playIcon = <i class="fa-solid fa-circle-play fa-3x"></i>
-    const handlePlay = () => {
 
+    const handlePlay = (url) => {
+        dispatch(playSongAction(url))
     }
+
     return (
         <div className="song-cards">
             <li className="song-card">

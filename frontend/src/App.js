@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import { getAllSongs } from "./store/songs";
-import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import * as sessionActions from "./store/session";
 
@@ -14,6 +13,7 @@ import SongById from "./components/Songs/GetSongs/SongById";
 import CreateSongForm from "./components/Songs/CreateSong/CreateSongForm";
 import EditSongForm from "./components/Songs/EditSong/EditSongForm";
 import Logout from "./components/Signout/Signout";
+import SongPlayer from "./components/SongPlayer";
 
 // import ArtistSongs from "./components/Artists/ArtistSongs";
 
@@ -57,13 +57,8 @@ function App() {
           <Route>Page Not Found</Route>
         </Switch>
       )}
-      <footer className="audio-player">
-        <AudioPlayer
-          autoPlay='false'
-          src=''//"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-          // onPlay={e => console.log('onPlay')}
-        />
-      </footer>
+      <footer></footer>
+      <SongPlayer />
     </>
   );
 }
