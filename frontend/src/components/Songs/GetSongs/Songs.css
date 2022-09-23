@@ -88,3 +88,27 @@ div.song-image {
     margin: 0;
 }
 
+.song-info {
+    width:100%;
+    display: flex;
+}
+
+.artist-info {
+    width: 20%;
+    height: 500px;
+}
+
+.song-description-comments {
+    width: 60%;
+}
+
+.song-description {
+    font-size: 14px;
+    color: #333;
+}
+
+.song-comments {
+    font-size: 12px;
+    color: #333;
+    width: 100%;
+}

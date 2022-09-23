@@ -21,7 +21,8 @@ const SongById = () => {
         fontSize: '18px'
     }
 
-    const playIcon = <i class="fa-solid fa-circle-play fa-5x"></i>
+    const playIcon = <i class="fa-solid fa-circle-play fa-5x"></i>;
+    const commentIcon = <i class="fa-solid fa-message"></i>;
     const handlePlay = () => {
 
     }
@@ -62,8 +63,13 @@ const SongById = () => {
                             <div className="song-comment-form">
                                 <CreateCommentForm />
                             </div>
-                            <div className="song-description">Song Description: {song.description}</div>
-                            <div className="comments song-comments">Comments: <CommentsBySongId /></div>
+                            <div className="song-info">
+                                <div className="artist-info"></div>
+                                <div className="song-description-comments">
+                                    <div className="song-description">Song Description: {song.description}</div>
+                                    <div className="comments song-comments">{commentIcon} Comments <CommentsBySongId /></div>
+                                </div>
+                            </div>
                         </div>
                     )
                 })}

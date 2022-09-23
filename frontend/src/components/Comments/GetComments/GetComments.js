@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSongComments } from "../../../store/comments";
 import DeleteCommentButton from "../DeleteComments/DeleteComment";
+import './Comments.css'
 
 const CommentsBySongId = () => {
     const dispatch = useDispatch();
@@ -25,8 +26,14 @@ const CommentsBySongId = () => {
                 return (
                     <div className='comments' key={comment.id}>
                         <div className="comments comment-username">{comment.User?.username}</div>
-                        <p className="comments comment-body">{comment.body}</p>
-                        <DeleteCommentButton comment={comment} />
+                        <div className="hover-delete">
+                            <div className="comment-and-delete">
+                                <div className="comments comment-body">{comment.body}</div>
+                                <div className="comment-delete-button">
+                                    <DeleteCommentButton comment={comment} />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 )
             })}

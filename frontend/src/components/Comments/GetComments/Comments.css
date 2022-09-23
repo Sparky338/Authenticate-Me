@@ -1,0 +1,29 @@
+.comment-and-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+}
+
+div.hover-delete {
+    width: 100%;
+}
+
+.comment-delete-button {
+    position: absolute;
+    right: 28%;
+    /* display: flex;
+    justify-content: end; */
+    width: 1%;
+    z-index: 2;
+    display: none;
+}
+
+.comment-body {
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+div.comment-and-delete:hover .comment-delete-button {
+    display: block;
+}
