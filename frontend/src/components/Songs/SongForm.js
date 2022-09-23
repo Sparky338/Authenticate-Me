@@ -52,7 +52,7 @@ const SongForm = ({ song, formType }) => {
         <div className="outer-div">
             <div className="song-form">
                 <form className="form song-form" onSubmit={handleSubmit} >
-                    <h2>{formType}</h2>
+                    <h2 className="song-form-header">{formType}</h2>
                     {hasSubmitted && validationErrors.length > 0 && (
                         <div className="error-handling">There were errors in your submission:
                             <ul className="error-handling">
@@ -79,7 +79,7 @@ const SongForm = ({ song, formType }) => {
                             type="text"
                             value={description}
                             onChange={e => setDescription(e.target.value)}
-                            placeholder='description'
+                            placeholder='Description'
                         />
                     </label>
                     <label>
@@ -89,7 +89,7 @@ const SongForm = ({ song, formType }) => {
                             type="text"
                             value={url}
                             onChange={e => setUrl(e.target.value)}
-                            placeholder='song URL'
+                            placeholder='Song URL'
                         />
                     </label>
                     <label>
@@ -99,7 +99,7 @@ const SongForm = ({ song, formType }) => {
                             type="text"
                             value={imageUrl}
                             onChange={e => setImageUrl(e.target.value)}
-                            placeholder='image URL'
+                            placeholder='Image URL'
                         />
                     </label>
                     {/* dropdown menu with albums that user owns */}

@@ -128,3 +128,8 @@ div.outer-div {
     margin-left: 12.5%;
     margin-right: 12.5%;
 }
+
+.song-form-header {
+    color: #333;
+    font-size: 1.4em;
+}
