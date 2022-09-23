@@ -45,12 +45,14 @@ function ProfileButton({ user }) {
         <i className="fa-solid fa-user-astronaut"></i>
       </button>
       {showMenu && (
-        <div className="profile-dropdown">
-          <div className="username">{user.username}</div>
-          <div className="email">{user.email}</div>
-          <Link to={`/songs/current`} style={linkStyling}>{user.username}'s songs</Link>
-          <div>
-            <Link className="Link logout-button" style={linkStyling} onClick={logout}>Log Out</Link>
+        <div className="dropdown">
+          <div className="profile-dropdown">
+            <div className="username">{user.username}</div>
+            {/* <div className="email">{user.email}</div> */}
+            <Link to={`/songs/current`} style={linkStyling}>{user.username}'s songs</Link>
+            <div>
+              <Link className="Link logout-button" style={linkStyling} onClick={logout}>Log Out</Link>
+            </div>
           </div>
         </div>
       )}

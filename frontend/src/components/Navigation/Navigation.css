@@ -1,6 +1,25 @@
+.dropdown {
+    position:relative;
+    display: inline-block;
+}
+
 .profile-dropdown {
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    min-width: 180px;
+    min-height: 65px;
+    top: 18px;
+    left: -27px;
+}
+
+.profile-menu-button {
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+}
+
+.fa-user-astronaut {
+    position: relative;
+    right: 120%
 }
 
 header.banner {
