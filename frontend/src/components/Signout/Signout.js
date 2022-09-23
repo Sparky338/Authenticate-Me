@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import './Signout.css';
 
 const Logout = () => {
     const history = useHistory();
@@ -11,7 +12,7 @@ const Logout = () => {
 
     return (
         <div className="signout">
-            <h1 className="signout-text">You've signed out.</h1>
+            <div className="signout-text">You've signed out.</div>
         </div>
     )
 }
