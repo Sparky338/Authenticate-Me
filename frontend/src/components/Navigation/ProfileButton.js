@@ -7,6 +7,9 @@ function ProfileButton({ user }) {
   const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const userIcon = <i class="fa-solid fa-user"></i>;
+  const songIcon = <i class="fa-solid fa-music"></i>
+  const logoutIcon = <i class="fa-solid fa-door-open"></i>;
 
   const openMenu = () => {
     if (showMenu) return;
@@ -37,6 +40,7 @@ function ProfileButton({ user }) {
   const linkStyling = {
     textDecoration: 'none',
     color: '#333',
+    padding: '5px',
   }
 
   return (
@@ -47,11 +51,11 @@ function ProfileButton({ user }) {
       {showMenu && (
         <div className="dropdown">
           <div className="profile-dropdown">
-            <div className="username">{user.username}</div>
+            <div className="username">{userIcon} {user.username}</div>
             {/* <div className="email">{user.email}</div> */}
-            <Link to={`/songs/current`} style={linkStyling}>{user.username}'s songs</Link>
-            <div>
-              <Link className="Link logout-button" style={linkStyling} onClick={logout}>Log Out</Link>
+            <Link to={`/songs/current`} style={linkStyling}>{songIcon} {user.username}'s songs</Link>
+            <div className="logout-link">
+              <Link className="Link logout-button" style={linkStyling} onClick={logout}>{logoutIcon} Log Out</Link>
             </div>
           </div>
         </div>
