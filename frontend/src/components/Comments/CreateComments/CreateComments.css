@@ -16,16 +16,4 @@ div.outer-comment-form {
     top: 15px;
 }
 
-input.submitButton {
-    position: relative;
-    top: 20px;
-    background-color: #f50;
-    border-color: #f50;
-    border-radius: 3px;
-    box-shadow: none;
-    cursor: pointer;
-    color: white;
-    border-width: 1px;
-    border-style: none;
-    border-image: none;
-}
+

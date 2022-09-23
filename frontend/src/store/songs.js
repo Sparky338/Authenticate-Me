@@ -94,7 +94,6 @@ export default function songsReducer(state = initialState, action) {
     const newState = { ...state }
     switch (action.type) {
         case GET_SONGS:
-            console.log('action.songs', action.songs)
             action.songs.forEach(song => newState[song.id] = song)
             return newState;
         case CREATE_SONG:

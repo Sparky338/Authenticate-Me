@@ -21,9 +21,6 @@ const SongForm = ({ song, formType }) => {
         if (!title) errors.push("Song title is required");
         if (!url) errors.push("Audio is required");
         if (!url.endsWith('.mp3')) errors.push("Audio file must be an mp3");
-        if (!imageUrl) {
-            setImageUrl('https://cdn.pixabay.com/photo/2016/04/07/22/09/note-1314939__340.png')
-        }
         // if (!imageUrl.endsWith('.jpg') && !imageUrl.endsWith('.jpeg') && !imageUrl.endsWith('.png')) {
         //     errors.push("Image file must be a jpg, jpeg, or png");
         // }
@@ -33,7 +30,11 @@ const SongForm = ({ song, formType }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // if (!imageUrl) {
+        //     await setImageUrl('https://cdn.pixabay.com/photo/2016/04/07/22/09/note-1314939__340.png')
+        // }
         setHasSubmitted(true)
+
         if (validationErrors.length) return alert(`Can't submit, please fill in the missing information.`)
 
         const newSong = { ...song, title, description, url, imageUrl, albumId };
@@ -54,7 +55,7 @@ const SongForm = ({ song, formType }) => {
                     <h2>{formType}</h2>
                     {hasSubmitted && validationErrors.length > 0 && (
                         <div className="error-handling">There were errors in your submission:
-                            <ul>
+                            <ul className="error-handling">
                                 {validationErrors.map(error => (
                                     <li className="errors" key={error}>{error}</li>
                                 ))}
@@ -62,39 +63,43 @@ const SongForm = ({ song, formType }) => {
                         </div>
                     )}
                     <label>
-                        Title:
+                        {/* Title: */}
                         <input
                             className='input'
                             type="text"
                             value={title}
                             onChange={e => setTitle(e.target.value)}
+                            placeholder='Title'
                         />
                     </label>
                     <label>
-                        Description:
+                        {/* Description: */}
                         <input
                             className='input'
                             type="text"
                             value={description}
                             onChange={e => setDescription(e.target.value)}
+                            placeholder='description'
                         />
                     </label>
                     <label>
-                        Song URL:
+                        {/* Song URL: */}
                         <input
                             className='input'
                             type="text"
                             value={url}
                             onChange={e => setUrl(e.target.value)}
+                            placeholder='song URL'
                         />
                     </label>
                     <label>
-                        Image URL:
+                        {/* Image URL: */}
                         <input
                             className='input'
                             type="text"
                             value={imageUrl}
                             onChange={e => setImageUrl(e.target.value)}
+                            placeholder='image URL'
                         />
                     </label>
                     {/* dropdown menu with albums that user owns */}
@@ -107,7 +112,7 @@ const SongForm = ({ song, formType }) => {
                     onChange={e => setAlbumId(e.target.value)}
                 />
             </label> */}
-                    <input type="submit" value={formType} />
+                    <input type="submit" className="button submitButton" value={formType} />
                 </form>
             </div>
         </div>

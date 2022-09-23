@@ -32,6 +32,7 @@ const SongById = () => {
 
     if (!songId) return null;
     if (!commentsState) return null;
+    if (!songs) return null;
 
 
     const artistId = songObj[songId]?.userId;
@@ -39,7 +40,7 @@ const SongById = () => {
 
     return (
         <div className="outer-div">
-            <div className="songs">
+            <div className="songs" key={songs.id}>
                 {filteredSong.map((song) => {
                     return (
                         <div className="songById" key={song.id}>
@@ -48,7 +49,7 @@ const SongById = () => {
                                     <button className="individual-play-button" onClick={() => handlePlay(song.url)}>{playIcon}</button>
                                     <div className="song-details">
                                         <div className="song-title"><span>{song.title}</span></div>
-                                        <div className="artist-name"><span>{song.User.username}</span></div> {/*convert to link after artist component*/}
+                                        <div className="artist-name"><span>{song.User?.username}</span></div> {/*convert to link after artist component*/}
                                         {/* <div className="album-name">{song.Album.title}</div>  Add when albums component exists*/}
                                     </div>
                                     {/* <div className="blank-space"></div> */}
