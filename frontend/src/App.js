@@ -15,8 +15,6 @@ import EditSongForm from "./components/Songs/EditSong/EditSongForm";
 import Logout from "./components/Signout/Signout";
 import SongPlayer from "./components/SongPlayer";
 
-// import ArtistSongs from "./components/Artists/ArtistSongs";
-
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

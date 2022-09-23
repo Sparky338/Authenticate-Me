@@ -9,7 +9,7 @@ const SongCard = ({ id, userId, albumId, title, description, url, imageUrl, User
 
     const handlePlay = (url) => {
         dispatch(loadCurrentSong(url))
-
+//ternary to either dispatch or pause song. ternary to have a play icon or pause icon.
     }
 
     return (
@@ -17,7 +17,6 @@ const SongCard = ({ id, userId, albumId, title, description, url, imageUrl, User
             <li className="song-card">
                 <div className="card-outer">
                     <img className="image card-image" src={`${imageUrl}`} alt={`Song artwork`} />
-                    {/* <div className="play-background"></div> */}
                     <button className="play-button button-overlap" onClick={() => handlePlay(url)}>{playIcon}</button>
                 </div>
                 <Link to={`/songs/${id}`} className="title link card-title">{title}</Link>

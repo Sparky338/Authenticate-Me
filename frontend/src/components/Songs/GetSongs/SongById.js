@@ -8,7 +8,7 @@ import { loadCurrentSong } from "../../../store/currentSong";
 import './Songs.css'
 
 const SongById = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const { songId } = useParams();
     const session = useSelector(state => state.session);
     const commentsState = useSelector(state => state.comments);
@@ -45,7 +45,7 @@ const SongById = () => {
                         <div className="songById" key={song.id}>
                             <div className="song-player">
                                 <div className="upper-left">
-                                    <button className="individual-play-button" onClick={() => handlePlay}>{playIcon}</button>
+                                    <button className="individual-play-button" onClick={() => handlePlay(song.url)}>{playIcon}</button>
                                     <div className="song-details">
                                         <div className="song-title"><span>{song.title}</span></div>
                                         <div className="artist-name"><span>{song.User.username}</span></div> {/*convert to link after artist component*/}
