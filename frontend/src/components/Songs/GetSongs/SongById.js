@@ -23,6 +23,7 @@ const SongById = () => {
 
     const playIcon = <i class="fa-solid fa-circle-play fa-5x"></i>;
     const commentIcon = <i class="fa-solid fa-message"></i>;
+    const cloudIcon = <i class="fa-brands fa-soundcloud fa-2x"></i>;
     const handlePlay = () => {
 
     }
@@ -48,6 +49,7 @@ const SongById = () => {
                                         <div className="artist-name"><span>{song.User.username}</span></div> {/*convert to link after artist component*/}
                                         {/* <div className="album-name">{song.Album.title}</div>  Add when albums component exists*/}
                                     </div>
+                                    {/* <div className="blank-space"></div> */}
                                 </div>
                                 <div className="lower-left">{/*waveform?*/}</div>
                                 <div className="song-image">
@@ -70,6 +72,7 @@ const SongById = () => {
                                     <div className="comments song-comments">{commentIcon} Comments <CommentsBySongId /></div>
                                 </div>
                             </div>
+                            <div className="cloud"> {cloudIcon}</div>
                         </div>
                     )
                 })}
