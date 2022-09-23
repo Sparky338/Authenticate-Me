@@ -5,7 +5,6 @@ const GET_SONGS = 'songs/GET_SONGS';
 const CREATE_SONG = 'songs/CREATE_SONG';
 const EDIT_SONG = 'songs/EDIT_SONG';
 const DELETE_SONG = 'songs/DELETE_SONG';
-const PLAY_SONG = 'songs/PLAY_SONG';
 
 // Action Creators
 const getSongsAction = (songs) => {
@@ -36,12 +35,6 @@ export const deleteSongAction = (songId) => {
     }
 }
 
-export const playSongAction = (url) => {
-    return {
-        type: PLAY_SONG,
-        url
-    }
-}
 
 // Thunks
 export const getAllSongs = () => async dispatch => {
@@ -101,6 +94,7 @@ export default function songsReducer(state = initialState, action) {
     const newState = { ...state }
     switch (action.type) {
         case GET_SONGS:
+            console.log('action.songs', action.songs)
             action.songs.forEach(song => newState[song.id] = song)
             return newState;
         case CREATE_SONG:
@@ -111,9 +105,6 @@ export default function songsReducer(state = initialState, action) {
             return newState;
         case DELETE_SONG:
             delete newState[action.songId]
-            return newState;
-        case PLAY_SONG:
-            newState.url = action.song
             return newState;
         default:
             return state;

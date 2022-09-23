@@ -1,12 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import CreateCommentForm from "../../Comments/CreateComments/CreateCommentForm";
 import CommentsBySongId from "../../Comments/GetComments/GetComments";
 import DeleteSong from "../DeleteSongs/DeleteSong";
+import { loadCurrentSong } from "../../../store/currentSong";
 
 import './Songs.css'
 
 const SongById = () => {
+    const dispatch = useDispatch()
     const { songId } = useParams();
     const session = useSelector(state => state.session);
     const commentsState = useSelector(state => state.comments);
@@ -24,8 +26,8 @@ const SongById = () => {
     const playIcon = <i class="fa-solid fa-circle-play fa-5x"></i>;
     const commentIcon = <i class="fa-solid fa-message"></i>;
     const cloudIcon = <i class="fa-brands fa-soundcloud fa-2x"></i>;
-    const handlePlay = () => {
-
+    const handlePlay = (url) => {
+        dispatch(loadCurrentSong(url))
     }
 
     if (!songId) return null;

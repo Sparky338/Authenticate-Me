@@ -62,7 +62,7 @@ form.modal {
     padding-right: 10px;
 }
 
-footer.audio-player {
+.SongPlayer {
     position: fixed;
     width: 100%;
     bottom: 0;

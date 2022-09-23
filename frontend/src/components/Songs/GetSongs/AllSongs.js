@@ -8,7 +8,7 @@ const AllSongs = () => {
     if (!songsSession) return null
 
     const songs = Object.values(songsSession)
-
+    // if (!songs)
     return (
         <div className="outer-div">
             <div className="all-songs">
