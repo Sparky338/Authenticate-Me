@@ -1,7 +1,7 @@
 .comment-and-delete {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     width: 100%;
 }
 
@@ -27,5 +27,3 @@ div.hover-delete {
 div.comment-and-delete:hover .comment-delete-button {
     display: block;
 }
-
-
