@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import SongCard from "../Songs/SongCard";
+import SignupFormModal from "../SignupFormModal";
 import './Home.css'
 
 const Home = () => {
@@ -22,9 +23,13 @@ const Home = () => {
                     <div className="text-and-button">
                         <div className="banner-text">
                             <div className="banner-large-text">What's next in music is first on SoundClod</div>
-                            <div className="banner-small-text">Join us to upload your own music and begin your journey! More words to see if it goes beyond the bounds.</div>
+                            <div className="banner-small-text">Join us to upload your own music and begin your journey!
+                                More words to see if it goes beyond the bounds or wraps.</div>
                         </div>
-                        <button className="join-button" onClick={() => { }} />
+                        <div className="banner-button-container">
+                            {/* <button className='button banner-signup-button' onClick={() => }>Create account</button> */}
+                            <SignupFormModal />
+                        </div>
                     </div>
                 </div>
             </div>
