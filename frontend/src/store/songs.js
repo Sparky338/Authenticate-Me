@@ -54,6 +54,9 @@ export const getAllSongs = () => async dispatch => {
 };
 
 export const createSong = (songData) => async dispatch => {
+    console.log('songdata', songData.imageUrl)
+    songData.imageUrl = "https://image.shutterstock.com/image-vector/music-notes-song-melody-tune-260nw-701307613.jpg"
+    console.log('songdata after assign', songData.imageUrl)
     const res = await csrfFetch(`/api/songs`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

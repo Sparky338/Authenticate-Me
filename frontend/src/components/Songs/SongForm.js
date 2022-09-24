@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { createSong, editSong,clearSongAction } from "../../store/songs";
+import { createSong, editSong, clearSongAction } from "../../store/songs";
 
 const SongForm = ({ song, formType }) => {
     const history = useHistory();
@@ -21,23 +21,22 @@ const SongForm = ({ song, formType }) => {
         if (!title) errors.push("Song title is required");
         if (!url) errors.push("Audio is required");
         if (!url.endsWith('.mp3')) errors.push("Audio file must be an mp3");
-        if (!imageUrl.endsWith('.jpg') && !imageUrl.endsWith('.jpeg') && !imageUrl.endsWith('.png')) {
+        if (imageUrl && !imageUrl.endsWith('.jpg') && !imageUrl.endsWith('.jpeg') && !imageUrl.endsWith('.png')) {
             errors.push("Image file must be a jpg, jpeg, or png");
         }
         setValidationErrors(errors);
     }, [title, url, imageUrl])
 
-    // useEffect(() =>{
-    //     return (() => {
-    //         dispatch(clearSongAction())
-    //     })
-    // }, [dispatch])
+    /* Will cause a loss of state when user uses
+    the back button or navigates via a Link.
+    useEffect(() =>{
+        return (() => {
+            dispatch(clearSongAction())
+        })
+    }, [dispatch])*/
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // if (!imageUrl) {
-        //     await setImageUrl('https://cdn.pixabay.com/photo/2016/04/07/22/09/note-1314939__340.png')
-        // }
         setHasSubmitted(true)
 
         if (validationErrors.length) return alert(`Can't submit, please fill in the missing information.`)
@@ -61,12 +60,14 @@ const SongForm = ({ song, formType }) => {
                 <form className="form song-form" onSubmit={handleSubmit} >
                     <h2 className="song-form-header">{formType}</h2>
                     {hasSubmitted && validationErrors.length > 0 && (
-                        <div className="error-handling">There were errors in your submission:
-                            <ul className="error-handling">
+                        <div className="outer-error">
+                            <div className="error-handling">There were errors in your submission:</div>
+                            <ul className="errors-handling">
                                 {validationErrors.map(error => (
-                                    <li className="errors" key={error}>{error}</li>
+                                    <li className="errors-list" key={error}>{error}</li>
                                 ))}
                             </ul>
+
                         </div>
                     )}
                     <label>

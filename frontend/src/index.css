@@ -36,7 +36,7 @@ button {
 .delete-button {
     background-color: white;
     color: black;
-    border:1px solid rgba(51, 51, 51, 0.179)
+    border: 1px solid rgba(51, 51, 51, 0.179)
 }
 
 input.submitButton {
@@ -101,9 +101,22 @@ form.modal {
     margin: 0;
 }
 
-.error-handling {
+.outer-error {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #d61348;
+}
+
+.errors-handling {
     list-style-type: none;
     color: #d61348;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
 
 .login-errors {
@@ -117,7 +130,8 @@ form.modal {
     word-wrap: normal;
 }
 
-ul.songs-ul { /*AllSongs component for card wrapping*/
+ul.songs-ul {
+    /*AllSongs component for card wrapping*/
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
