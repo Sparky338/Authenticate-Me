@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { createSong, editSong } from "../../store/songs";
+import { createSong, editSong,clearSongAction } from "../../store/songs";
 
 const SongForm = ({ song, formType }) => {
     const history = useHistory();
@@ -28,6 +28,11 @@ const SongForm = ({ song, formType }) => {
         setValidationErrors(errors);
     }, [title, url, imageUrl])
 
+    useEffect(() =>{
+        return (() => {
+            dispatch(clearSongAction())
+        })
+    })
     const handleSubmit = async (e) => {
         e.preventDefault();
         // if (!imageUrl) {

@@ -6,6 +6,8 @@ import DeleteSong from "../DeleteSongs/DeleteSong";
 import { loadCurrentSong } from "../../../store/currentSong";
 
 import './Songs.css'
+import { useEffect } from "react";
+import { getAllSongs } from "../../../store/songs";
 
 const SongById = () => {
     const dispatch = useDispatch();
@@ -30,9 +32,13 @@ const SongById = () => {
         dispatch(loadCurrentSong(url))
     }
 
+    useEffect(() => {
+        dispatch(getAllSongs())
+    }, [dispatch])
+
     if (!songId) return null;
     if (!commentsState) return null;
-    if (!songs) return null;
+    if (!songObj) return null;
 
 
     const artistId = songObj[songId]?.userId;

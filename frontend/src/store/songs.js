@@ -5,6 +5,7 @@ const GET_SONGS = 'songs/GET_SONGS';
 const CREATE_SONG = 'songs/CREATE_SONG';
 const EDIT_SONG = 'songs/EDIT_SONG';
 const DELETE_SONG = 'songs/DELETE_SONG';
+const CLEAR_SONGS = 'songs/CLEAR_SONG';
 
 // Action Creators
 const getSongsAction = (songs) => {
@@ -32,6 +33,12 @@ export const deleteSongAction = (songId) => {
     return {
         type: DELETE_SONG,
         songId
+    }
+}
+
+export const clearSongAction = () => {
+    return {
+        type: CLEAR_SONGS
     }
 }
 
@@ -105,6 +112,8 @@ export default function songsReducer(state = initialState, action) {
         case DELETE_SONG:
             delete newState[action.songId]
             return newState;
+        case CLEAR_SONGS:
+            return {}
         default:
             return state;
     }
