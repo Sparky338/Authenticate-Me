@@ -4,6 +4,8 @@
 
 .signup-form{
     width: 60%;
+    position: relative;
+    top: 100px;
 }
 
 button.signup-button {
