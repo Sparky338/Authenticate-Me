@@ -5,3 +5,11 @@
 .rhap_current-time {
     color: #f50;
 }
+
+.rhap_volume-indicator {
+    background: #f50;
+}
+
+.rhap_volume-bar {
+    background-color: #f50;
+}
