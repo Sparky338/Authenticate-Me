@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import AudioPlayer from 'react-h5-audio-player';
+import './SongPlayer.css'
 
 export default function SongPlayer() {
     const songUrl = useSelector(state => state.currentSong.currentUrl);
