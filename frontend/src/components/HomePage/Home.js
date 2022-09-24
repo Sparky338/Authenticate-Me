@@ -17,10 +17,21 @@ const Home = () => {
 
     return (
         <div className="home-outer outer-div">
+            <div className="upper-banner-container">
+                <div className="upper-banner">
+                    <div className="text-and-button">
+                        <div className="banner-text">
+                            <div className="banner-large-text">What's next in music is first on SoundClod</div>
+                            <div className="banner-small-text">Join us to upload your own music and begin your journey! More words to see if it goes beyond the bounds.</div>
+                        </div>
+                        <button className="join-button" onClick={() => { }} />
+                    </div>
+                </div>
+            </div>
             <div className="home trending-text"> Hear what's trending for free in the SoundCloud community</div>
             <div className="song-card-outer">
                 <ul className="songs-ul">
-                    {songs.slice(0,12).map((song) => {
+                    {songs.slice(0, 12).map((song) => {
                         return (
                             // <div className="allSongs" key={song.id}>
                             //     <Link to={`/songs/${song.id}`}>Artist Id:{song.userId}, Song Title:{song.title}</Link>

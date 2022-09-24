@@ -1,3 +1,49 @@
+.upper-banner {
+    height:465px;
+    background: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists-8081257b.jpg) repeat-y 50% 0;
+}
+
+.text-and-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 35%;
+    color: white
+}
+
+.banner-text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.banner-large-text {
+    /* position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; */
+    font-size: 36px;
+}
+
+.banner-small-text {
+    border: red 1px solid;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 500px;
+    font-size: 18px;
+}
+
 div.trending-text {
     font-size: 24px;
     text-align: center;
