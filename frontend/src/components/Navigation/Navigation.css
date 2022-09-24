@@ -7,14 +7,16 @@
     position: absolute;
     min-width: 180px;
     min-height: 85px;
-    top: 18px;
-    left: -27px;
+    top: 29px;
+    left: -26px;
 }
 
 .profile-menu-button {
     height: 26px;
     width: 26px;
     border-radius: 50%;
+    top: 10px;
+    left: 10px;
 }
 
 div.username {
