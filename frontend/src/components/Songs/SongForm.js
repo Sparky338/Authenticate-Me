@@ -32,7 +32,8 @@ const SongForm = ({ song, formType }) => {
         return (() => {
             dispatch(clearSongAction())
         })
-    })
+    }, [dispatch])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         // if (!imageUrl) {
