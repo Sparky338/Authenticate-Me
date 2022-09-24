@@ -4,13 +4,15 @@ import SongCard from "../SongCard";
 
 const AllSongs = () => {
     const songsSession = useSelector((state) => (state.songs));
+    const userSession = useSelector(state => (state.session.user));
 
-    if (!songsSession) return null
+    if (!songsSession) return null;
 
     const songs = Object.values(songsSession)
-    // if (!songs)
+
     return (
         <div className="outer-div">
+            {userSession ? <div className="signed-in-library"> Enjoy the entire library of SoundClod </div> : <div className="signed-out-library"> Discover the entire library of SoundClod </div>}
             <div className="all-songs">
                 <ul className="songs-ul">
                     {songs.map((song) => {

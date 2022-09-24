@@ -129,3 +129,18 @@ div.cloud {
     color: rgb(100, 100, 100);
     position: relative;
 }
+
+.signed-out-library {
+    font-size: 32px;
+    padding-left: 75px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    color:#333;
+}
+.signed-in-library {
+    font-size: 32px;
+    padding-left: 75px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    color:#333;
+}
