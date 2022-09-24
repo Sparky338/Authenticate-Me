@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 35%;
+    top: 30%;
     color: white
 }
 
@@ -23,24 +23,13 @@
 }
 
 .banner-large-text {
-    /* position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; */
+    text-align: center;
     font-size: 36px;
 }
 
 .banner-small-text {
-    border: red 1px solid;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 500px;
+    text-align: center;
+    max-width: 500px;
     font-size: 18px;
 }
 
