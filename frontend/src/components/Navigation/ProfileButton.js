@@ -50,7 +50,7 @@ function ProfileButton({ user }) {
         <i className="fa-solid fa-user-astronaut"></i>
       </button>
       {showMenu && (
-        <div className="dropdown">
+        <div className="dropdown navbar-Link">
           <div className="profile-dropdown">
             <div className="username">{userIcon} {user.username}</div>
             {/* <div className="email">{user.email}</div> */}

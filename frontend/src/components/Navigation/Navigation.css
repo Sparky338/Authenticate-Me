@@ -83,11 +83,11 @@ i.banner-cloud {
     align-items: center;
 }
 
-div.navlink NavLink {
+/* div.navlink NavLink {
     border: solid red 1px;
     text-decoration: none;
     color: white;
-}
+} */
 
 .navbar-link:focus {
     background-color: #111;
