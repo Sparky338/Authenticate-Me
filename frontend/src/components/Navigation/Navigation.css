@@ -86,3 +86,18 @@ div.navlink NavLink {
     text-decoration: none;
     color: white;
 }
+
+.navbar-link:focus {
+    background-color: #111;
+}
+
+.upload-link {
+    display: block;
+    text-decoration: none;
+    color: #ccc;
+    padding: 12px 0;
+    height: 46px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 104px;
+}

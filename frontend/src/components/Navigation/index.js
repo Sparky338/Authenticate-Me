@@ -46,14 +46,14 @@ function Navigation({ isLoaded }) {
         <div className='left-banner'>
           <i class="fa-brands fa-soundcloud fa-3x banner-cloud"></i>
           <div className='link home'>
-            <Link exact to="/" className='link' style={linkStyling}>Home</Link>
+            <Link exact to="/" className='navbar-link' style={linkStyling}>Home</Link>
           </div>
           <div className='link library'>
-            <Link exact to="/songs" className='link' style={linkStyling}>Library</Link>
+            <Link exact to="/songs" className='navbar-link' style={linkStyling}>Library</Link>
           </div>
         </div>
         <div className='middle-banner'></div>
-        <div className='right-banner'>{isLoaded && sessionLinks}</div>
+        <div className='right-banner navbar-link'>{isLoaded && sessionLinks}</div>
       </div>
     </header>
   );
