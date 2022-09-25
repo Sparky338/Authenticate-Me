@@ -3,7 +3,6 @@ div.song-cards {
     flex-wrap: wrap;
     justify-content: space-between;
     width: 16%;
-    height: auto;
 }
 
 li.song-card {
@@ -30,6 +29,23 @@ div.card-outer {
     align-items: center;
 }
 
+div.card-image-outer {
+    position: relative;
+    right: 0%;
+    max-height: 172px;
+    max-width: 172px;
+    padding: 20px;
+}
+
+div.card-image-outer img {
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    /* width: 100%;
+    height: auto; */
+}
+
 .fa-circle-play {
     color: #f50;
     position: relative;
@@ -42,6 +58,8 @@ div.card-outer {
     position: absolute;
     height: 30px;
     width: 30px;
+    top: 40%;
+    right: 45%;
     z-index: 2;
     display: none;
     background-color: transparent;
@@ -49,7 +67,7 @@ div.card-outer {
 
 }
 
-div.card-outer:hover .play-button {
+div.card-image-outer:hover .play-button {
     display:block
 }
 
