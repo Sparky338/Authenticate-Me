@@ -5,11 +5,13 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import UploadSong from '../Songs/CreateSong/CreateSongNav';
+import peridotSoundclodIconTransparent from '../../images/peridotSoundclodIconTransparent.png'
 
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
+  const soundClodIcon = peridotSoundclodIconTransparent
 
   let sessionLinks;
   if (sessionUser) {
@@ -44,7 +46,8 @@ function Navigation({ isLoaded }) {
     <header className='banner'>
       <div className='top-banner-links'>
         <div className='left-banner'>
-          <i class="fa-brands fa-soundcloud fa-3x banner-cloud"></i>
+          {/* <i class="fa-brands fa-soundcloud fa-3x banner-cloud"></i> */}
+          <img src={soundClodIcon} alt='SoundClod Icon' />
           <div className='link home'>
             <Link exact to="/" className='navbar-link' style={linkStyling}>Home</Link>
           </div>
