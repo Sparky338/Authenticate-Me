@@ -4,9 +4,19 @@ Link to live site here
 
 This is a simple clone of SoundCloud including an audio player, song pages, and a generic library. More will be added in the future.
 
-## This project was made with Javascript and React with Redux, CSS, and HTML5. It is hosted on Heroku with a Postgres Database and locally with a Sequelize database.
+## This project was built with:
+- Javascript
+- React with Redux
+- CSS
+- HTML5
+- Sequelize
 
-# At least a single image or gif showcasing the project HERE.
+## This project is hosted on Heroku with a Postgres Database.
+
+## SoundClod Examples
+![SoundClod-splash-page](./Readme-Assets/SoundClodSplash.png)
+![SoundClod-song-page](./Readme-Assets/SoundClodSongPage.png)
+
 
 ## RoadMap for the future of SoundClod:
 - Better funtionality of the audio player and pause button on songs.
