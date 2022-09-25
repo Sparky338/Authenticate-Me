@@ -98,19 +98,10 @@ div.song-image img {
 
 }
 
-.song-comment-form {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    /* border: solid red 1px; */
-}
-
 .song-info {
     width:100%;
     display: flex;
+    padding-top: 40px;
 }
 
 .artist-info {
@@ -120,6 +111,7 @@ div.song-image img {
 }
 
 .song-description-comments {
+    position: relative;
     width: 60%;
     min-height: 100px;
     padding-top: 25px;

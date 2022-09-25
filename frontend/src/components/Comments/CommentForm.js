@@ -20,12 +20,6 @@ const CommentForm = ({ comment, formType }) => {
         setValidationErrors(errors);
     }, [body])
 
-    // const checkSubmit = (e) => {
-    //     if (e && e.keyCode === 13) {
-    //         document.forms[0].submit();
-    //     }
-    // }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true)
@@ -45,8 +39,8 @@ const CommentForm = ({ comment, formType }) => {
     };
 
     return (
-        <div className="comments-form form">
-            <form onSubmit={handleSubmit}>
+        <div className="comments-form-outer form">
+            <form className="comment-form" onSubmit={handleSubmit}>
                 {/* <h4>{formType}</h4> */}
                 <label>
                     {hasSubmitted && validationErrors.length > 0 && (
@@ -60,7 +54,7 @@ const CommentForm = ({ comment, formType }) => {
                     )}
                     <div className="outer-comment-form">
                         <input
-                            className="comment-body"
+                            className="comment-input"
                             value={body}
                             onChange={e => setBody(e.target.value)}
                             placeholder='Write a comment'

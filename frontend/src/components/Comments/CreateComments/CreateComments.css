@@ -1,7 +1,3 @@
-/* textarea {
-    resize:none;
-} */
-
 input.comment-body {
     width: 100%;
 }
@@ -15,5 +11,3 @@ div.outer-comment-form {
     margin: 0;
     top: 15px;
 }
-
-
