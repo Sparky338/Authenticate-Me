@@ -46,7 +46,6 @@ function Navigation({ isLoaded }) {
     <header className='banner'>
       <div className='top-banner-links'>
         <div className='left-banner'>
-          {/* <i class="fa-brands fa-soundcloud fa-3x banner-cloud"></i> */}
           <img src={soundClodIcon} alt='SoundClod Icon' />
           <div className='link home'>
             <Link exact to="/" className='navbar-link' style={linkStyling}>Home</Link>

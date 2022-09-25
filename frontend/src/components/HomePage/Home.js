@@ -33,7 +33,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="home trending-text"> Hear what's trending for free in the SoundCloud community</div>
+            <div className="home trending-text"> Hear what's trending for free in the SoundClod community</div>
             <div className="song-card-outer">
                 <ul className="songs-ul">
                     {songs.slice(0, 12).map((song) => {

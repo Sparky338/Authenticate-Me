@@ -28,7 +28,7 @@ const SongById = () => {
 
     const playIcon = <i class="fa-solid fa-circle-play fa-5x"></i>;
     const commentIcon = <i class="fa-solid fa-message"></i>;
-    const cloudIcon = <i class="fa-brands fa-soundcloud fa-2x"></i>;
+    
     const handlePlay = (url) => {
         dispatch(loadCurrentSong(url))
     }

@@ -10,7 +10,7 @@ li.song-card {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #f50;
+    /* border: 1px solid #f50; */
     background-color: white;
     color:black;
     margin: 10px;
@@ -73,7 +73,7 @@ div.card-image-outer:hover .play-button {
 
 .song-card-text {
     position: relative;
-    text-align: center;
+    text-align:start;
     max-width: 172px;
     /* min-width: 100px; */
     /* min-width: 80%; */
