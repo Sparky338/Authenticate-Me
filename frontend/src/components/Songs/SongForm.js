@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createSong, editSong, clearSongAction } from "../../store/songs";
+import './SongForm.css'
 
 const SongForm = ({ song, formType }) => {
     const history = useHistory();
@@ -57,7 +58,7 @@ const SongForm = ({ song, formType }) => {
 
     return (
         <div className="outer-div">
-            <div className="song-form">
+            <div className="song-form-outer">
                 <form className="form song-form" onSubmit={handleSubmit} >
                     <h2 className="song-form-header">{formType}</h2>
                     {hasSubmitted && validationErrors.length > 0 && (
@@ -71,40 +72,40 @@ const SongForm = ({ song, formType }) => {
 
                         </div>
                     )}
-                    <label>
+                    <label className='song-form-label'>
                         {/* Title: */}
                         <input
-                            className='input'
+                            className='input song-form-input'
                             type="text"
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                             placeholder='Title'
                         />
                     </label>
-                    <label>
+                    <label className='song-form-label'>
                         {/* Description: */}
                         <input
-                            className='input'
+                            className='input song-form-input'
                             type="text"
                             value={description}
                             onChange={e => setDescription(e.target.value)}
                             placeholder='Description'
                         />
                     </label>
-                    <label>
+                    <label className='song-form-label'>
                         {/* Song URL: */}
                         <input
-                            className='input'
+                            className='input song-form-input'
                             type="text"
                             value={url}
                             onChange={e => setUrl(e.target.value)}
                             placeholder='Song URL'
                         />
                     </label>
-                    <label>
+                    <label className='song-form-label'>
                         {/* Image URL: */}
                         <input
-                            className='input'
+                            className='input song-form-input'
                             type="text"
                             value={imageUrl}
                             onChange={e => setImageUrl(e.target.value)}
@@ -121,7 +122,7 @@ const SongForm = ({ song, formType }) => {
                     onChange={e => setAlbumId(e.target.value)}
                 />
             </label> */}
-                    <input type="submit" className="button submitButton" value={formType} />
+                    <input type="submit" className="button song-form-submitButton" value={formType} />
                 </form>
             </div>
         </div>
