@@ -85,6 +85,17 @@ div.artist-name span {
 div.song-image {
     position: absolute;
     right: 0%;
+    height: 340px;
+    width: 340px;
+    padding-right: 20px;
+}
+
+div.song-image img {
+    max-height: 340px;
+    max-width: 340px;
+    min-height: 340px;
+    min-width: 340px;
+
 }
 
 .song-comment-form {
