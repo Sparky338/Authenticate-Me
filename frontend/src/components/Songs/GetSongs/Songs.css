@@ -141,11 +141,6 @@ div.song-image img {
     padding-bottom: 7px;
 }
 
-div.cloud {
-    color: rgb(100, 100, 100);
-    position: relative;
-}
-
 .signed-out-library {
     font-size: 32px;
     padding-left: 75px;

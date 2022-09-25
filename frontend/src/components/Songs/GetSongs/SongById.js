@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
+import { loadCurrentSong } from "../../../store/currentSong";
+import { useEffect } from "react";
+import { getAllSongs } from "../../../store/songs";
 import CreateCommentForm from "../../Comments/CreateComments/CreateCommentForm";
 import CommentsBySongId from "../../Comments/GetComments/GetComments";
 import DeleteSong from "../DeleteSongs/DeleteSong";
-import { loadCurrentSong } from "../../../store/currentSong";
+import peridotSoundclodIconTransparent from '../../../images/peridotSoundclodIconTransparent.png'
 
 import './Songs.css'
-import { useEffect } from "react";
-import { getAllSongs } from "../../../store/songs";
 
 const SongById = () => {
     const dispatch = useDispatch();
@@ -82,7 +83,7 @@ const SongById = () => {
                                     <div className="comments song-comments"><CommentsBySongId /></div>
                                 </div>
                             </div>
-                            <div className="cloud"> {cloudIcon}</div>
+                            <img src={peridotSoundclodIconTransparent} alt="SoundClod Icon"/>
                         </div>
                     )
                 })}
