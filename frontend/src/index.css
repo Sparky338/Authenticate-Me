@@ -42,7 +42,7 @@ button {
 form.modal {
     margin: auto;
     font-size: 16px;
-    border: solid #f50 1px;
+    /* border: solid #f50 1px; */
     /*might change later*/
 }
 
