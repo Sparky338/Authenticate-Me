@@ -23,8 +23,7 @@ const Home = () => {
                     <div className="text-and-button">
                         <div className="banner-text">
                             <div className="banner-large-text">What's next in music is first on SoundClod</div>
-                            <div className="banner-small-text">Join us to upload your own music and begin your journey!
-                                More words to see if it goes beyond the bounds or wraps.</div>
+                            <div className="banner-small-text">Join us to upload your own music and begin your journey for free!</div>
                         </div>
                         <div className="banner-button-container">
                             {/* <button className='button banner-signup-button' onClick={() => }>Create account</button> */}
