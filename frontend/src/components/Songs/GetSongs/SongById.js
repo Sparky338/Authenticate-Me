@@ -78,7 +78,8 @@ const SongById = () => {
                                 <div className="artist-info"></div>
                                 <div className="song-description-comments">
                                     <div className="song-description">Song Description: {song.description}</div>
-                                    <div className="comments song-comments">{commentIcon} Comments <CommentsBySongId /></div>
+                                    <div className="comments-text">{commentIcon} Comments </div>
+                                    <div className="comments song-comments"><CommentsBySongId /></div>
                                 </div>
                             </div>
                             <div className="cloud"> {cloudIcon}</div>

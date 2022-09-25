@@ -128,12 +128,25 @@ div.song-image img {
 .song-description {
     font-size: 14px;
     color: #333;
+    padding-bottom: 20px;
+}
+
+.fa-message {
+    color:#999;
+}
+
+.comments-text {
+    font-size: 12px;
+    color: #999;
+    width: 100%;
+    padding: 10px 10px 10px 0;
 }
 
 .song-comments {
     font-size: 12px;
     color: #333;
     width: 100%;
+    padding-bottom: 7px;
 }
 
 div.cloud {
