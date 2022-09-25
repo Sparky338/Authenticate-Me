@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import SongCard from "../Songs/SongCard";
 import SignupFormModal from "../SignupFormModal";
 import './Home.css'
