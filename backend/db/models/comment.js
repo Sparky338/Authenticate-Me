@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     songId: DataTypes.INTEGER,
-    body: DataTypes.STRING
+    body: DataTypes.STRING,
+    onDelete: 'CASCADE',
   }, {
     sequelize,
     modelName: 'Comment',

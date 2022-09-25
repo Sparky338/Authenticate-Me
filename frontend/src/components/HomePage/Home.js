@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import SongCard from "../Songs/SongCard";
 import SignupFormModal from "../SignupFormModal";
 import './Home.css'
@@ -11,6 +11,7 @@ const Home = () => {
     if (useSelector(state => state.session.user)) {
         history.push('/songs')
     }
+
     if (!songsSession) return null
 
     const songs = Object.values(songsSession)
