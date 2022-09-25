@@ -12,7 +12,7 @@ const AllSongs = () => {
 
     return (
         <div className="outer-div">
-            {userSession ? <div className="signed-in-library"> Enjoy the entire library of SoundClod </div> : <div className="signed-out-library"> Discover the entire library of SoundClod </div>}
+            {userSession ? <div className="signed-in-library"> Enjoy the entire library of SoundClod, {userSession.username} </div> : <div className="signed-out-library"> Discover the entire library of SoundClod </div>}
             <div className="all-songs">
                 <ul className="songs-ul">
                     {songs.map((song) => {

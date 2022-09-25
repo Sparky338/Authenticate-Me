@@ -22,9 +22,13 @@
 div.username {
     padding: 5px;
 }
-div.logout-link {
-    padding-top: 5px;
+
+.logout-button {
+    background: transparent;
     text-decoration: none;
+    color: #333;
+    font-family: Interstate, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Garuda, Verdana, Tahoma, sans-serif;
+    font-weight: 700;
 }
 
 .fa-user-astronaut {

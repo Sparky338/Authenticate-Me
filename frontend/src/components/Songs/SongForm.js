@@ -29,6 +29,7 @@ const SongForm = ({ song, formType }) => {
 
     /* Will cause a loss of state when user uses
     the back button or navigates via a Link.
+    Moved functionality to handleSubmit.
     useEffect(() =>{
         return (() => {
             dispatch(clearSongAction())
