@@ -13,16 +13,18 @@ const SongCard = ({ id, userId, albumId, title, description, url, imageUrl, User
     }
 
     return (
-            <div className="song-cards">
-                <li className="song-card">
-                    <div className="card-image-outer">
-                        <img className="image card-image" src={`${imageUrl}`} alt={`Song artwork`} />
-                        <button className="play-button button-overlap" onClick={() => handlePlay(url)}>{playIcon}</button>
-                    </div>
+        <div className="song-cards">
+            <li className="song-card">
+                <div className="card-image-outer">
+                    <img className="image card-image" src={`${imageUrl}`} alt={`Song artwork`} />
+                    <button className="play-button button-overlap" onClick={() => handlePlay(url)}>{playIcon}</button>
+                </div>
+                <div className="song-card-text">
                     <Link to={`/songs/${id}`} className="title link card-title">{title}</Link>
                     <div className="artist card-artist">{User.username}</div> {/*Can change to Link in future when Artist page is setup*/}
-                </li>
-            </div>
+                </div>
+            </li>
+        </div>
     );
 };
 
