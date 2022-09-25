@@ -52,3 +52,12 @@ div.card-outer {
 div.card-outer:hover .play-button {
     display:block
 }
+
+.card-title {
+    text-decoration: none;
+    color:#333;
+}
+
+.card-artist {
+    color:#333;
+}
