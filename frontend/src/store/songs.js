@@ -5,6 +5,7 @@ const GET_SONGS = 'songs/GET_SONGS';
 const CREATE_SONG = 'songs/CREATE_SONG';
 const EDIT_SONG = 'songs/EDIT_SONG';
 const DELETE_SONG = 'songs/DELETE_SONG';
+const CLEAR_SONGS = 'songs/CLEAR_SONG';
 
 // Action Creators
 const getSongsAction = (songs) => {
@@ -35,6 +36,13 @@ export const deleteSongAction = (songId) => {
     }
 }
 
+export const clearSongAction = () => {
+    return {
+        type: CLEAR_SONGS
+    }
+}
+
+
 // Thunks
 export const getAllSongs = () => async dispatch => {
     const res = await csrfFetch('/api/songs');
@@ -46,6 +54,8 @@ export const getAllSongs = () => async dispatch => {
 };
 
 export const createSong = (songData) => async dispatch => {
+    songData.imageUrl = "https://cdn.pixabay.com/photo/2017/04/19/10/24/vinyl-2241789_960_720.png"
+
     const res = await csrfFetch(`/api/songs`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -89,8 +99,8 @@ const initialState = {}
 
 // Reducer
 export default function songsReducer(state = initialState, action) {
-//normalize data example: businessArr.forEach(business => newState[business.id] = business)
-    const newState = {...state}
+    //normalize data example: businessArr.forEach(business => newState[business.id] = business)
+    const newState = { ...state }
     switch (action.type) {
         case GET_SONGS:
             action.songs.forEach(song => newState[song.id] = song)
@@ -104,6 +114,8 @@ export default function songsReducer(state = initialState, action) {
         case DELETE_SONG:
             delete newState[action.songId]
             return newState;
+        case CLEAR_SONGS:
+            return {}
         default:
             return state;
     }

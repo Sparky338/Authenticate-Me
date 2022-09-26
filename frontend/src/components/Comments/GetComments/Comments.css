@@ -1,0 +1,83 @@
+.comment-and-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+div.hover-delete {
+    width: 100%;
+}
+.comments-form-outer{
+    position: relative;
+    top: 30px;
+    width: 100%;
+    padding: 5;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: #f2f2f2;
+    border-radius: 0;
+    border: 1px solid #e5e5e5;
+    height: 30px;
+    width: 72%;
+}
+
+.song-comment-form {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    /* border: solid red 1px; */
+}
+
+.comment-delete-button {
+    position: absolute;
+    right: 28%;
+    /* display: flex;
+    justify-content: end; */
+    width: 1%;
+    z-index: 2;
+    display: none;
+}
+
+.comment-input {
+    position: relative;
+    left: -47.5%;
+    top: -7px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+input.submitButton {
+    position: absolute;
+    top: 20px;
+    background-color: #f50;
+    border-color: #f50;
+    border-radius: 3px;
+    height: 30px;
+    box-shadow: none;
+    cursor: pointer;
+    color: white;
+    left: 4.5%;
+    top: 55%;
+    border-width: 1px;
+    border-style: none;
+    border-image: none;
+}
+
+.comment-body {
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+div.comment-and-delete:hover .comment-delete-button {
+    display: block;
+}

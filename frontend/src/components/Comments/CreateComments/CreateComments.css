@@ -1,0 +1,13 @@
+input.comment-body {
+    width: 100%;
+}
+
+div.outer-comment-form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 0;
+    margin: 0;
+    top: 15px;
+}

@@ -1,0 +1,13 @@
+.signout-text {
+    color: #333;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    font-size: 37px;
+    margin: 18px;
+    line-height: 1.3;
+    font-weight: 100;
+}

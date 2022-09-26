@@ -1,1 +1,37 @@
+.outer-login-form {
+    width: 700px;
+}
 
+.login-form{
+    width: 60%;
+    position: relative;
+    top: 100px;
+}
+
+button.signin-button {
+    background-color: rgba(0, 0, 0, .6);
+    border-color: white;
+    color: white;
+}
+
+button.submit-button, button.demo-user {
+    font-size: 16 px;
+    height: 40px;
+    line-height: 18 px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    background-color: #f50;
+    border-color: #f50;
+    color: white;
+}
+
+.input-label {
+    width: 100%;
+}
+
+.login-input {
+    height: 40px;
+    margin-bottom: 15px;
+    width: 98%;
+}

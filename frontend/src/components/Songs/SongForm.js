@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { createSong, editSong } from "../../store/songs";
+import { createSong, editSong, clearSongAction } from "../../store/songs";
+import './SongForm.css'
 
 const SongForm = ({ song, formType }) => {
     const history = useHistory();
@@ -21,16 +22,25 @@ const SongForm = ({ song, formType }) => {
         if (!title) errors.push("Song title is required");
         if (!url) errors.push("Audio is required");
         if (!url.endsWith('.mp3')) errors.push("Audio file must be an mp3");
-        if (!imageUrl.endsWith('.jpg') && !imageUrl.endsWith('.jpeg') && !imageUrl.endsWith('.png')) {
+        if (imageUrl && !imageUrl.endsWith('.jpg') && !imageUrl.endsWith('.jpeg') && !imageUrl.endsWith('.png')) {
             errors.push("Image file must be a jpg, jpeg, or png");
         }
-
         setValidationErrors(errors);
     }, [title, url, imageUrl])
+
+    /* Will cause a loss of state when user uses
+    the back button or navigates via a Link.
+    Moved functionality to handleSubmit.
+    useEffect(() =>{
+        return (() => {
+            dispatch(clearSongAction())
+        })
+    }, [dispatch])*/
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true)
+
         if (validationErrors.length) return alert(`Can't submit, please fill in the missing information.`)
 
         const newSong = { ...song, title, description, url, imageUrl, albumId };
@@ -39,63 +49,72 @@ const SongForm = ({ song, formType }) => {
             const awaitedSong = await dispatch(createSong(newSong))
             history.push(`/songs/${awaitedSong.id}`)
         } else if (formType === "Update song") {
-                const awaitedSong = await dispatch(editSong(song.id, newSong))
-                history.push(`/songs/${awaitedSong.id}`)
-            }
+            const awaitedSong = await dispatch(editSong(song.id, newSong))
+            history.push(`/songs/${awaitedSong.id}`)
+        }
+
+        dispatch(clearSongAction())
     };
 
     return (
-        <div className="song-form">
-            <form className="form song-form" onSubmit={handleSubmit} >
-                <h2>{formType}</h2>
-                {hasSubmitted && validationErrors.length > 0 && (
-                    <div className="error-handling">There were errors in your submission:
-                        <ul>
-                            {validationErrors.map(error => (
-                                <li className="errors" key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-                <label>
-                    Title:
-                    <input
-                        className='input'
-                        type="text"
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Description:
-                    <input
-                        className='input'
-                        type="text"
-                        value={description}
-                        onChange={e => setDescription(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Song URL:
-                    <input
-                        className='input'
-                        type="text"
-                        value={url}
-                        onChange={e => setUrl(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Image URL:
-                    <input
-                        className='input'
-                        type="text"
-                        value={imageUrl}
-                        onChange={e => setImageUrl(e.target.value)}
-                    />
-                </label>
-                {/* dropdown menu with albums that user owns */}
-                {/* https://www.robinwieruch.de/react-dropdown/ good tutorial*/}
-                {/* <label>
+        <div className="outer-div">
+            <div className="song-form-outer">
+                <form className="form song-form" onSubmit={handleSubmit} >
+                    <h2 className="song-form-header">{formType}</h2>
+                    {hasSubmitted && validationErrors.length > 0 && (
+                        <div className="outer-error">
+                            <div className="error-handling">There were errors in your submission:</div>
+                            <ul className="errors-handling">
+                                {validationErrors.map(error => (
+                                    <li className="errors-list" key={error}>{error}</li>
+                                ))}
+                            </ul>
+
+                        </div>
+                    )}
+                    <label className='song-form-label'>
+                        {/* Title: */}
+                        <input
+                            className='input song-form-input'
+                            type="text"
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                            placeholder='Title'
+                        />
+                    </label>
+                    <label className='song-form-label'>
+                        {/* Description: */}
+                        <input
+                            className='input song-form-input'
+                            type="text"
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                            placeholder='Description'
+                        />
+                    </label>
+                    <label className='song-form-label'>
+                        {/* Song URL: */}
+                        <input
+                            className='input song-form-input'
+                            type="text"
+                            value={url}
+                            onChange={e => setUrl(e.target.value)}
+                            placeholder='Song URL'
+                        />
+                    </label>
+                    <label className='song-form-label'>
+                        {/* Image URL: */}
+                        <input
+                            className='input song-form-input'
+                            type="text"
+                            value={imageUrl}
+                            onChange={e => setImageUrl(e.target.value)}
+                            placeholder='Image URL'
+                        />
+                    </label>
+                    {/* dropdown menu with albums that user owns */}
+                    {/* https://www.robinwieruch.de/react-dropdown/ good tutorial*/}
+                    {/* <label>
                 Album Id:
                 <input
                     type="integer"
@@ -103,8 +122,9 @@ const SongForm = ({ song, formType }) => {
                     onChange={e => setAlbumId(e.target.value)}
                 />
             </label> */}
-                <input type="submit" value={formType} />
-            </form>
+                    <input type="submit" className="button song-form-submitButton" value={formType} />
+                </form>
+            </div>
         </div>
     )
 }

@@ -6,6 +6,7 @@ const DeleteCommentButton = ({comment}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { songId } = useParams();
+    const deleteIcon = <i class="fa-solid fa-trash"></i>
 
     const sessionState = useSelector(state => state.session);
     const currentUser = sessionState.user?.id;
@@ -16,7 +17,7 @@ const DeleteCommentButton = ({comment}) => {
             if (deleted) history.push(`/songs/${songId}`);
         }
         return (
-            <button className="delete-button button" onClick={handleClick}>Delete</button>
+            <button className="delete-button button" onClick={handleClick}>{deleteIcon}</button>
         )
     }
 }

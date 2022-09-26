@@ -14,12 +14,11 @@ const EditSongForm = () => {
     const artist = songsState[songId]?.userId;
     const song = songsState[songId];
 
-
     if (currentUser === artist) {
         return (
             <SongForm song={song} formType="Update song" />
         );
-    } else {
+    } else if (currentUser !== artist){
         return (
             <div>
                 {history.push(`/songs/${songId}`)}

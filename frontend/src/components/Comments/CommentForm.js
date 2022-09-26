@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createComment, editComment, getSongComments } from "../../store/comments";
+import './CreateComments/CreateComments.css'
 
 const CommentForm = ({ comment, formType }) => {
     const history = useHistory();
@@ -38,26 +39,29 @@ const CommentForm = ({ comment, formType }) => {
     };
 
     return (
-        <div className="comments-form form">
-            <form onSubmit={handleSubmit}>
-                <h4>{formType}</h4>
+        <div className="comments-form-outer form">
+            <form className="comment-form" onSubmit={handleSubmit}>
+                {/* <h4>{formType}</h4> */}
                 <label>
                     {hasSubmitted && validationErrors.length > 0 && (
-                        <div className="error-handling">There were errors in your submission:
-                            <ul>
+                        <div className="error-handling">
+                            <ul className="error-handling">
                                 {validationErrors.map(error => (
                                     <li className="errors" key={error}>{error}</li>
                                 ))}
                             </ul>
                         </div>
                     )}
-                    <textarea
-                        className="comment-body"
-                        value={body}
-                        onChange={e => setBody(e.target.value)}
-                    />
+                    <div className="outer-comment-form">
+                        <input
+                            className="comment-input"
+                            value={body}
+                            onChange={e => setBody(e.target.value)}
+                            placeholder='Write a comment'
+                        />
+                    </div>
+                    <input className="button submitButton" type="submit" value="Submit" />
                 </label>
-                <input className="button submitButton" type="submit" value="Submit" />
             </form>
         </div>
     )

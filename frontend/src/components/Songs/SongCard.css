@@ -1,0 +1,110 @@
+div.song-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 16%;
+}
+
+li.song-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid #f50; */
+    background-color: white;
+    color:black;
+    margin: 10px;
+}
+
+img.card-image {
+    max-width: 50%;
+    height: auto;
+}
+
+div.card-outer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.card-image-outer {
+    position: relative;
+    right: 0%;
+    max-height: 172px;
+    max-width: 172px;
+    padding: 20px;
+}
+
+div.card-image-outer img {
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    /* width: 100%;
+    height: auto; */
+}
+
+.fa-circle-play {
+    color: #f50;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-button {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 40%;
+    right: 45%;
+    z-index: 2;
+    display: none;
+    background-color: transparent;
+    border-color: transparent;
+
+}
+
+div.card-image-outer:hover .play-button {
+    display:block
+}
+
+.song-card-text {
+    position: relative;
+    text-align:start;
+    max-width: 172px;
+    /* min-width: 100px; */
+    /* min-width: 80%; */
+    /* max-width: 80%; */
+
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+}
+
+.card-title {
+    text-decoration: none;
+    color:#333;
+
+    /* width: 172px; */
+    /* min-width: 80%;
+    max-width: 80%; */
+    /* min-height: 80%;
+    max-height: 80%; */
+
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+}
+
+.card-artist {
+    color:#333;
+
+    /* max-width: 80%;
+    min-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+}

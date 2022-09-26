@@ -11,6 +11,7 @@ const DeleteSongButton = () => {
     const currentUser = sessionState.user.id
     const artist = songsState[songId].userId;
     const song = songsState[songId].id;
+    const deleteIcon = <i class="fa-solid fa-trash"></i>
 
     if (currentUser === artist) {
         const handleClick = async () => {
@@ -18,7 +19,7 @@ const DeleteSongButton = () => {
             history.push('/songs');
         }
         return (
-            <button className="button delete-button" onClick={handleClick}>Delete</button>
+            <button className="button delete-button" onClick={handleClick}>{deleteIcon}</button>
         )
     } else {
         return null;

@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import '../../Navigation/Navigation.css'
 
 const UploadSong = () => {
     const user = useSelector(state => state.session.user)
@@ -7,7 +8,7 @@ const UploadSong = () => {
     if (!user){
         return null
     } else return (
-        <Link className="link upload-link" to={`/songs/upload`}>Upload</Link>
+        <NavLink className="link upload-link navbar-link" to={`/songs/upload`} >Upload</NavLink>
     )
 
 }

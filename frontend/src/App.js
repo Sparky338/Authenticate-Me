@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import { getAllSongs } from "./store/songs";
+import 'react-h5-audio-player/lib/styles.css';
 import * as sessionActions from "./store/session";
 
 import Home from "./components/HomePage/Home";
@@ -12,8 +13,7 @@ import SongById from "./components/Songs/GetSongs/SongById";
 import CreateSongForm from "./components/Songs/CreateSong/CreateSongForm";
 import EditSongForm from "./components/Songs/EditSong/EditSongForm";
 import Logout from "./components/Signout/Signout";
-
-// import ArtistSongs from "./components/Artists/ArtistSongs";
+import SongPlayer from "./components/SongPlayer";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +55,8 @@ function App() {
           <Route>Page Not Found</Route>
         </Switch>
       )}
+      <footer></footer>
+      <SongPlayer />
     </>
   );
 }
