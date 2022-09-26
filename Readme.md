@@ -1,6 +1,7 @@
 
 ## Welcome to SoundClod, a clone of SoundCloud.
-Link to live site here
+
+## https://soundclod.herokuapp.com/
 
 This is a simple clone of SoundCloud including an audio player, song pages, and a generic library. More will be added in the future.
 
