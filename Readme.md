@@ -3,7 +3,7 @@
 
 ## https://soundclod.herokuapp.com/
 
-This is a simple clone of SoundCloud including an audio player, song pages, and a generic library. More will be added in the future.
+This is a simple clone of SoundCloud including an audio player, song pages, somments, and a generic library. More will be added in the future.
 
 ## This project was built with:
 - Javascript
