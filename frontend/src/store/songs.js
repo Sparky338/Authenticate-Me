@@ -54,7 +54,7 @@ export const getAllSongs = () => async dispatch => {
 };
 
 export const createSong = (songData) => async dispatch => {
-    songData.imageUrl = "https://cdn.pixabay.com/photo/2017/04/19/10/24/vinyl-2241789_960_720.png"
+    if (!songData.imageUrl) songData.imageUrl = "https://cdn.pixabay.com/photo/2017/04/19/10/24/vinyl-2241789_960_720.png"
 
     const res = await csrfFetch(`/api/songs`, {
         method: 'POST',
