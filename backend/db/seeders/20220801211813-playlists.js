@@ -1,7 +1,11 @@
 'use strict';
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,20 +15,22 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-     await queryInterface.bulkInsert('Playlists', [
-      {userId: 1, name: "Demo-lition Destroyer", imageUrl: 'playlistUrl'},
-      {userId: 2, name: 'Fakers', imageUrl: 'playlistUrl'},
-      {userId: 3, name: 'Phone Phreaking tunes', imageUrl: 'playlistUrl'},
+    options.tableName = 'Playlists';
+    await queryInterface.bulkInsert(options, [
+      { userId: 1, name: "Demo-lition Destroyer", imageUrl: 'playlistUrl' },
+      { userId: 2, name: 'Fakers', imageUrl: 'playlistUrl' },
+      { userId: 3, name: 'Phone Phreaking tunes', imageUrl: 'playlistUrl' },
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     await queryInterface.bulkDelete('Playlists', null, {});
+    options.tableName = 'Playlists';
+    await queryInterface.bulkDelete(options, null, {});
   }
 };
