@@ -1,4 +1,8 @@
 'use strict';
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -11,7 +15,8 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('Songs', [
+    options.tableName = 'Songs';
+    await queryInterface.bulkInsert(options, [
       {userId: 1, albumId: null, title: 'The Blackest Bouquet', description: 'LeonellCassio- If you would like to use this song for social media, feel free to. All that I ask back is that you give credit, and that do not re-sell & distribute the song or any form of remixes.', url: 'https://cdn.pixabay.com/audio/2022/08/31/audio_419263fc12.mp3', imageUrl: 'https://cdn.pixabay.com/audio/2022/08/31/19-48-37-847_200x200.jpg'},
       {userId: 3, albumId: null, title: 'Electronic Future', description: 'QubeSounds- Making future songs for cubes', url: 'https://cdn.pixabay.com/audio/2022/08/23/audio_d16737dc28.mp3', imageUrl: 'https://cdn.pixabay.com/photo/2022/07/06/13/10/vintage-car-7305109_960_720.jpg'},
       {userId: 1, albumId: null, title: 'SoundHelix Song 1', description: 'T. Schürger- recording date: 07/06/2009', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', imageUrl: 'https://cdn.pixabay.com/photo/2022/07/21/20/25/converse-7336903_960_720.jpg'},
@@ -34,6 +39,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Songs', null, {});
+    options.tableName = 'Songs';
+    await queryInterface.bulkDelete(options, null, {});
   }
 };
