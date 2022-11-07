@@ -28,11 +28,12 @@ const SongById = () => {
 
     const playIcon = <i class="fa-solid fa-circle-play fa-5x"></i>;
     const commentIcon = <i class="fa-solid fa-message"></i>;
-    
+
     const handlePlay = (url) => {
         dispatch(loadCurrentSong(url))
     }
-
+    
+// LOOK AT THE NEXT LINES, ARE THEY NEEDED?
     useEffect(() => {
         dispatch(getAllSongs())
     }, [dispatch])
