@@ -12,14 +12,19 @@ This is a simple clone of SoundCloud including an audio player, song pages, somm
 ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
 
 
-## This project is hosted on Render with a Postgres Database. 
+## This project is hosted on Render with a Postgres Database.
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
 ## SoundClod Examples
+Splash Page
 ![SoundClod-splash-page](./Readme-Assets/SoundClodSplash.png)
+
+Song Page
 ![SoundClod-song-page](./Readme-Assets/SoundClodSongPage.png)
 
+Library after log in
+![SoundClod-Logged-in-Library](./Readme-Assets/loggedInLibrary.png)
 
 ## RoadMap for the future of SoundClod:
 - Better funtionality of the audio player and pause button on songs.
