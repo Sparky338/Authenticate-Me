@@ -1,0 +1,64 @@
+body {
+    position: relative;
+    display: block;
+    min-height: 100vh;
+}
+
+body::after {
+    content: "";
+    display: block;
+    height: 50px;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    color: #ccc;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+.dev-footer-container {
+    width: 80%;
+}
+
+.Footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dev-links-footer {
+    display: flex;
+    align-items: center;
+}
+
+.logo-footer {
+    height: 30px;
+    width: 30px;
+}
+
+.dev-name-footer {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.dev-link-footer {
+    text-decoration: none;
+    color: #ccc;
+    padding-left: 5px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.dev-link-footer:hover {
+    color: #333;
+}
