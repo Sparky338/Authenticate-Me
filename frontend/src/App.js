@@ -15,6 +15,7 @@ import EditSongForm from "./components/Songs/EditSong/EditSongForm";
 import Logout from "./components/Signout/Signout";
 import SongPlayer from "./components/SongPlayer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ function App() {
           <Route>Page Not Found</Route>
         </Switch>
       )}
-      <footer></footer>
+      <Footer />
       <SongPlayer />
     </>
   );
