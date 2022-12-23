@@ -14,6 +14,7 @@ import CreateSongForm from "./components/Songs/CreateSong/CreateSongForm";
 import EditSongForm from "./components/Songs/EditSong/EditSongForm";
 import Logout from "./components/Signout/Signout";
 import SongPlayer from "./components/SongPlayer";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
