@@ -37,6 +37,10 @@ Library after log in
 - In your terminal, cd into 'frontend' and run npm start to begin the frontend server.
 
 ## Contact Information
-http://github.com/Sparky338
+[GitHub](http://github.com/Sparky338)
 
-matthewjhutter@gmail.com
+[LinkedIn](www.linkedin.com/in/matt-hutter-2a6620173)
+
+[Portfolio](https://sparky338.github.io/)
+
+[Email](matthewjhutter@gmail.com)
