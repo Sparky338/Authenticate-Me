@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSongComments } from "../../../store/comments";
 import DeleteCommentButton from "../DeleteComments/DeleteComment";
+import EditComment from "../EditComment/EditComment";
 import './Comments.css'
 
 const CommentsBySongId = () => {
@@ -29,6 +30,9 @@ const CommentsBySongId = () => {
                         <div className="hover-delete">
                             <div className="comment-and-delete">
                                 <div className="comments comment-body">{comment.body}</div>
+                                <div className="comment-edit-button">
+                                    <EditComment comment={comment} />
+                                </div>
                                 <div className="comment-delete-button">
                                     <DeleteCommentButton comment={comment} />
                                 </div>
