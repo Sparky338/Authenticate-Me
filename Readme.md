@@ -33,7 +33,15 @@ Library after log in
 
 ## Getting started
 - Download the project and run npm install.
-- In your terminal, cd into 'backend' and run npm start to begin the backend server.
+- In your terminal, cd into 'backend'
+
+- Run:
+
+```npx dotenv sequelize db:migrate``` to create the database
+
+```npx dotenv sequelize db:seed:all``` to seed the database
+
+```npm start``` to begin the backend server
 - In your terminal, cd into 'frontend' and run npm start to begin the frontend server.
 
 ## Contact Information
