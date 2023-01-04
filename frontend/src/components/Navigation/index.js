@@ -46,7 +46,9 @@ function Navigation({ isLoaded }) {
     <header className='banner'>
       <div className='top-banner-links'>
         <div className='left-banner'>
+        <Link exact to="/" className='navbar-logo-link'>
           <img src={soundClodIcon} alt='SoundClod Icon' />
+        </Link>
           <div className='link home'>
             <Link exact to="/" className='navbar-link' style={linkStyling}>Home</Link>
           </div>
