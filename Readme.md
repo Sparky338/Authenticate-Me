@@ -51,4 +51,4 @@ Library after log in
 
 [Portfolio](https://sparky338.github.io/)
 
-[Email](mailto:matthewjhutter@gmail.com)
+[matthewjhutter@gmail.com](mailto:matthewjhutter@gmail.com)
